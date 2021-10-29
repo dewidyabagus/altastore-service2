@@ -17,3 +17,4 @@ config/mitranskey.yaml
 *.out
 
 local.env
+cover.html
