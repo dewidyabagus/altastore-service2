@@ -1,0 +1,1532 @@
+openapi: 3.0.0
+info:
+  description: Back-End (RESTful API) Web Application Alta Store
+  version: "1.0.0"
+  title: BE Web Application Alta Store
+  license:
+    name: Apache 2.0
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+tags:
+  - name: Auth
+    description: Register and Authentication for User or Admin 
+  - name: User
+    description: Resource for insert, modifiying and getting Users
+  - name: Admin
+    description: Resource for insert, modifiying and getting Admins 
+  - name: Product Category
+    description: Resource for insert, modifiying and getting Product Categories
+  - name: Product
+    description: Resource for insert, modifiying and getting Products
+  - name: Purchase Receiving
+    description: Resource for insert, modifiying and getting Purchase Receivings
+  - name: Shopping Cart
+    description: Resource for insert, modifiying and getting Shopping Carts
+  - name: Check Out
+    description: Resource for insert, modifiying and getting Check Outs
+
+paths:
+  /v1/register:
+    post:
+      tags:
+        - Auth
+      summary: Register new user
+      operationId: register
+      parameters:
+        - in: query
+          name: object
+          description: User object that needs to be register
+          required: true
+          schema:
+            $ref: "#/components/schemas/UserRegister"
+      responses:
+        200:
+          description: Successfully Register
+        400:
+          description: Bad Input Parameter
+        409:
+          description: Email Already Registered
+
+  /v1/login:
+    post:
+      tags:
+        - Auth
+      summary: Login user
+      operationId: login
+      parameters:
+        - in: query
+          name: object
+          description: User Object that needs to be login
+          required: true
+          schema:
+            $ref: "#/components/schemas/UserLogin"
+      responses:
+        200:
+          description: Login Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserIdToken"
+        400:
+          description: Bad Input Parameter
+        401:
+          description: Incorrect Email or Password
+        404:
+          description: User Not Found
+  /v1/users/{id}:
+    get:
+      tags:
+        - User
+      summary: Get user profile
+      operationId: Get user profile
+      parameters:
+        - in: query
+          name: id
+          description: Id to be passed as a query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserData"
+        400:
+          description: Bad Input Parameter
+        404:
+          description: User Not Found
+    put:
+      tags:
+        - User
+      summary: Update user profile
+      operationId: Update user profile
+      parameters:
+        - in: query
+          name: id
+          description: Id to be passed as a query
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: object
+          description: User object that needs to be update
+          required: true
+          schema:
+            $ref: "#/components/schemas/UserData"
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Update User Information Success
+        400:
+          description: Bad Input Parameter
+        404:
+          description: User Not Found
+    delete:
+      tags:
+        - User
+      summary: Delete user
+      operationId: Delete user
+      parameters:
+        - in: query
+          name: id
+          description: Id to be passed as a query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Delete Success
+        400:
+          description: Bad Input Parameter
+        404:
+          description: User Not Found
+  /v1/users/{id}/password:
+    put:
+      tags:
+        - User
+      summary: Change user password
+      operationId: Change user password
+      parameters:
+        - in: query
+          name: id
+          description: Id to be passed as a query
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: object
+          description: User object that needs to be update
+          required: true
+          schema:
+            $ref: "#/components/schemas/UserChangePassword"
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Password Changed Successfully
+        400:
+          description: Bad Input Parameter
+        404:
+          description: User Not Found
+
+  /v1/register/admin:
+    post:
+      tags:
+        - Auth
+      summary: Register Admin
+      operationId: Register
+      parameters:
+        - in: query
+          name: object
+          description: Admin object that needs to be Register
+          required: true
+          schema:
+            $ref: "#/components/schemas/AdminRegister"
+      responses:
+        200:
+          description: Register Successfully
+        400:
+          description: Bad Input Parameter
+  /v1/login/admin:
+    post:
+      tags:
+        - Auth
+      summary: Login admin
+      operationId: Login
+      parameters:
+        - in: query
+          name: object
+          description: Admin Object that needs to be login
+          required: true
+          schema:
+            $ref: "#/components/schemas/AdminLogin"
+      responses:
+        200:
+          description: Login Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminIdToken"
+        400:
+          description: Bad Input Parameter
+        401:
+          description: Incorrect Email or Password
+        404:
+          description: User Not Found
+  /v1/admins/{id}:
+    get:
+      tags:
+        - Admin
+      summary: Get Admin profile
+      operationId: get Admin profile
+      parameters:
+        - in: query
+          name: id
+          description: Id to be passed as a query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminData"
+        400:
+          description: Bad Input Parameter
+        404:
+          description: User Not Found
+    put:
+      tags:
+        - Admin
+      summary: Update Admin profile
+      operationId: Update Admin profile
+      parameters:
+        - in: query
+          name: id
+          description: Id to be passed as a query
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: object
+          description: Admin object that needs to be update
+          required: true
+          schema:
+            $ref: "#/components/schemas/AdminData"
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Update Admin Information Success
+        400:
+          description: Bad Input Parameter
+        404:
+          description: User Not Found
+    delete:
+      tags:
+        - Admin
+      summary: delete Admin
+      operationId: delete Admin
+      parameters:
+        - in: query
+          name: id
+          description: Id to be passed as a query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Delete Success
+        400:
+          description: Bad Input Parameter
+        404:
+          description: User Not Found
+  /v1/admins/{id}/password:
+    put:
+      tags:
+        - Admin
+      summary: change Admin password
+      operationId: change Admin password
+      parameters:
+        - in: query
+          name: id
+          description: Id to be passed as a query
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: object
+          description: Admin object that needs to be update
+          required: true
+          schema:
+            $ref: "#/components/schemas/AdminChangePassword"
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Password Changed Successfully
+        400:
+          description: Bad Input Parameter
+        404:
+          description: User Not Found
+
+  /v1/categories:
+    post:
+      tags:
+        - Product Category
+      summary: Insert New Product Category
+      operationId: Insert New Product Category
+      parameters:
+        - in: query
+          name: object
+          description: object that needs to be insert
+          required: true
+          schema:
+            $ref: "#/components/schemas/ProductCategoryModel"
+      responses:
+        200:
+          description: Successful Operation
+        400:
+          description: Bad Input Parameter
+      security:
+        - bearerAuth: []
+    get:
+      tags:
+        - Product Category
+      summary: Get List of Product Category
+      operationId: Get List of Product Category
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductCategoryView"
+  /v1/categories/{id}:
+    get:
+      tags:
+        - Product Category
+      summary: Get Product Category
+      operationId: Get Product Category
+      parameters:
+        - in: path
+          name: id
+          description: Id to be passed as a path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductCategoryView"
+        400:
+          description: Bad Input Parameter
+        404:
+          description: Not Found
+    put:
+      tags:
+        - Product Category
+      summary: Update Product Category
+      operationId: Update Product Category
+      parameters:
+        - in: path
+          name: id
+          description: Id to be passed as a path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: name
+          description: name to be passed as a query
+          required: true
+          schema:
+            type: string
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Successful Operation
+        400:
+          description: Bad Input Parameter
+        404:
+          description: Not Found
+    delete:
+      tags:
+        - Product Category
+      summary: Delete Product Category
+      operationId: delete Product Category
+      parameters:
+        - in: path
+          name: id
+          description: Id to be passed as a path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Successful Operation
+        400:
+          description: Bad Input Parameter
+        404:
+          description: Not Found
+  /v1/products:
+    post:
+      tags:
+        - Product
+      summary: Insert New Product
+      operationId: Insert New Product
+      parameters:
+        - in: query
+          name: object
+          description: object that needs to be insert
+          required: true
+          schema:
+            $ref: "#/components/schemas/ProductInsertDto"
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Successful Operation
+        400:
+          description: Bad Input Parameter
+    get:
+      tags:
+        - Product
+      summary: Get Product By Parameters
+      operationId: Get Product By parameters
+      parameters:
+        - in: query
+          name: id
+          description: Id to be passed as a path
+          schema:
+            type: string
+            format: uuid
+          required: false
+        - in: query
+          name: isactive
+          description: isactive to be passed as a query
+          required: false
+          schema:
+            type: boolean
+        - in: query
+          name: categoryname
+          description: categoryname to be passed as a query
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: code
+          description: code to be passed as a query
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: name
+          description: name to be passed as a query
+          required: false
+          schema:
+            type: string
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductView"
+        400:
+          description: Bad Input Parameter
+  /v1/products/{id}:
+    put:
+      tags:
+        - Product
+      summary: Update Product
+      operationId: Update Product
+      parameters:
+        - in: query
+          name: id
+          description: Id to be passed as a query
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: object
+          description: object that needs to be update
+          required: true
+          schema:
+            $ref: "#/components/schemas/ProductUpdateDto"
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Successful Operation
+        400:
+          description: Bad Input Parameter
+        404:
+          description: Not Found
+    delete:
+      tags:
+        - Product
+      summary: Delete Product
+      operationId: delete Product
+      parameters:
+        - in: path
+          name: id
+          description: Id to be passed as a path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Successful Operation
+        400:
+          description: Bad Input Parameter
+        404:
+          description: Not Found
+  /v1/purchasereceivings:
+    post:
+      tags:
+        - Purchase Receiving
+      summary: Insert New Purchase Receiving
+      operationId: Insert New Purchase Receiving
+      parameters:
+        - in: query
+          name: object
+          description: object that needs to be insert
+          required: true
+          schema:
+            $ref: "#/components/schemas/PurchaseReceivingInsertDto"
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Successful Operation
+        400:
+          description: Bad Input Parameter
+    get:
+      tags:
+        - Purchase Receiving
+      summary: Get Purchase Receiving By parameters
+      operationId: Get Purchase Receiving By parameters
+      parameters:
+        - in: query
+          name: id
+          description: Id to be passed as a query
+          required: false
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: code
+          description: code to be passed as a query
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: datefrom
+          description: datefrom to be passed as a query
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: dateto
+          description: dateto to be passed as a query
+          required: false
+          schema:
+            type: string
+            format: date
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PurchaseReceivingView"
+
+        400:
+          description: Bad Input Parameter
+  /v1/purchasereceivings/{id}:
+    put:
+      tags:
+        - Purchase Receiving
+      summary: Update Purchase Receiving
+      operationId: Update Purchase Receiving
+      parameters:
+        - in: query
+          name: object
+          description: object that needs to be update
+          required: true
+          schema:
+            $ref: "#/components/schemas/PurchaseReceivingUpdateDto"
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Successful Operation
+        400:
+          description: Bad Input Parameter
+        404:
+          description: Not Found
+    delete:
+      tags:
+        - Purchase Receiving
+      summary: Delete Purchase Receiving
+      operationId: delete Purchase Receiving
+      parameters:
+        - in: path
+          name: id
+          description: Id to be passed as a path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Successful Operation
+        400:
+          description: Bad Input Parameter
+        404:
+          description: Not Found
+
+  /v1/users/{id}/shoppingcart:
+    get:
+      tags:
+        - Shopping Cart
+      summary: Take active shopping cart
+      operationId: shoppingCartByUserId
+      description: |
+        Takes the identity of the active shopping cart and returns empty when not found.
+      parameters:
+        - in: path
+          name: id
+          description: User ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: "search results matching criteria"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActiveShoppingCart"
+        400:
+          description: Bad Input Parameter
+        404:
+          description: when there is no active shopping cart
+  /v1/shoppingcarts:
+    post:
+      tags:
+        - Shopping Cart
+      summary: Added shopping cart
+      operationId: AddShoppingCart
+      description: |
+        Adding a new shopping cart when a customer doesn't have an active cart, 
+        one customer can only have one active shopping cart
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: "shopping cart created"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActiveShoppingCart"
+        400:
+          description: invalid input, object invalid
+        409:
+          description: "shopping cart already exists"
+  /v1/shoppingcarts/{id}:
+    get:
+      tags:
+        - Shopping Cart
+      summary: Get product details in active shopping cart
+      operationId: shoppingCartById
+      description: |
+        Get product details in active shopping cart and return shopping cart summary and product details.
+      parameters:
+        - in: path
+          name: id
+          description: Provide pre-made shopping cart id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: "search results matching criteria"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ShoppingCartDetail"
+        400:
+          description: Bad Input Parameter
+        404:
+          description: shopping cart id not found
+  /v1/shoppingcarts/{id}/products:
+    post:
+      tags:
+        - Shopping Cart
+      summary: Add new product to shopping cart
+      operationId: addProductCart
+      description: Add new product to shopping cart
+      parameters:
+        - in: path
+          name: id
+          description: Provide pre-made shopping cart id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      security:
+        - bearerAuth: []
+      responses:
+        201:
+          description: "product created successfully"
+        400:
+          description: invalid input, object invalid
+        409:
+          description: "product already exists"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ShoppingCartProductNew"
+  /v1/shoppingcarts/{id}/products/{productid}:
+    put:
+      tags:
+        - Shopping Cart
+      summary: Updating products in the shopping cart
+      # operationId: updateProductCart
+      description: Updating products in the shopping cart
+      parameters:
+        - in: path
+          name: id
+          description: Provide pre-made shopping cart id
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - in: path
+          name: productid
+          description: Product id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: "product updated successfully"
+        400:
+          description: "invalid input, object invalid"
+        404:
+          description: "product not found"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ShoppingCartProductUpdate"
+    delete:
+      tags:
+        - Shopping Cart
+      summary: Delete product in shopping cart
+      description: Delete product in shopping cart
+      parameters:
+        - in: path
+          name: id
+          description: Provide pre-made shopping cart id
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - in: path
+          name: productid
+          description: Product id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: "product deleted successfully"
+        400:
+          description: "Bad Input Parameter"
+        404:
+          description: "product not found"
+  /v1/checkouts:
+    post:
+      tags:
+        - Check Out
+      summary: Added Checkout
+      operationId: AddCheckout
+      security:
+        - bearerAuth: []
+      responses:
+        201:
+          description: "Checkout created"
+        400:
+          description: "invalid input, object invalid"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CheckoutShopCart"
+    get:
+      tags:
+        - Check Out
+      summary: Fetch all checkout summary
+      operationId: getShoppingCartById
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: "search results matching criteria"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CheckoutMasterView"
+        400:
+          description: "Bad Input Parameter"
+  /v1/checkouts/{id}:
+    get:
+      tags:
+        - Check Out
+      summary: Get checkout information and product details
+      operationId: detailcheckoutproduct
+      parameters:
+        - in: path
+          name: id
+          description: Provide pre-made checkout id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: "search results matching criteria"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CheckoutProductView"
+        400:
+          description: "Bad Input Parameter"
+        404:
+          description: "Data Not Found"
+  # /v1/payment:
+  #   put:
+  #     tags:
+  #       - Check Out
+  #     summary: Update Payment
+  #     operationId: updatepayment
+  #     parameters:
+  #       - in: path
+  #         name: id
+  #         description: give checkoutid
+  #         required: true
+  #         schema:
+  #           type: string
+  #           format: uuid
+  #       - in: query
+  #         name: status
+  #         description: status payment
+  #         required: false
+  #         schema:
+  #           type: string
+  #       - in: query
+  #         name: OrderId
+  #         description: payment id
+  #         required: false
+  #         schema:
+  #           type: string
+  #       - in: query
+  #         name: Error
+  #         description: error payment
+  #         required: false
+  #         schema:
+  #           type: string
+
+  #     security:
+  #       - bearerAuth: []
+  #     responses:
+  #       200:
+  #         description: successfully operation
+  #       400:
+  #         description: Bad Input Parameter
+  #       404:
+  #         description: Not Found
+  /v1/payment/notif:
+    get:
+      tags:
+        - Check Out
+      summary: Get Payment Detail
+      operationId: getpaymentdetail
+      parameters:
+        - in: query
+          name: merchant_id
+          description: merchant_id
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: order_id
+          description: order_id
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: status_code
+          description: status_code
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: transaction_status
+          description: transaction_status
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: fraud_status
+          description: fraud_status
+          required: false
+          schema:
+            type: string
+
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: successfully operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CheckoutPaymentView"
+        400:
+          description: Bad Input Parameter
+
+components:
+  securitySchemes:
+    bearerAuth: # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT # optional, arbitrary value for documentation purposes
+  schemas:
+    UserRegister:
+      type: object
+      properties:
+        email:
+          type: string
+          example: abc@def.com
+        firstName:
+          type: string
+          example: Hardi
+        lastname:
+          type: string
+          example: Jackson
+        password:
+          type: string
+          example: Abcd123
+      xml:
+        name: "Register User"
+    UserLogin:
+      type: object
+      properties:
+        email:
+          type: string
+          example: abc@def.com
+        password:
+          type: string
+          example: Abcd123
+      xml:
+        name: "user Login"
+    UserIdToken:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        token:
+          type: string
+          example: "eyJhbGciOiJIUZI1NiIsInR5CCI6IkpXVCJ9.eyJzdWIiOiIxMjMONTY
+            30DkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4i0nRydWV9.TJVA95
+            OrM7E2cBab3 ORMHrHDcEfxjoYZgeFONFhHgQ"
+      xml:
+        name: "User Id and Token"
+    UserData:
+      type: object
+      properties:
+        email:
+          type: string
+          example: abc@def.com
+        firstName:
+          type: string
+          example: Hardi
+        lastname:
+          type: string
+          example: Jackson
+        handphone:
+          type: string
+          example: 081234567891
+        address:
+          type: string
+          example: Jl. Kebun Raya Pulau No 300
+      xml:
+        name: "User Data"
+    UserChangePassword:
+      type: object
+      properties:
+        newpassword:
+          type: string
+          example: Abcd123
+        oldpassword:
+          type: string
+          example: Abcd125
+      xml:
+        name: "Change User Password"
+
+    AdminRegister:
+      type: object
+      properties:
+        email:
+          type: string
+          example: abc@def.com
+        firstName:
+          type: string
+          example: Hardi
+        lastname:
+          type: string
+          example: Jackson
+        password:
+          type: string
+          example: Abcd123
+      xml:
+        name: "Register Admin"
+    AdminLogin:
+      type: object
+      properties:
+        email:
+          type: string
+          example: abc@def.com
+        password:
+          type: string
+          example: Abcd123
+      xml:
+        name: "Admin Login"
+    AdminIdToken:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        token:
+          type: string
+          example: "eyJhbGciOiJIUZI1NiIsInR5CCI6IkpXVCJ9.eyJzdWIiOiIxMjMONTY
+            30DkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4i0nRydWV9.TJVA95
+            OrM7E2cBab3 ORMHrHDcEfxjoYZgeFONFhHgQ"
+      xml:
+        name: "Admin Id and Token"
+    AdminData:
+      type: object
+      properties:
+        email:
+          type: string
+          example: abc@def.com
+        firstName:
+          type: string
+          example: Hardi
+        lastname:
+          type: string
+          example: Jackson
+      xml:
+        name: "Admin Data"
+    AdminChangePassword:
+      type: object
+      properties:
+        newpassword:
+          type: string
+          example: Abcd123
+        oldpassword:
+          type: string
+          example: Abcd125
+      xml:
+        name: "Change Admin Password"
+
+    ProductCategoryModel:
+      type: object
+      properties:
+        code:
+          type: string
+          example: PC0001
+        name:
+          type: string
+          example: Mie Instan
+    ProductCategoryView:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+          code:
+            type: string
+            example: PC0001
+          name:
+            type: string
+            example: Mie Instan
+
+    ProductInsertDto:
+      type: object
+      properties:
+        code:
+          type: string
+          example: P0001
+        name:
+          type: string
+          example: Minyaku
+        price:
+          type: number
+          example: 10000
+        isactive:
+          type: boolean
+          example: 1
+        productcategoryid:
+          type: string
+          format: uuid
+        unitname:
+          type: string
+          example: buah
+        description:
+          type: string
+          example: Minyak Berkualitas
+    ProductUpdateDto:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Minyakmu
+        price:
+          type: number
+          example: 50
+        isactive:
+          type: boolean
+          example: 1
+        productcategoryid:
+          type: string
+          format: uuid
+        unitname:
+          type: string
+          example: buah
+        description:
+          type: string
+          example: Minyak Tidak Berkualitas
+    ProductView:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+          code:
+            type: string
+            example: P0001
+          name:
+            type: string
+            example: Minyaku
+          qty:
+            type: number
+            example: 10
+          qtyshoppingcart:
+            type: number
+            example: 2
+          price:
+            type: number
+            example: 50
+          isactive:
+            type: boolean
+            example: 1
+          productcategoryid:
+            type: string
+            format: uuid
+          unitname:
+            type: string
+            example: buah
+          description:
+            type: string
+            example: Minyak Tidak Berkualitas
+
+    PurchaseReceivingInsertDto:
+      type: object
+      properties:
+        code:
+          type: string
+          example: PR0001
+        invoicedate:
+          type: string
+          format: date
+        receivedby:
+          type: string
+          example: Bambang
+        description:
+          type: string
+          example: Pembelian Berhasil
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              ProductId:
+                type: string
+                format: uuid
+              Price:
+                type: number
+                example: 1000000
+              qty:
+                type: number
+                example: 100
+    PurchaseReceivingUpdateDto:
+      type: object
+      properties:
+        invoicedate:
+          type: string
+          format: date
+        receivedby:
+          type: string
+          example: Bambang
+        description:
+          type: string
+          example: Pembelian Berhasil
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              ProductId:
+                type: string
+                format: uuid
+              Price:
+                type: number
+                example: 1000000
+              qty:
+                type: number
+                example: 50
+    PurchaseReceivingView:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+          code:
+            type: string
+            example: PR0001
+          invoicedate:
+            type: string
+            format: date
+          receivedby:
+            type: string
+            example: Bambang
+          description:
+            type: string
+            example: Pembelian Berhasil
+          details:
+            type: array
+            items:
+              type: object
+              properties:
+                ProductName:
+                  type: string
+                  example: Permen Karet
+                Price:
+                  type: number
+                  example: 1000
+                qty:
+                  type: number
+                  example: 50
+    ShoppingCartDetail:
+      type: object
+      properties:
+        ID:
+          type: string
+          format: uuid
+          example: "3916445d-ca66-438e-893e-50f6e4c39a34"
+        Description:
+          type: string
+          example: ""
+        CreatedBy:
+          type: string
+          format: uuid
+          example: "961058d4-23a0-4922-816c-01333e6a13ab"
+        UpdatedAt:
+          type: string
+          format: date-time
+          example: "2021-10-24T09:48:24.560612Z"
+        Details:
+          type: array
+          items:
+            type: object
+            properties:
+              ID:
+                type: string
+                format: uuid
+                example: "987c1957-f8b7-42e8-a980-beec5a364f65"
+              ProductId:
+                type: string
+                format: uuid
+                example: "032407b9-2b7b-4e63-8802-c82a17443f34"
+              ProductName:
+                type: string
+                example: "MIE SEDAP RASA ROTO"
+              Price:
+                type: integer
+                example: 3500
+              Qty:
+                type: integer
+                example: 3
+              UpdatedAt:
+                type: string
+                format: date-time
+                example: "2021-10-24T09:52:16.839921Z"
+    ActiveShoppingCart:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: "3916445d-ca66-438e-893e-50f6e4c39a34"
+        ischeckout:
+          type: boolean
+          example: false
+        description:
+          type: string
+          example: ""
+        updated_at:
+          type: string
+          format: date-time
+          example: "2021-10-24T09:48:24.560612Z"
+    ShoppingCartProductNew:
+      type: object
+      properties:
+        productid:
+          type: string
+          format: uuid
+        price:
+          type: integer
+          example: 15000
+        qty:
+          type: integer
+          example: 1
+    ShoppingCartProductUpdate:
+      type: object
+      properties:
+        price:
+          type: integer
+          example: 3500
+        qty:
+          type: integer
+          example: 1
+    ShoppingCartProductDel:
+      type: object
+      properties:
+        productId:
+          type: string
+          format: uuid
+
+    CheckoutMasterView:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        shoppingcartid:
+          type: string
+          format: uuid
+          example: 9cf9cae5-bad7-48bf-96c7-85c8d6114c68
+        description:
+          type: string
+          example: Tolong Packing dengan rapi
+        created_by:
+          type: string
+          format: uuid
+          example: 961058d4-23a0-4922-816c-01333e6a13ab
+        created_at:
+          type: string
+          format: date-time
+          example: "2021-10-26T05:37:22.958972Z"
+
+    CheckoutProductView:
+      type: object
+      properties:
+        ID:
+          type: string
+          format: uuid
+          example: 1547b2a2-ca03-4ce8-9494-e6b882b71865
+        ShoppingCardId:
+          type: string
+          format: uuid
+          example: 9cf9cae5-bad7-48bf-96c7-85c8d6114c68
+        Description:
+          type: string
+          example: "Mohon untuk di packing dengan rapi ya"
+        CreatedBy:
+          type: string
+          format: uuid
+        CreatedAt:
+          type: string
+          format: date-time
+          example: "2021-10-26T05:57:18.277861Z"
+        Details:
+          type: array
+          items:
+            type: object
+            properties:
+              ID:
+                type: string
+                format: uuid
+                example: e0fbe25d-895d-4d7a-b117-94b7025cf8a5
+              ProductId:
+                type: string
+                format: uuid
+                example: 032407b9-2b7b-4e63-8802-c82a17443f34
+              ProductName:
+                type: string
+                example: "MIE SEDAP RASA ROTO"
+              Price:
+                type: integer
+                example: 3500
+              Qty:
+                type: integer
+                example: 1
+              UpdatedAt:
+                type: string
+                format: date-time
+                example: "2021-10-26T00:18:17.872182Z"
+    CheckoutPaymentView:
+      type: array
+      items:
+        properties:
+          merchant_id:
+            type: string
+            example: M1234567
+          order_id:
+            type: string
+            format: uuid
+          status_code:
+            type: string
+            example: 200
+          transaction_status:
+            type: string
+            example: settlement
+          fraud_status:
+            type: string
+            example: ""
+    CheckoutShopCart:
+      type: object
+      properties:
+        shoppingcartid:
+          type: string
+          format: uuid
+          example: 9cf9cae5-bad7-48bf-96c7-85c8d6114c68
+        description:
+          type: string
+          example: "Mohon untuk di packing dengan rapi ya"
+    # SuccessResponseWithData:
+    #   type: object
+    #   properties:
+    #     code:
+
