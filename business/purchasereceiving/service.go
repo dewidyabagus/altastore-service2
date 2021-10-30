@@ -246,5 +246,12 @@ func (s *service) DeletePurchaseReceiving(id string, deleter string) error {
 		time.Now(),
 	)
 
+	// return s.repository.DeletePurchaseReceiving(&deleteData)
+
+	err = s.repositoryDetail.DeletePurchaseReceivingDetail2(id, deleter)
+	if err != nil {
+		return err
+	}
+
 	return s.repository.DeletePurchaseReceiving(&deleteData)
 }
