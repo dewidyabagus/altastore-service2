@@ -1,7 +1,9 @@
 package purchasereceivingdetail
 
 import (
+	"AltaStore/business"
 	"AltaStore/business/purchasereceiving"
+	"errors"
 	"time"
 
 	"gorm.io/gorm"
@@ -125,4 +127,21 @@ func (r *Repository) GetPurchaseReceivingDetailById(id string) (*purchasereceivi
 		return nil, err
 	}
 	return &detail, nil
+}
+
+func (r *Repository) DeletePurchaseReceivingDetail2(purchaseid string, deleter string) error {
+	purchaseReceivingDetail := new([]PurchaseReceivingDetail)
+
+	err := r.DB.Where("purchase_receiving_id = ?", purchaseid).Find(purchaseReceivingDetail).Error
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return business.ErrNotFound
+		}
+		return err
+	}
+
+	return r.DB.Model(purchaseReceivingDetail).Updates(map[string]interface{}{
+		"deleted_at": time.Now(),
+		"deleted_by": deleter,
+	}).Error
 }
