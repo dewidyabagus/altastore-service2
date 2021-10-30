@@ -22,5 +22,5 @@ func NotFoundResponse() (int, ControllerResponse) {
 }
 
 func UnAuthorizedResponse() (int, ControllerResponse) {
-	return http.StatusNotFound, ControllerResponse{NotFoundCode, "UnAuthorized", map[string]interface{}{}}
+	return http.StatusUnauthorized, ControllerResponse{UnAuthorized, "UnAuthorized", map[string]interface{}{}}
 }
