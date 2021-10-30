@@ -17,7 +17,7 @@ begin
 	productid := item_id;
     
 	open ref_cursor for select shopping_cart_id, qty from shopping_cart_details
-		where cast(to_char(deleted_at,'YYYY') as INT) > 1000 and product_id = item_id order by created_at;
+		where cast(to_char(deleted_at,'YYYY') as INT) < 1000 and product_id = item_id order by created_at;
 	loop
 		fetch ref_cursor into cart_id, item_qty;
 		
@@ -28,7 +28,7 @@ begin
 		select t2.transaction_status from checkouts t1 
 		left join checkout_payments t2 
 			on cast(t2.check_out_id as varchar) = cast(t1."id" as varchar) and t2.transaction_status in ('pending', 'captured', 'settlement')
-		where t1.shopping_cart_id = cart_id and cast(to_char(t1.deleted_at,'YYYY') as INT) > 1000 order by t1.created_at desc limit 1;
+		where t1.shopping_cart_id = cart_id and cast(to_char(t1.deleted_at,'YYYY') as INT) < 1000 order by t1.created_at desc limit 1;
 		
 	fetch ref_cursor2 into transaction_stat;
 	if found then 
