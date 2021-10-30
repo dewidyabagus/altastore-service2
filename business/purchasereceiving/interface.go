@@ -26,4 +26,5 @@ type RepositoryDetail interface {
 	InsertPurchaseReceivingDetail(item *PurchaseReceivingDetail) error
 	UpdatePurchaseReceivingDetail(item *PurchaseReceivingDetail) error
 	DeletePurchaseReceivingDetail(item *PurchaseReceivingDetail) error
+	DeletePurchaseReceivingDetail2(id string, deleter string) error // delete detail purchase receiving by purchase id
 }

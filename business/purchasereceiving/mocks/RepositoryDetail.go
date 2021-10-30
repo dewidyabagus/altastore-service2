@@ -27,6 +27,20 @@ func (_m *RepositoryDetail) DeletePurchaseReceivingDetail(item *purchasereceivin
 	return r0
 }
 
+// DeletePurchaseReceivingDetail2 provides a mock function with given fields: id, deleter
+func (_m *RepositoryDetail) DeletePurchaseReceivingDetail2(id string, deleter string) error {
+	ret := _m.Called(id, deleter)
+
+	var r0 error
+	if rf, ok := ret.Get(0).(func(string, string) error); ok {
+		r0 = rf(id, deleter)
+	} else {
+		r0 = ret.Error(0)
+	}
+
+	return r0
+}
+
 // GetPurchaseReceivingDetailById provides a mock function with given fields: id
 func (_m *RepositoryDetail) GetPurchaseReceivingDetailById(id string) (*purchasereceiving.PurchaseReceivingDetail, error) {
 	ret := _m.Called(id)
