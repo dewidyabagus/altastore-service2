@@ -1,7 +1,9 @@
 package category
 
 import (
+	"AltaStore/business"
 	"AltaStore/business/category"
+	"errors"
 	"time"
 
 	"gorm.io/gorm"
@@ -92,12 +94,18 @@ func (r *Repository) FindCategoryByCode(code string) (*category.Category, error)
 }
 
 func (r *Repository) InsertCategory(cat category.Category) error {
-	dataCategory := newDataCategory(cat)
-	if err := r.DB.Create(dataCategory).Error; err != nil {
-		return err
+	// Check category code already exists
+	err := r.DB.First(&ProductCategory{}, "code = ?", cat.Code).Error
+	if !errors.Is(err, gorm.ErrRecordNotFound) {
+		if err != nil {
+			return err
+		}
+		return business.ErrDataExists
 	}
 
-	return nil
+	dataCategory := newDataCategory(cat)
+
+	return r.DB.Create(dataCategory).Error
 }
 
 func (r *Repository) UpdateCategory(id string, cat category.Category) error {
