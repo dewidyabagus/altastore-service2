@@ -170,11 +170,11 @@ func (r *Repository) GetAllProductByParameter(id, isActive, categoryName,
 	}
 	if code != "" {
 		// temp = temp.Where("code = ?", code)
-		query += fmt.Sprintf(" and t1.code = '%s'", code)
+		query += fmt.Sprintf(" and t1.code = '%s'", "%"+"keyword")
 	}
 	if name != "" {
 		// temp = temp.Where("name = ?", name)
-		query += fmt.Sprintf(" and t1.name = '%s'", name)
+		query += fmt.Sprintf(" and t1.name like '%s'", name)
 	}
 
 	// err := temp.Where("deleted_by = ''").Find(&products).Error
