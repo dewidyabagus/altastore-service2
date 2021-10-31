@@ -1,7 +1,9 @@
 package purchasereceiving
 
 import (
+	"AltaStore/business"
 	"AltaStore/business/purchasereceiving"
+	"errors"
 	"time"
 
 	"gorm.io/gorm"
@@ -74,18 +76,19 @@ func (r *Repository) InsertPurchaseReceiving(p *purchasereceiving.PurchaseReceiv
 
 // func (r *Repository) UpdatePurchaseReceiving(p *purchasereceiving.PurchaseReceiving) error {
 func (r *Repository) UpdatePurchaseReceiving2(id *string, code *string, description *string, modifier *string, updater time.Time) error {
-	// purchase := newPurchaseReceiving(p)
-	// err := r.DB.Model(&purchase).Updates(PurchaseReceiving{
-	// 	DateReceived: purchase.DateReceived,
-	// 	ReceivedBy:   purchase.ReceivedBy,
-	// 	Description:  purchase.Description,
-	// 	UpdatedAt:    purchase.UpdatedAt,
-	// 	UpdatedBy:    purchase.UpdatedBy,
-	// }).Error
-	// if err != nil {
-	// 	return err
-	// }
-	// return nil
+	var checkUnique = new(PurchaseReceiving)
+
+	err := r.DB.First(checkUnique, "code = ?", code).Error
+
+	if !errors.Is(err, gorm.ErrRecordNotFound) {
+		if err != nil {
+			return err
+		}
+
+		if checkUnique.ID != *id {
+			return business.ErrDataExists
+		}
+	}
 
 	var purchaseReceiving = new(PurchaseReceiving)
 
