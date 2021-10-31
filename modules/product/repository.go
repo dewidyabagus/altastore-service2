@@ -126,10 +126,6 @@ func (r *Repository) GetAllProduct() (*[]product.Product, error) {
 
 	var productOuts []product.Product
 	for _, value := range products {
-		// tempProduct = value.ToProduct()
-		// tempProduct.ProductCategoryName = value.ProductCategory.Name
-		// tempProduct.Qty = 10
-		// tempProduct.QtyCart = 0
 		productOuts = append(productOuts, value.ToProduct()) //tempProduct)
 	}
 
@@ -148,49 +144,34 @@ func (r *Repository) GetAllProductByParameter(id, isActive, categoryName,
 		" inner join product_categories t2 on t2.id = product_category_id " +
 		" where t1.deleted_by = ''"
 
-	// temp := r.DB
-	// temp = temp.Preload("ProductCategory")
 	if categoryName != "" {
-		// temp = temp.Joins("inner join product_categories on product_categories.id = products.product_category_id")
-		// temp = temp.Where("product_categories.name = ?", categoryName)
-		query += fmt.Sprintf(" and t2.name = '%s'", categoryName)
+		query += " and t2.name like '%" + categoryName + "%'"
 	}
 
 	if id != "" {
-		// temp = temp.Where("id = ?", id)
 		query += fmt.Sprintf(" and t1.id = '%s'", id)
 	}
+
 	if isActive != "" {
 		res, err := strconv.ParseBool(isActive)
 		if err != nil {
 			return &productOuts, nil
 		}
-		// temp = temp.Where("is_active = ?", res)
 		query += fmt.Sprintf(" and t1.is_active = %t", res)
 	}
+
 	if code != "" {
-		// temp = temp.Where("code = ?", code)
 		query += fmt.Sprintf(" and t1.code = '%s'", code)
 	}
+
 	if name != "" {
-		// temp = temp.Where("name = ?", name)
-		query += fmt.Sprintf(" and t1.name = '%s'", name)
+		query += " and (t1.name like '%" + name + "%') "
 	}
 
-	// err := temp.Where("deleted_by = ''").Find(&products).Error
 	err := r.DB.Raw(query).Scan(&products).Error
 	if err != nil {
 		return nil, err
 	}
-
-	// for _, value := range products {
-	// 	tempProduct = value.ToProduct()
-
-	// 	tempProduct.ProductCategoryName = value.ProductCategory.Name
-	// 	tempProduct.Qty = 10
-	// 	tempProduct.QtyCart = 0
-	// 	productOuts = append(productOuts, tempProduct)
-	// }
 
 	for _, value := range products {
 		productOuts = append(productOuts, value.ToProduct())
@@ -200,10 +181,15 @@ func (r *Repository) GetAllProductByParameter(id, isActive, categoryName,
 }
 
 func (r *Repository) FindProductById(id string) (*product.Product, error) {
-	var product *Product
+	var product = new(ProductQuery)
 
-	err := r.DB.Where("id = ?", id).Where("deleted_by = ''").First(&product).Error
-	if err != nil {
+	// err := r.DB.Where("id = ?", id).Where("deleted_by = ''").First(&product).Error
+	var query = "select t1.*, stock_akhir qty, stock_cart qty_cart, t2.name product_category_name from products t1" +
+		" inner join product_stock(t1.id) on productid = t1.id " +
+		" inner join product_categories t2 on t2.id = product_category_id " +
+		" where t1.deleted_by = '' and t1.id = '" + id + "'"
+
+	if err := r.DB.Raw(query).Scan(product).Error; err != nil {
 		return nil, err
 	}
 

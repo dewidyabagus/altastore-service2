@@ -12,7 +12,6 @@ type ProductById struct {
 	Qty                 int32  `json:"qty"`
 	QtyCart             int32  `json:"qtycart"`
 	IsActive            bool   `json:"isactive"`
-	ProductCategoryID   string `json:"ProductCategoryid"`
 	ProductCategoryName string `json:"ProductCategoryname"`
 	UnitName            string `json:"unitname"`
 	Description         string `json:"description"`
@@ -26,9 +25,8 @@ func GetById(product product.Product) *ProductById {
 	prod.Name = product.Name
 	prod.Price = product.Price
 	prod.Qty = product.Qty
-	prod.Qty = product.Qty
+	prod.QtyCart = product.QtyCart
 	prod.IsActive = product.IsActive
-	prod.ProductCategoryID = product.ProductCategoryId
 	prod.ProductCategoryName = product.ProductCategoryName
 	prod.UnitName = product.UnitName
 	prod.Description = product.Description

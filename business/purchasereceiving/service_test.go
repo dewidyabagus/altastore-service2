@@ -24,6 +24,7 @@ const (
 	isdelete          = false
 	qty         int32 = 10
 	price       int64 = 100000000
+	status            = 1
 )
 
 var (
@@ -86,19 +87,17 @@ func setup() {
 	}
 
 	updatePurchaseReceivingDetailSpec = purchasereceiving.UpdatePurchaseReceivingDetailSpec{
-		ID:        id,
 		ProductId: productid,
-		Qty:       qty,
-		Price:     price,
-		IsDelete:  isdelete,
+		Qty:       int(qty),
+		Price:     int(price),
+		Status:    status,
 	}
 	updatePurchaseReceivingDetailSpecs = append(updatePurchaseReceivingDetailSpecs, updatePurchaseReceivingDetailSpec)
 
 	updatePurchaseReceivingSpec = &purchasereceiving.UpdatePurchaseReceivingSpec{
-		DateReceived: datereceived,
-		ReceivedBy:   receivedby,
-		Description:  description,
-		Details:      updatePurchaseReceivingDetailSpecs,
+		Code:        code,
+		Description: description,
+		Details:     updatePurchaseReceivingDetailSpecs,
 	}
 	purchaseReceivingService = purchasereceiving.NewService(&purchaseReceivingRepository, &purchaseReceivingDetailRepository)
 }
@@ -166,34 +165,89 @@ func TestUpdatePurchaseReceiving(t *testing.T) {
 		assert.Equal(t, err, business.ErrNotFound)
 
 	})
-	t.Run("Expect Update Purchase Receiving Success", func(t *testing.T) {
+	t.Run("Expect Update Purchase Receiving Failed", func(t *testing.T) {
 		//adminService.On("FindAdminByID", mock.AnythingOfType("string")).Return(&adminData, nil).Once()
-		purchaseReceivingRepository.On("GetPurchaseReceivingById", mock.AnythingOfType("string")).Return(&purchaseReceivingData, nil).Once()
-		purchaseReceivingDetailRepository.On("UpdatePurchaseReceivingDetail", mock.AnythingOfType("*purchasereceiving.PurchaseReceivingDetail")).Return(nil).Once()
-		purchaseReceivingRepository.On("UpdatePurchaseReceiving", mock.AnythingOfType("*purchasereceiving.PurchaseReceiving")).Return(nil).Once()
-		purchaseReceivingDetailRepository.On("GetPurchaseReceivingDetailById", mock.AnythingOfType("string")).Return(&purchaseReceivingDetailData, nil).Once()
-		purchaseReceivingRepository.On("InsertPurchaseReceivingDetail", mock.AnythingOfType("*purchasereceiving.PurchaseReceivingDetail")).Return(nil).Once()
-		purchaseReceivingRepository.On("UpdatePurchaseReceivingDetail", mock.AnythingOfType("*purchasereceiving.PurchaseReceivingDetail")).Return(nil).Once()
-		purchaseReceivingRepository.On("DeletePurchaseReceivingDetail", mock.AnythingOfType("*purchasereceiving.PurchaseReceivingDetail")).Return(nil).Once()
-
-		err := purchaseReceivingService.UpdatePurchaseReceiving(id, updatePurchaseReceivingSpec, email)
-
-		assert.Nil(t, err)
-	})
-	t.Run("Expect Update Purchase Receiving Fail", func(t *testing.T) {
-		//adminService.On("FindAdminByID", mock.AnythingOfType("string")).Return(&adminData, nil).Once()
-		purchaseReceivingRepository.On("GetPurchaseReceivingById", mock.AnythingOfType("string")).Return(&purchaseReceivingData, nil).Once()
-		purchaseReceivingDetailRepository.On("UpdatePurchaseReceivingDetail", mock.AnythingOfType("*purchasereceiving.PurchaseReceivingDetail")).Return(business.ErrInternalServer).Once()
-		purchaseReceivingRepository.On("UpdatePurchaseReceiving", mock.AnythingOfType("*purchasereceiving.PurchaseReceiving")).Return(business.ErrInternalServer).Once()
-		purchaseReceivingDetailRepository.On("GetPurchaseReceivingDetailById", mock.AnythingOfType("string")).Return(nil, business.ErrInternalServer).Once()
-		purchaseReceivingRepository.On("InsertPurchaseReceivingDetail", mock.AnythingOfType("*purchasereceiving.PurchaseReceivingDetail")).Return(business.ErrInternalServer).Once()
-		purchaseReceivingRepository.On("UpdatePurchaseReceivingDetail", mock.AnythingOfType("*purchasereceiving.PurchaseReceivingDetail")).Return(business.ErrInternalServer).Once()
-		purchaseReceivingRepository.On("DeletePurchaseReceivingDetail", mock.AnythingOfType("*purchasereceiving.PurchaseReceivingDetail")).Return(business.ErrInternalServer).Once()
+		purchaseReceivingRepository.On("GetPurchaseReceivingById", mock.AnythingOfType("string")).Return(nil, nil).Once()
+		purchaseReceivingRepository.On("UpdatePurchaseReceiving2",
+			mock.AnythingOfType("*string"),
+			mock.AnythingOfType("*string"),
+			mock.AnythingOfType("*string"),
+			mock.AnythingOfType("*string"),
+			mock.AnythingOfType("time.Time"),
+		).Return(business.ErrInternalServer).Once()
 
 		err := purchaseReceivingService.UpdatePurchaseReceiving(id, updatePurchaseReceivingSpec, email)
 
 		assert.NotNil(t, err)
 		assert.Equal(t, err, business.ErrInternalServer)
+
+	})
+
+	// t.Run("Expect Insert Detail Failed", func(t *testing.T) {
+	// 	//adminService.On("FindAdminByID", mock.AnythingOfType("string")).Return(&adminData, nil).Once()
+	// 	purchaseReceivingRepository.On("GetPurchaseReceivingById", mock.AnythingOfType("string")).Return(nil, nil).Once()
+	// 	purchaseReceivingRepository.On("UpdatePurchaseReceiving2",
+	// 		mock.AnythingOfType("*string"),
+	// 		mock.AnythingOfType("*string"),
+	// 		mock.AnythingOfType("*string"),
+	// 		mock.AnythingOfType("*string"),
+	// 		mock.AnythingOfType("time.Time"),
+	// 	).Return(nil).Once()
+	// 	purchaseReceivingRepository.On("InsertPurchaseReceivingDetail", mock.AnythingOfType("*purchasereceiving.PurchaseReceivingDetail")).Return(business.ErrInternalServer).Once()
+
+	// 	err := purchaseReceivingService.UpdatePurchaseReceiving(id, updatePurchaseReceivingSpec, email)
+
+	// 	assert.NotNil(t, err)
+	// 	assert.Equal(t, err, business.ErrInternalServer)
+
+	// })
+	t.Run("Expect Update Detail Failed", func(t *testing.T) {
+		//adminService.On("FindAdminByID", mock.AnythingOfType("string")).Return(&adminData, nil).Once()
+		purchaseReceivingRepository.On("GetPurchaseReceivingById", mock.AnythingOfType("string")).Return(nil, nil).Once()
+		purchaseReceivingRepository.On("UpdatePurchaseReceiving2",
+			mock.AnythingOfType("*string"),
+			mock.AnythingOfType("*string"),
+			mock.AnythingOfType("*string"),
+			mock.AnythingOfType("*string"),
+			mock.AnythingOfType("time.Time"),
+		).Return(nil).Once()
+		purchaseReceivingDetailRepository.On("UpdatePurchaseReceivingDetail",
+			mock.AnythingOfType("*string"),
+			mock.AnythingOfType("*string"),
+			mock.AnythingOfType("*int"),
+			mock.AnythingOfType("*int"),
+			mock.AnythingOfType("*string"),
+			mock.AnythingOfType("time.Time"),
+		).Return(business.ErrInternalServer).Once()
+
+		err := purchaseReceivingService.UpdatePurchaseReceiving(id, updatePurchaseReceivingSpec, email)
+
+		assert.NotNil(t, err)
+		assert.Equal(t, err, business.ErrInternalServer)
+
+	})
+	t.Run("Expect Update Purchase Receiving Success", func(t *testing.T) {
+		//adminService.On("FindAdminByID", mock.AnythingOfType("string")).Return(&adminData, nil).Once()
+		purchaseReceivingRepository.On("GetPurchaseReceivingById", mock.AnythingOfType("string")).Return(nil, nil).Once()
+		purchaseReceivingRepository.On("UpdatePurchaseReceiving2",
+			mock.AnythingOfType("*string"),
+			mock.AnythingOfType("*string"),
+			mock.AnythingOfType("*string"),
+			mock.AnythingOfType("*string"),
+			mock.AnythingOfType("time.Time"),
+		).Return(nil).Once()
+		purchaseReceivingDetailRepository.On("UpdatePurchaseReceivingDetail",
+			mock.AnythingOfType("*string"),
+			mock.AnythingOfType("*string"),
+			mock.AnythingOfType("*int"),
+			mock.AnythingOfType("*int"),
+			mock.AnythingOfType("*string"),
+			mock.AnythingOfType("time.Time"),
+		).Return(nil).Once()
+
+		err := purchaseReceivingService.UpdatePurchaseReceiving(id, updatePurchaseReceivingSpec, email)
+
+		assert.Nil(t, err)
 	})
 }
 

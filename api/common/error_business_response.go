@@ -68,13 +68,13 @@ func newHasBeenModifiedResponse() (int, ControllerResponse) {
 }
 
 func newNotHavePermission() (int, ControllerResponse) {
-	return http.StatusBadRequest,
-		ControllerResponse{errHasBeenModified, "Not Have Permission", map[string]interface{}{}}
+	return http.StatusForbidden,
+		ControllerResponse{errNotHavePermission, "Not Have Permission", map[string]interface{}{}}
 }
 
 func newErrPasswordMisMatch() (int, ControllerResponse) {
-	return http.StatusBadRequest,
-		ControllerResponse{errHasBeenModified, "Wrong Password", map[string]interface{}{}}
+	return http.StatusForbidden,
+		ControllerResponse{errPasswordMisMatch, "Wrong Password", map[string]interface{}{}}
 }
 
 func newErrInvalidSpec() (int, ControllerResponse) {
@@ -83,12 +83,12 @@ func newErrInvalidSpec() (int, ControllerResponse) {
 }
 
 func newErrDataExists() (int, ControllerResponse) {
-	return http.StatusBadRequest,
+	return http.StatusConflict,
 		ControllerResponse{errDataExists, "Data Exists", map[string]interface{}{}}
 }
 
 func newErrUnAuthorized() (int, ControllerResponse) {
-	return http.StatusBadRequest,
+	return http.StatusUnauthorized,
 		ControllerResponse{errUnAuthorized, "Unauthorized", map[string]interface{}{}}
 }
 

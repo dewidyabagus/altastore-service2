@@ -5,6 +5,8 @@ import (
 	// "AltaStore/business/admin"
 	"AltaStore/util/validator"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 type InsertPurchaseReceivingSpec struct {
@@ -22,17 +24,18 @@ type InsertPurchaseReceivingDetailSpec struct {
 }
 
 type UpdatePurchaseReceivingSpec struct {
-	DateReceived time.Time `validate:"required"`
-	ReceivedBy   string    `validate:"required"`
-	Description  string
-	Details      []UpdatePurchaseReceivingDetailSpec `validate:"required"`
+	Code string `validate:"required"`
+	// DateReceived time.Time `validate:"required"`
+	// ReceivedBy   string    `validate:"required"`
+	Description string
+	Details     []UpdatePurchaseReceivingDetailSpec `validate:"required"`
 }
 type UpdatePurchaseReceivingDetailSpec struct {
-	ID        string
+	// ID        string
 	ProductId string `validate:"required"`
-	Qty       int32  `validate:"required"`
-	Price     int64  `validate:"required"`
-	IsDelete  bool   `validate:"required"`
+	Qty       int    `validate:"required"`
+	Price     int    `validate:"required"`
+	Status    int    `validate:"required,min=0,max=2"`
 }
 
 type service struct {
@@ -163,70 +166,43 @@ func (s *service) UpdatePurchaseReceiving(id string, item *UpdatePurchaseReceivi
 	// 	return business.ErrNotHavePermission
 	// }
 
-	purchase, err := s.repository.GetPurchaseReceivingById(id)
-	if err != nil {
+	if _, err := s.repository.GetPurchaseReceivingById(id); err != nil {
 		return business.ErrNotFound
 	}
 
-	updateData := purchase.ModifyPurchaseReceiving(
-		item.DateReceived,
-		item.ReceivedBy,
-		item.Description,
-		//admin.ID,
-		modifier,
-		time.Now(),
-	)
-
-	err = s.repository.UpdatePurchaseReceiving(&updateData)
-	if err != nil {
+	if err := s.repository.UpdatePurchaseReceiving2(&id, &item.Code, &item.Description, &modifier, time.Now()); err != nil {
 		return err
 	}
 
 	for _, val := range item.Details {
-		if val.ID == "" {
-			if !val.IsDelete {
-				newDetail := NewPurchaseReceivingDetail(
-					purchase.ID,
-					val.ProductId,
-					val.Qty,
-					val.Price,
-					purchase.UpdatedBy,
-					purchase.UpdatedAt,
-				)
-				err = s.repositoryDetail.InsertPurchaseReceivingDetail(&newDetail)
-				if err != nil {
-					return err
-				}
-			}
+		if val.Status == 0 {
+			// Insert
+			err = s.repositoryDetail.InsertPurchaseReceivingDetail(&PurchaseReceivingDetail{
+				ID:                  uuid.NewString(),
+				PurchaseReceivingId: id,
+				ProductId:           val.ProductId,
+				Qty:                 int32(val.Qty),
+				Price:               int64(val.Price),
+				CreatedBy:           modifier,
+				CreatedAt:           time.Now(),
+				UpdatedBy:           modifier,
+				UpdatedAt:           time.Now(),
+			})
+		} else if val.Status == 1 {
+			// Update
+			err = s.repositoryDetail.UpdatePurchaseReceivingDetail(
+				&id, &val.ProductId, &val.Price, &val.Qty, &modifier, time.Now(),
+			)
 		} else {
-			detail, err := s.repositoryDetail.GetPurchaseReceivingDetailById(val.ID)
-			if err != nil {
-				return business.ErrNotFound
-			}
-			if !val.IsDelete {
-				updateData := detail.ModifyPurchaseReceivingDetail(
-					val.ProductId,
-					val.Qty,
-					val.Price,
-					purchase.UpdatedBy,
-					purchase.UpdatedAt,
-				)
-				err = s.repositoryDetail.UpdatePurchaseReceivingDetail(&updateData)
-				if err != nil {
-					return err
-				}
-			} else {
-				deleteData := detail.DeletePurchaseReceivingDetail(
-					purchase.UpdatedBy,
-					purchase.UpdatedAt,
-				)
-				err = s.repositoryDetail.DeletePurchaseReceivingDetail(&deleteData)
-				if err != nil {
-					return err
-				}
-			}
+			// Deleted
+			err = s.repositoryDetail.DeletePurchaseReceivingDetail(&id, &val.ProductId, &modifier, time.Now())
+		}
+
+		if err != nil {
+			return err
 		}
 	}
+
 	return nil
 }
 
