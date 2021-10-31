@@ -217,18 +217,20 @@ func TestDeletePurchaseReceiving(t *testing.T) {
 		assert.Equal(t, err, business.ErrNotFound)
 
 	})
-	t.Run("Expect Delete Purchase Receiving Success", func(t *testing.T) {
+	t.Run("Expect Delete Purchase Receiving Detail Fail", func(t *testing.T) {
 		//adminService.On("FindAdminByID", mock.AnythingOfType("string")).Return(&adminData, nil).Once()
 		purchaseReceivingRepository.On("GetPurchaseReceivingById", mock.AnythingOfType("string")).Return(&purchaseReceivingData, nil).Once()
-		purchaseReceivingRepository.On("DeletePurchaseReceiving", mock.AnythingOfType("*purchasereceiving.PurchaseReceiving")).Return(nil).Once()
+		purchaseReceivingDetailRepository.On("DeletePurchaseReceivingDetail2", mock.AnythingOfType("string"), mock.AnythingOfType("string")).Return(business.ErrInternalServer).Once()
 
 		err := purchaseReceivingService.DeletePurchaseReceiving(id, adminId)
 
-		assert.Nil(t, err)
+		assert.NotNil(t, err)
+		assert.Equal(t, err, business.ErrInternalServer)
 	})
 	t.Run("Expect Delete Purchase Receiving Fail", func(t *testing.T) {
 		//adminService.On("FindAdminByID", mock.AnythingOfType("string")).Return(&adminData, nil).Once()
 		purchaseReceivingRepository.On("GetPurchaseReceivingById", mock.AnythingOfType("string")).Return(&purchaseReceivingData, nil).Once()
+		purchaseReceivingDetailRepository.On("DeletePurchaseReceivingDetail2", mock.AnythingOfType("string"), mock.AnythingOfType("string")).Return(nil).Once()
 		purchaseReceivingRepository.On("DeletePurchaseReceiving", mock.AnythingOfType("*purchasereceiving.PurchaseReceiving")).Return(business.ErrInternalServer).Once()
 
 		err := purchaseReceivingService.DeletePurchaseReceiving(id, adminId)
@@ -236,6 +238,17 @@ func TestDeletePurchaseReceiving(t *testing.T) {
 		assert.NotNil(t, err)
 		assert.Equal(t, err, business.ErrInternalServer)
 	})
+	t.Run("Expect Delete Purchase Receiving Success", func(t *testing.T) {
+		//adminService.On("FindAdminByID", mock.AnythingOfType("string")).Return(&adminData, nil).Once()
+		purchaseReceivingRepository.On("GetPurchaseReceivingById", mock.AnythingOfType("string")).Return(&purchaseReceivingData, nil).Once()
+		purchaseReceivingDetailRepository.On("DeletePurchaseReceivingDetail2", mock.AnythingOfType("string"), mock.AnythingOfType("string")).Return(nil).Once()
+		purchaseReceivingRepository.On("DeletePurchaseReceiving", mock.AnythingOfType("*purchasereceiving.PurchaseReceiving")).Return(nil).Once()
+
+		err := purchaseReceivingService.DeletePurchaseReceiving(id, adminId)
+
+		assert.Nil(t, err)
+	})
+
 }
 
 func TestGetAllPurchaseReceiving(t *testing.T) {
