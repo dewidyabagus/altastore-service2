@@ -145,7 +145,7 @@ func (r *Repository) GetAllProductByParameter(id, isActive, categoryName,
 		" where t1.deleted_by = ''"
 
 	if categoryName != "" {
-		query += fmt.Sprintf(" and t2.name = '%s'", categoryName)
+		query += " and t2.name like '%" + categoryName + "%'"
 	}
 
 	if id != "" {
@@ -165,7 +165,7 @@ func (r *Repository) GetAllProductByParameter(id, isActive, categoryName,
 	}
 
 	if name != "" {
-		query += fmt.Sprintf(" and t1.name = '%s'", name)
+		query += " and (t1.name like '%" + name + "%') "
 	}
 
 	err := r.DB.Raw(query).Scan(&products).Error
