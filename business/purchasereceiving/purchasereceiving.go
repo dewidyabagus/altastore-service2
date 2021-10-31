@@ -25,6 +25,8 @@ type PurchaseReceivingDetail struct {
 	ID                  string
 	PurchaseReceivingId string
 	ProductId           string
+	ProductCode         string
+	ProductName         string
 	Qty                 int32
 	Price               int64
 	CreatedBy           string

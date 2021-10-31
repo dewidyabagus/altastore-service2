@@ -58,12 +58,14 @@ func (c *Controller) UpdatePurchaseReceiving(ctx echo.Context) error {
 	if err != nil {
 		return ctx.JSON(common.UnAuthorizedResponse())
 	}
+
+	if _, err := uuid.Parse(adminId); err != nil {
+		return ctx.JSON(common.BadRequestResponse())
+	}
+
 	isAdmin, err := middleware.ExtractTokenRule(ctx)
 	if err != nil || !isAdmin {
 		return ctx.JSON(common.UnAuthorizedResponse())
-	}
-	if _, err := uuid.Parse(adminId); err != nil {
-		return ctx.JSON(common.BadRequestResponse())
 	}
 
 	updateData := new(request.UpdatePurchaseReceivingRequest)
