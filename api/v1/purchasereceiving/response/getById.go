@@ -49,5 +49,9 @@ func GetById(purchaseReceiving purchasereceiving.PurchaseReceiving) *PurchaseRec
 		})
 	}
 
+	if purchase.Details == nil {
+		purchase.Details = []Detail{}
+	}
+
 	return &purchase
 }
