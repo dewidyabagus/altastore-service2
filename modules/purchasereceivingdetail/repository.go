@@ -15,30 +15,60 @@ type Repository struct {
 
 type PurchaseReceivingDetail struct {
 	ID                  string    `gorm:"id;type:uuid;primaryKey"`
-	PurchaseReceivingId string    `gorm:"purchase_receiving_id;type:varchar(50)"`
-	ProductId           string    `gorm:"product_id;type:varchar(50)"`
+	PurchaseReceivingId string    `gorm:"purchase_receiving_id;type:uuid"`
+	ProductId           string    `gorm:"product_id;type:uuid"`
 	Price               int64     `gorm:"price;"`
 	Qty                 int32     `gorm:"qty;"`
 	CreatedAt           time.Time `gorm:"created_at"`
-	CreatedBy           string    `gorm:"created_by;type:varchar(50)"`
+	CreatedBy           string    `gorm:"created_by;type:uuid"`
 	UpdatedAt           time.Time `gorm:"updated_at"`
 	UpdatedBy           string    `gorm:"updated_by;type:varchar(50)"`
 	DeletedAt           time.Time `gorm:"deleted_at"`
 	DeletedBy           string    `gorm:"deleted_by;type:varchar(50)"`
 }
 
-func (p *PurchaseReceivingDetail) toPurchaseReceivingDetail() *purchasereceiving.PurchaseReceivingDetail {
+type PurchaseReceivingDetailQuery struct {
+	ID                  string    `gorm:"id"`
+	PurchaseReceivingId string    `gorm:"purchase_receiving_id"`
+	ProductId           string    `gorm:"product_id"`
+	ProductCode         string    `gorm:"product_code"`
+	ProductName         string    `gorm:"product_name"`
+	Price               int64     `gorm:"price;"`
+	Qty                 int32     `gorm:"qty;"`
+	CreatedAt           time.Time `gorm:"created_at"`
+	CreatedBy           string    `gorm:"created_by"`
+	UpdatedAt           time.Time `gorm:"updated_at"`
+	UpdatedBy           string    `gorm:"updated_by"`
+}
+
+// func (p *PurchaseReceivingDetail) toPurchaseReceivingDetail() *purchasereceiving.PurchaseReceivingDetail {
+// 	return &purchasereceiving.PurchaseReceivingDetail{
+// 		ID:        p.ID,
+// 		ProductId: p.ProductId,
+// 		Price:     p.Price,
+// 		Qty:       p.Qty,
+// 		CreatedBy: p.CreatedBy,
+// 		CreatedAt: p.CreatedAt,
+// 		UpdatedBy: p.UpdatedBy,
+// 		UpdatedAt: p.UpdatedAt,
+// 		DeletedBy: p.DeletedBy,
+// 		DeletedAt: p.DeletedAt,
+// 	}
+// }
+
+func (p *PurchaseReceivingDetailQuery) toPurchaseReceivingDetail() *purchasereceiving.PurchaseReceivingDetail {
 	return &purchasereceiving.PurchaseReceivingDetail{
-		ID:        p.ID,
-		ProductId: p.ProductId,
-		Price:     p.Price,
-		Qty:       p.Qty,
-		CreatedBy: p.CreatedBy,
-		CreatedAt: p.CreatedAt,
-		UpdatedBy: p.UpdatedBy,
-		UpdatedAt: p.UpdatedAt,
-		DeletedBy: p.DeletedBy,
-		DeletedAt: p.DeletedAt,
+		ID:                  p.ID,
+		PurchaseReceivingId: p.PurchaseReceivingId,
+		ProductId:           p.ProductId,
+		ProductCode:         p.ProductCode,
+		ProductName:         p.ProductName,
+		Qty:                 p.Qty,
+		Price:               p.Price,
+		CreatedBy:           p.CreatedBy,
+		CreatedAt:           p.CreatedAt,
+		UpdatedBy:           p.UpdatedBy,
+		UpdatedAt:           p.UpdatedAt,
 	}
 }
 
@@ -102,18 +132,21 @@ func (r *Repository) DeletePurchaseReceivingDetail(p *purchasereceiving.Purchase
 }
 
 func (r *Repository) GetPurchaseReceivingDetailByPurchaseReceivingId(id string) (*[]purchasereceiving.PurchaseReceivingDetail, error) {
-	var details []PurchaseReceivingDetail
-	var tempDetail purchasereceiving.PurchaseReceivingDetail
-	var detailsOuts []purchasereceiving.PurchaseReceivingDetail
+	var details []PurchaseReceivingDetailQuery
 
-	err := r.DB.Where("purchase_receiving_id = ?", id).Where("deleted_by = ''").Order("created_at asc").Order("updated_at asc").Find(&details).Error
-	if err != nil {
+	var query = "select t2.code product_code, t2.name product_name, t1.* " +
+		"from purchase_receiving_details t1 " +
+		"inner join products t2 on t2.id = t1.product_id " +
+		"where t1.purchase_receiving_id = '" + id + "' and t1.deleted_by = ''" +
+		"order by t1.id;"
+	if err := r.DB.Raw(query).Scan(&details).Error; err != nil {
 		return nil, err
 	}
 
+	var detailsOuts []purchasereceiving.PurchaseReceivingDetail
+
 	for _, value := range details {
-		tempDetail = *value.toPurchaseReceivingDetail()
-		detailsOuts = append(detailsOuts, tempDetail)
+		detailsOuts = append(detailsOuts, *value.toPurchaseReceivingDetail())
 	}
 
 	return &detailsOuts, nil

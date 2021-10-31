@@ -15,10 +15,12 @@ type PurchaseReceivingById struct {
 }
 
 type Detail struct {
-	ID        string `json:"id"`
-	ProductId string `json:"productid"`
-	Qty       int32  `json:"qty"`
-	Price     int64  `json:"price"`
+	// ID        string `json:"id"`
+	ProductId   string `json:"productid"`
+	ProductCode string `json:"productcode"`
+	ProductName string `json:"productname"`
+	Price       int64  `json:"price"`
+	Qty         int32  `json:"qty"`
 }
 
 func GetById(purchaseReceiving purchasereceiving.PurchaseReceiving) *PurchaseReceivingById {
@@ -30,13 +32,22 @@ func GetById(purchaseReceiving purchasereceiving.PurchaseReceiving) *PurchaseRec
 	purchase.ReceivedBy = purchaseReceiving.ReceivedBy
 	purchase.Description = purchaseReceiving.Description
 
-	var det Detail
+	// var det Detail
 	for _, val := range purchaseReceiving.Details {
-		det.ProductId = val.ProductId
-		det.ID = val.ID
-		det.Qty = val.Qty
-		det.Price = val.Price
-		purchase.Details = append(purchase.Details, det)
+
+		// det.ProductId = val.ProductId
+		// det.ID = val.ID
+		// det.Qty = val.Qty
+		// det.Price = val.Price
+
+		purchase.Details = append(purchase.Details, Detail{
+			ProductId:   val.ProductId,
+			ProductCode: val.ProductCode,
+			ProductName: val.ProductName,
+			Price:       val.Price,
+			Qty:         val.Qty,
+		})
 	}
+
 	return &purchase
 }
