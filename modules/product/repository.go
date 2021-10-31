@@ -200,10 +200,15 @@ func (r *Repository) GetAllProductByParameter(id, isActive, categoryName,
 }
 
 func (r *Repository) FindProductById(id string) (*product.Product, error) {
-	var product *Product
+	var product = new(ProductQuery)
 
-	err := r.DB.Where("id = ?", id).Where("deleted_by = ''").First(&product).Error
-	if err != nil {
+	// err := r.DB.Where("id = ?", id).Where("deleted_by = ''").First(&product).Error
+	var query = "select t1.*, stock_akhir qty, stock_cart qty_cart, t2.name product_category_name from products t1" +
+		" inner join product_stock(t1.id) on productid = t1.id " +
+		" inner join product_categories t2 on t2.id = product_category_id " +
+		" where t1.deleted_by = '' and t1.id = '" + id + "'"
+
+	if err := r.DB.Raw(query).Scan(product).Error; err != nil {
 		return nil, err
 	}
 
