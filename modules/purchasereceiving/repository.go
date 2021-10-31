@@ -72,19 +72,33 @@ func (r *Repository) InsertPurchaseReceiving(p *purchasereceiving.PurchaseReceiv
 	return nil
 }
 
-func (r *Repository) UpdatePurchaseReceiving(p *purchasereceiving.PurchaseReceiving) error {
-	purchase := newPurchaseReceiving(p)
-	err := r.DB.Model(&purchase).Updates(PurchaseReceiving{
-		DateReceived: purchase.DateReceived,
-		ReceivedBy:   purchase.ReceivedBy,
-		Description:  purchase.Description,
-		UpdatedAt:    purchase.UpdatedAt,
-		UpdatedBy:    purchase.UpdatedBy,
-	}).Error
-	if err != nil {
+// func (r *Repository) UpdatePurchaseReceiving(p *purchasereceiving.PurchaseReceiving) error {
+func (r *Repository) UpdatePurchaseReceiving2(id *string, code *string, description *string, modifier *string, updater time.Time) error {
+	// purchase := newPurchaseReceiving(p)
+	// err := r.DB.Model(&purchase).Updates(PurchaseReceiving{
+	// 	DateReceived: purchase.DateReceived,
+	// 	ReceivedBy:   purchase.ReceivedBy,
+	// 	Description:  purchase.Description,
+	// 	UpdatedAt:    purchase.UpdatedAt,
+	// 	UpdatedBy:    purchase.UpdatedBy,
+	// }).Error
+	// if err != nil {
+	// 	return err
+	// }
+	// return nil
+
+	var purchaseReceiving = new(PurchaseReceiving)
+
+	if err := r.DB.First(purchaseReceiving, " id = ? ", id).Error; err != nil {
 		return err
 	}
-	return nil
+
+	return r.DB.Model(purchaseReceiving).Updates(map[string]interface{}{
+		"code":        code,
+		"description": description,
+		"updated_by":  modifier,
+		"updated_at":  updater,
+	}).Error
 }
 
 func (r *Repository) DeletePurchaseReceiving(p *purchasereceiving.PurchaseReceiving) error {

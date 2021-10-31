@@ -103,32 +103,50 @@ func (r *Repository) InsertPurchaseReceivingDetail(p *purchasereceiving.Purchase
 	return nil
 }
 
-func (r *Repository) UpdatePurchaseReceivingDetail(p *purchasereceiving.PurchaseReceivingDetail) error {
-	detail := newDataPurchaseReceivingDetail(p)
-	err := r.DB.Model(&detail).Updates(PurchaseReceivingDetail{
-		ProductId: detail.ProductId,
-		Price:     detail.Price,
-		Qty:       detail.Qty,
-		UpdatedAt: detail.UpdatedAt,
-		UpdatedBy: detail.UpdatedBy,
-	}).Error
-	if err != nil {
+func (r *Repository) UpdatePurchaseReceivingDetail(purchaseId, productId *string, price, qty *int, modifier *string, updater time.Time) error {
+	var purchase = new(PurchaseReceivingDetail)
+
+	if err := r.DB.First(purchase, "purchase_receiving_id = ? and product_id = ?", purchaseId, productId).Error; err != nil {
 		return err
 	}
-	return nil
+
+	return r.DB.Model(purchase).Updates(map[string]interface{}{
+		"price":      price,
+		"qty":        qty,
+		"updated_by": modifier,
+		"updated_at": updater,
+	}).Error
 }
 
-func (r *Repository) DeletePurchaseReceivingDetail(p *purchasereceiving.PurchaseReceivingDetail) error {
-	detail := newDataPurchaseReceivingDetail(p)
+func (r *Repository) DeletePurchaseReceivingDetail(purchaseId, productId, remover *string, deleter time.Time) error {
+	var purchase = new(PurchaseReceivingDetail)
 
-	err := r.DB.Model(&detail).Updates(PurchaseReceivingDetail{
-		DeletedBy: detail.DeletedBy,
-		DeletedAt: detail.DeletedAt,
-	}).Error
-	if err != nil {
+	if err := r.DB.First(purchase, "purchase_receiving_id = ? and product_id = ?", purchaseId, productId).Error; err != nil {
 		return err
 	}
-	return nil
+
+	return r.DB.Model(purchase).Updates(map[string]interface{}{
+		"deleted_by": remover,
+		"deleted_at": deleter,
+	}).Error
+}
+
+// Aksi akan dijalankan ketika menghapus ringkasan pembelian
+func (r *Repository) DeletePurchaseReceivingDetail2(purchaseid string, deleter string) error {
+	purchaseReceivingDetail := new([]PurchaseReceivingDetail)
+
+	err := r.DB.Where("purchase_receiving_id = ?", purchaseid).Find(purchaseReceivingDetail).Error
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return business.ErrNotFound
+		}
+		return err
+	}
+
+	return r.DB.Model(purchaseReceivingDetail).Updates(map[string]interface{}{
+		"deleted_at": time.Now(),
+		"deleted_by": deleter,
+	}).Error
 }
 
 func (r *Repository) GetPurchaseReceivingDetailByPurchaseReceivingId(id string) (*[]purchasereceiving.PurchaseReceivingDetail, error) {
@@ -160,21 +178,4 @@ func (r *Repository) GetPurchaseReceivingDetailById(id string) (*purchasereceivi
 		return nil, err
 	}
 	return &detail, nil
-}
-
-func (r *Repository) DeletePurchaseReceivingDetail2(purchaseid string, deleter string) error {
-	purchaseReceivingDetail := new([]PurchaseReceivingDetail)
-
-	err := r.DB.Where("purchase_receiving_id = ?", purchaseid).Find(purchaseReceivingDetail).Error
-	if err != nil {
-		if errors.Is(err, gorm.ErrRecordNotFound) {
-			return business.ErrNotFound
-		}
-		return err
-	}
-
-	return r.DB.Model(purchaseReceivingDetail).Updates(map[string]interface{}{
-		"deleted_at": time.Now(),
-		"deleted_by": deleter,
-	}).Error
 }
