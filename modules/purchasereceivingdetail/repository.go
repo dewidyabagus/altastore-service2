@@ -95,6 +95,14 @@ func NewRepository(db *gorm.DB) *Repository {
 }
 
 func (r *Repository) InsertPurchaseReceivingDetail(p *purchasereceiving.PurchaseReceivingDetail) error {
+	err := r.DB.First(&PurchaseReceivingDetail{}, "purchase_receiving_id = ? and product_id = ?", p.PurchaseReceivingId, p.ProductId).Error
+	if !errors.Is(err, gorm.ErrRecordNotFound) {
+		if err != nil {
+			return err
+		}
+		return business.ErrDataExists
+	}
+
 	detail := newDataPurchaseReceivingDetail(p)
 	if err := r.DB.Create(detail).Error; err != nil {
 		return err
