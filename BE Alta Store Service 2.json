@@ -1,0 +1,409 @@
+{
+	"info": {
+		"_postman_id": "9be2856f-1223-46e9-b76e-fe61d5b09770",
+		"name": "BE Alta Store Service 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "API Product Categories",
+			"item": [
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/categories/ec9052e4-58c5-446b-b948-982e41f17b70",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories",
+								"ec9052e4-58c5-446b-b948-982e41f17b70"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add New Product Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"MIE000002\",\r\n    \"name\": \"MINUMAN DINGIN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/categories",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Product Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/categories",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product Category By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/categories/ec9052e4-58c5-446b-b948-982e41f17b70",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories",
+								"ec9052e4-58c5-446b-b948-982e41f17b70"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Product Category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"MIE000001\",\n    \"name\": \"MINUMAN BERENERGI\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/categories/ec9052e4-58c5-446b-b948-982e41f17b70",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories",
+								"ec9052e4-58c5-446b-b948-982e41f17b70"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API Product Item",
+			"item": [
+				{
+					"name": "Get All Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products?categoryname=DINGIN",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "00000000000004",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "KUCING",
+									"disabled": true
+								},
+								{
+									"key": "categoryname",
+									"value": "DINGIN"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"code\" : \"00000000000001\",\r\n\t\"name\" : \"MINUMAN CAP GAJAH IJO UPDATED\",\r\n\t\"price\" : 3000,\r\n\t\"isactive\" : true,\r\n\t\"productcategoryid\" : \"a5c45fcb-6f71-4e95-ab40-c2cd74c5c9d1\",\r\n    \"unitname\": \"pak\",\r\n    \"description\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/products/550f0744-60ef-48f2-97cf-fed29b571cc9",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"550f0744-60ef-48f2-97cf-fed29b571cc9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products/550f0744-60ef-48f2-97cf-fed29b571cc9",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"550f0744-60ef-48f2-97cf-fed29b571cc9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add New Product Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"code\" : \"00000000000004\",\r\n\t\"name\" : \"MAKANAN CAP KUCING\",\r\n\t\"price\" : 3000,\r\n\t\"isactive\" : true,\r\n\t\"productcategoryid\" : \"a5c45fcb-6f71-4e95-ab40-c2cd74c5c9d1\",\r\n    \"unitname\": \"pak\",\r\n    \"description\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products/cde144e2-eecc-4f1b-bb99-5b0ecf662a8f",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"cde144e2-eecc-4f1b-bb99-5b0ecf662a8f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API Purchase",
+			"item": [
+				{
+					"name": "Get All Purchase Receiving",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/purchases",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"purchases"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "NOTA0002",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Id Purchase Receiving",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/purchases/a4a72024-0375-40c6-9dd1-462ad7664fb1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"purchases",
+								"a4a72024-0375-40c6-9dd1-462ad7664fb1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Purchase Receiving",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"code\": \"PCH0005\",\r\n  \"description\": \"BARANG PROMO MINGGU INI\",\r\n  \"details\": [\r\n    {\r\n      \"productid\": \"cde144e2-eecc-4f1b-bb99-5b0ecf662a8f\",\r\n      \"price\": 3000,\r\n      \"qty\": 20,\r\n      \"status\": 1\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/purchases/a4a72024-0375-40c6-9dd1-462ad7664fb1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"purchases",
+								"a4a72024-0375-40c6-9dd1-462ad7664fb1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Purchase Receiving",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"code\" : \"NOTA0005\",\r\n    \"datereceived\": \"2018-09-22T12:42:31Z\",\r\n\t\"receivedby\" : \"WIDYAADEBAGUS\",\r\n    \"description\" : \"NOTA PEMBELIAN UNTUK PROMO\",\r\n    \"details\": [\r\n        {\r\n            \"productid\" : \"cde144e2-eecc-4f1b-bb99-5b0ecf662a8f\",\r\n            \"qty\" : 10,\r\n            \"price\" : 3000\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/purchases",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"purchases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Purchase Receiving",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/purchases/3f295688-d5f7-4c37-9222-761978fe29e2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"purchases",
+								"3f295688-d5f7-4c37-9222-761978fe29e2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NfdXVpZCI6IjkyNjMwMWFlLWU5YzctNDY0Mi04NzM2LTUxMDJmOGYwNmQxMCIsImF1dGhvcml6ZWQiOnRydWUsImV4cCI6MTYzNTc3NzU4MywiaXNBZG1pbiI6dHJ1ZSwidXNlcklkIjoiZWQzMmFkYmMtOGNkYi00MGEzLWFmMWUtZGMxNzI5YzBkOGM2In0.kW9KcitMSvdAiNLKusbQDF7fV8V3DV1FDxvz45eqdpI",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000/v1"
+		},
+		{
+			"key": "base_local",
+			"value": "http://localhost:8000/v1"
+		},
+		{
+			"key": "base_online",
+			"value": "http://ec2-3-145-19-13.us-east-2.compute.amazonaws.com:8000/v1"
+		}
+	]
+}
