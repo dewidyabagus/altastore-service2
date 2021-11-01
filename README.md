@@ -78,6 +78,11 @@ jika belum memiliki **_Postman_** Anda dapat [download dan install](https://www.
 
 ## Hasil Unit Testing
 
+Kami memastikan apa yang kami bagikan sudah melalui proses dan memastikan kualitas yang terbaik untuk Anda, kami sudah melakukan
+pengujian dengan cara melakukan **_Unit Testing_** dan hasilnya dapat dilihat di https://sonarcloud.io/project/overview?id=dewidyabagus_altastore-service2 .
+Kami mengharapkan kritik dan saran untuk celah keamanan, bug dan perbaikan aplikasi untuk lebih baik, kami akan terus memperbarui status pengujian terakhir
+pada link yang sudah dibagikan diatas.
+
 ## Repository Service Lainnya
 
 - [Alta Store Back-End Microservices Service 1](https://github.com/Yap0894/altastore-service1)
