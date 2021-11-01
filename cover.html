@@ -1,0 +1,4212 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>common: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">AltaStore/api/common/error_business_response.go (0.0%)</option>
+				
+				<option value="file1">AltaStore/api/common/error_controller_response.go (0.0%)</option>
+				
+				<option value="file2">AltaStore/api/common/success_response.go (0.0%)</option>
+				
+				<option value="file3">AltaStore/api/middleware/jwt.go (11.8%)</option>
+				
+				<option value="file4">AltaStore/api/middleware/logger.go (0.0%)</option>
+				
+				<option value="file5">AltaStore/api/routes.go (0.0%)</option>
+				
+				<option value="file6">AltaStore/api/v1/category/controller.go (0.0%)</option>
+				
+				<option value="file7">AltaStore/api/v1/category/request/insert.go (0.0%)</option>
+				
+				<option value="file8">AltaStore/api/v1/category/request/update.go (0.0%)</option>
+				
+				<option value="file9">AltaStore/api/v1/category/response/allCategory.go (0.0%)</option>
+				
+				<option value="file10">AltaStore/api/v1/category/response/oneCategory.go (0.0%)</option>
+				
+				<option value="file11">AltaStore/api/v1/product/controller.go (0.0%)</option>
+				
+				<option value="file12">AltaStore/api/v1/product/request/insert.go (0.0%)</option>
+				
+				<option value="file13">AltaStore/api/v1/product/request/update.go (0.0%)</option>
+				
+				<option value="file14">AltaStore/api/v1/product/response/getAll.go (0.0%)</option>
+				
+				<option value="file15">AltaStore/api/v1/product/response/getById.go (0.0%)</option>
+				
+				<option value="file16">AltaStore/api/v1/purchasereceiving/controller.go (0.0%)</option>
+				
+				<option value="file17">AltaStore/api/v1/purchasereceiving/request/insert.go (0.0%)</option>
+				
+				<option value="file18">AltaStore/api/v1/purchasereceiving/request/update.go (0.0%)</option>
+				
+				<option value="file19">AltaStore/api/v1/purchasereceiving/response/getAll.go (0.0%)</option>
+				
+				<option value="file20">AltaStore/api/v1/purchasereceiving/response/getById.go (0.0%)</option>
+				
+				<option value="file21">AltaStore/business/category/category.go (100.0%)</option>
+				
+				<option value="file22">AltaStore/business/category/mocks/Repository.go (82.4%)</option>
+				
+				<option value="file23">AltaStore/business/category/mocks/Service.go (17.6%)</option>
+				
+				<option value="file24">AltaStore/business/category/service.go (88.9%)</option>
+				
+				<option value="file25">AltaStore/business/logger/service.go (0.0%)</option>
+				
+				<option value="file26">AltaStore/business/product/mocks/Repository.go (82.3%)</option>
+				
+				<option value="file27">AltaStore/business/product/mocks/Service.go (0.0%)</option>
+				
+				<option value="file28">AltaStore/business/product/product.go (100.0%)</option>
+				
+				<option value="file29">AltaStore/business/product/service.go (85.0%)</option>
+				
+				<option value="file30">AltaStore/business/purchasereceiving/mocks/Repository.go (82.3%)</option>
+				
+				<option value="file31">AltaStore/business/purchasereceiving/mocks/RepositoryDetail.go (52.2%)</option>
+				
+				<option value="file32">AltaStore/business/purchasereceiving/mocks/Service.go (0.0%)</option>
+				
+				<option value="file33">AltaStore/business/purchasereceiving/purchasereceiving.go (50.0%)</option>
+				
+				<option value="file34">AltaStore/business/purchasereceiving/service.go (90.4%)</option>
+				
+				<option value="file35">AltaStore/config/config.go (0.0%)</option>
+				
+				<option value="file36">AltaStore/main.go (0.0%)</option>
+				
+				<option value="file37">AltaStore/modules/category/repository.go (0.0%)</option>
+				
+				<option value="file38">AltaStore/modules/logger/repository.go (0.0%)</option>
+				
+				<option value="file39">AltaStore/modules/migration/migration.go (0.0%)</option>
+				
+				<option value="file40">AltaStore/modules/product/repository.go (0.0%)</option>
+				
+				<option value="file41">AltaStore/modules/purchasereceiving/repository.go (0.0%)</option>
+				
+				<option value="file42">AltaStore/modules/purchasereceivingdetail/repository.go (0.0%)</option>
+				
+				<option value="file43">AltaStore/util/validator/validator.go (100.0%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">not covered</span>
+				<span class="cov8">covered</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">package common
+
+import (
+        "AltaStore/business"
+        "net/http"
+)
+
+const (
+        errInternalServerError responseCode = "500"
+        errNotFound            responseCode = "404"
+        errHasBeenModified     responseCode = "400"
+        errNotHavePermission   responseCode = "401"
+        errPasswordMisMatch    responseCode = "403"
+        errInvalidSpec         responseCode = "400"
+        errDataExists          responseCode = "409"
+        errUnAuthorized        responseCode = "401"
+        errInvalidData         responseCode = "400"
+)
+
+// Mengembalikan respons status dari permintaan
+func NewBusinessErrorResponse(err error) (int, ControllerResponse) <span class="cov0" title="0">{
+        return errorMapping(err)
+}</span>
+
+func errorMapping(err error) (int, ControllerResponse) <span class="cov0" title="0">{
+        switch err </span>{
+        default:<span class="cov0" title="0">
+                return newInternalServerErrorResponse()</span>
+
+        case business.ErrNotFound:<span class="cov0" title="0">
+                return newNotFoundResponse()</span>
+
+        case business.ErrHasBeenModified:<span class="cov0" title="0">
+                return newHasBeenModifiedResponse()</span>
+
+        case business.ErrNotHavePermission:<span class="cov0" title="0">
+                return newNotHavePermission()</span>
+
+        case business.ErrPasswordMisMatch:<span class="cov0" title="0">
+                return newErrPasswordMisMatch()</span>
+
+        case business.ErrInvalidSpec:<span class="cov0" title="0">
+                return newErrInvalidSpec()</span>
+
+        case business.ErrDataExists:<span class="cov0" title="0">
+                return newErrDataExists()</span>
+
+        case business.ErrUnAuthorized:<span class="cov0" title="0">
+                return newErrUnAuthorized()</span>
+        case business.ErrInvalidData:<span class="cov0" title="0">
+                return newErrInvalidData()</span>
+        }
+}
+
+func newInternalServerErrorResponse() (int, ControllerResponse) <span class="cov0" title="0">{
+        return http.StatusInternalServerError,
+                ControllerResponse{errInternalServerError, "Internal Server Error", map[string]interface{}{}}
+}</span>
+
+func newNotFoundResponse() (int, ControllerResponse) <span class="cov0" title="0">{
+        return http.StatusNotFound,
+                ControllerResponse{errNotFound, "Data Not Found", map[string]interface{}{}}
+}</span>
+
+func newHasBeenModifiedResponse() (int, ControllerResponse) <span class="cov0" title="0">{
+        return http.StatusBadRequest,
+                ControllerResponse{errHasBeenModified, "Data Has Been Modified", map[string]interface{}{}}
+}</span>
+
+func newNotHavePermission() (int, ControllerResponse) <span class="cov0" title="0">{
+        return http.StatusForbidden,
+                ControllerResponse{errNotHavePermission, "Not Have Permission", map[string]interface{}{}}
+}</span>
+
+func newErrPasswordMisMatch() (int, ControllerResponse) <span class="cov0" title="0">{
+        return http.StatusForbidden,
+                ControllerResponse{errPasswordMisMatch, "Wrong Password", map[string]interface{}{}}
+}</span>
+
+func newErrInvalidSpec() (int, ControllerResponse) <span class="cov0" title="0">{
+        return http.StatusBadRequest,
+                ControllerResponse{errInvalidSpec, "Bad Request", map[string]interface{}{}}
+}</span>
+
+func newErrDataExists() (int, ControllerResponse) <span class="cov0" title="0">{
+        return http.StatusConflict,
+                ControllerResponse{errDataExists, "Data Exists", map[string]interface{}{}}
+}</span>
+
+func newErrUnAuthorized() (int, ControllerResponse) <span class="cov0" title="0">{
+        return http.StatusUnauthorized,
+                ControllerResponse{errUnAuthorized, "Unauthorized", map[string]interface{}{}}
+}</span>
+
+func newErrInvalidData() (int, ControllerResponse) <span class="cov0" title="0">{
+        return http.StatusBadRequest,
+                ControllerResponse{errInvalidData, "Invalid Data", map[string]interface{}{}}
+}</span>
+</pre>
+		
+		<pre class="file" id="file1" style="display: none">package common
+
+import "net/http"
+
+const (
+        BadRequestCode responseCode = "400"
+        ForbiddenCode  responseCode = "403"
+        NotFoundCode   responseCode = "404"
+        UnAuthorized   responseCode = "401"
+)
+
+func BadRequestResponse() (int, ControllerResponse) <span class="cov0" title="0">{
+        return http.StatusBadRequest, ControllerResponse{BadRequestCode, "Bad Request", map[string]interface{}{}}
+}</span>
+
+func ForbiddenResponse() (int, ControllerResponse) <span class="cov0" title="0">{
+        return http.StatusForbidden, ControllerResponse{ForbiddenCode, "Forbidden", map[string]interface{}{}}
+}</span>
+
+func NotFoundResponse() (int, ControllerResponse) <span class="cov0" title="0">{
+        return http.StatusNotFound, ControllerResponse{NotFoundCode, "Not Found", map[string]interface{}{}}
+}</span>
+
+func UnAuthorizedResponse() (int, ControllerResponse) <span class="cov0" title="0">{
+        return http.StatusUnauthorized, ControllerResponse{UnAuthorized, "UnAuthorized", map[string]interface{}{}}
+}</span>
+</pre>
+		
+		<pre class="file" id="file2" style="display: none">package common
+
+import (
+        "net/http"
+)
+
+const (
+        Success responseCode = "200"
+)
+
+func SuccessResponseWithData(data interface{}) (int, ControllerResponse) <span class="cov0" title="0">{
+        return http.StatusOK, ControllerResponse{Success, "success", data}
+}</span>
+
+func SuccessResponseWithoutData() (int, ControllerResponse) <span class="cov0" title="0">{
+        return http.StatusOK, ControllerResponse{Success, "success", map[string]interface{}{}}
+}</span>
+</pre>
+		
+		<pre class="file" id="file3" style="display: none">package middleware
+
+import (
+        "AltaStore/config"
+        "errors"
+        "net/http"
+
+        "github.com/golang-jwt/jwt"
+        echo "github.com/labstack/echo/v4"
+        "github.com/labstack/echo/v4/middleware"
+)
+
+func init() <span class="cov8" title="1">{
+        middleware.ErrJWTMissing = echo.NewHTTPError(
+                http.StatusBadRequest, map[string]interface{}{
+                        "code":    400,
+                        "message": "missing or malformed jwt",
+                })
+        middleware.ErrJWTInvalid = echo.NewHTTPError(
+                http.StatusUnauthorized, map[string]interface{}{
+                        "code":    401,
+                        "massage": "invalid or expired jwt",
+                })
+}</span>
+
+func JWTMiddleware() echo.MiddlewareFunc <span class="cov0" title="0">{
+        return middleware.JWTWithConfig(middleware.JWTConfig{
+                SigningMethod: "HS256",
+                SigningKey:    []byte(config.GetConfig().JwtSecretKey),
+        })
+}</span>
+
+func ExtractTokenUser(ctx echo.Context) (string, error) <span class="cov0" title="0">{
+        user := ctx.Get("user").(*jwt.Token)
+        if user.Valid </span><span class="cov0" title="0">{
+                claim := user.Claims.(jwt.MapClaims)
+                userId := claim["userId"].(string)
+                if userId == "" </span><span class="cov0" title="0">{
+                        return "", errors.New("Unauthorize")
+                }</span>
+                <span class="cov0" title="0">return userId, nil</span>
+        }
+        <span class="cov0" title="0">return "", errors.New("Unauthorize")</span>
+}
+
+func ExtractTokenRule(ctx echo.Context) (bool, error) <span class="cov0" title="0">{
+        user := ctx.Get("user").(*jwt.Token)
+        if user.Valid </span><span class="cov0" title="0">{
+                claim := user.Claims.(jwt.MapClaims)
+                isAdmin := claim["isAdmin"].(bool)
+                return isAdmin, nil
+        }</span>
+        <span class="cov0" title="0">return false, errors.New("Unauthorize")</span>
+}
+</pre>
+		
+		<pre class="file" id="file4" style="display: none">package middleware
+
+// Logger middleware logs the information about each HTTP request.
+
+import (
+        "fmt"
+        "net/http"
+        "time"
+
+        echo "github.com/labstack/echo/v4"
+        log "github.com/sirupsen/logrus"
+)
+
+// Penformatan pencatatan sistem
+func MakeLogEntry(c echo.Context) *log.Entry <span class="cov0" title="0">{
+        start := time.Now()
+
+        if c == nil </span><span class="cov0" title="0">{
+                return log.WithFields(log.Fields{
+                        "latency_ns": time.Since(start).Nanoseconds(),
+                        "group":      "system",
+                })
+        }</span>
+
+        <span class="cov0" title="0">return log.WithFields(log.Fields{
+                "group":      "request",
+                "method":     c.Request().Method,
+                "uri":        c.Request().RequestURI,
+                "remoteaddr": c.Request().RemoteAddr,
+                "latency_ns": time.Since(start).Nanoseconds(),
+        })</span>
+}
+
+func MiddlewareLogger(next echo.HandlerFunc) echo.HandlerFunc <span class="cov0" title="0">{
+        return func(c echo.Context) error </span><span class="cov0" title="0">{
+                MakeLogEntry(c).Info("Incoming Connection")
+                return next(c)
+        }</span>
+}
+
+func ErrorHandler(err error, c echo.Context) <span class="cov0" title="0">{
+        report, ok := err.(*echo.HTTPError)
+        if ok </span><span class="cov0" title="0">{
+                report.Message = fmt.Sprintf("http error %d - %v", report.Code, report.Message)
+        }</span> else<span class="cov0" title="0"> {
+                report = echo.NewHTTPError(http.StatusInternalServerError, err.Error())
+        }</span>
+
+        <span class="cov0" title="0">MakeLogEntry(c).Error(report.Message)
+        c.HTML(report.Code, report.Message.(string))</span>
+}
+</pre>
+		
+		<pre class="file" id="file5" style="display: none">package api
+
+import (
+        "AltaStore/api/middleware"
+        "AltaStore/api/v1/category"
+        "AltaStore/api/v1/product"
+        "AltaStore/api/v1/purchasereceiving"
+        "net/http"
+
+        echo "github.com/labstack/echo/v4"
+)
+
+func RegisterPath(e *echo.Echo,
+        category *category.Controller,
+        productController *product.Controller,
+        purchaseController *purchasereceiving.Controller,
+) <span class="cov0" title="0">{
+        if category == nil || productController == nil || purchaseController == nil </span><span class="cov0" title="0">{
+                panic("Invalid parameter")</span>
+        }
+
+        // Add logger
+        <span class="cov0" title="0">e.Use(middleware.MiddlewareLogger)
+        e.Use(middleware.JWTMiddleware())
+
+        // Custome response
+        e.HTTPErrorHandler = func(e error, c echo.Context) </span><span class="cov0" title="0">{
+                type Response struct {
+                        Code    int    `json:"code"`
+                        Message string `json:"message"`
+                }
+                var response Response
+                response.Code = http.StatusInternalServerError // defaul 500
+                response.Message = "Internal Server Error"
+
+                if he, ok := e.(*echo.HTTPError); ok </span><span class="cov0" title="0">{
+                        response.Code = he.Code
+                        response.Message = http.StatusText(he.Code)
+                }</span>
+
+                <span class="cov0" title="0">c.Logger().Error(e)
+
+                _ = c.JSON(response.Code, response)</span>
+        }
+
+        // Routing
+
+        <span class="cov0" title="0">cat := e.Group("v1/categories")
+        cat.GET("", category.GetAllCategory)
+        cat.GET("/:id", category.FindCategoryById)
+        cat.POST("", category.InsertCategory)
+        cat.PUT("/:id", category.UpdateCategory)
+        cat.DELETE("/:id", category.DeleteCategory)
+
+        product := e.Group("v1/products")
+        product.GET("", productController.GetAllProduct)
+        product.GET("/:id", productController.FindProductById)
+        product.POST("", productController.InsertProduct)
+        product.PUT("/:id", productController.UpdateProduct)
+        product.DELETE("/:id", productController.DeleteProduct)
+
+        purchRec := e.Group("v1/purchases")
+        purchRec.POST("", purchaseController.InsertPurchaseReceiving)
+        purchRec.GET("", purchaseController.GetAllPurchaseReceiving)
+        purchRec.GET("/:id", purchaseController.FindPurchaseReceivingById)
+        purchRec.PUT("/:id", purchaseController.UpdatePurchaseReceiving)
+        purchRec.DELETE("/:id", purchaseController.DeletePurchaseReceiving)</span>
+}
+</pre>
+		
+		<pre class="file" id="file6" style="display: none">package category
+
+import (
+        "AltaStore/api/common"
+        "AltaStore/api/middleware"
+        "AltaStore/api/v1/category/request"
+        "AltaStore/api/v1/category/response"
+        "AltaStore/business/category"
+
+        "github.com/google/uuid"
+        "github.com/labstack/echo/v4"
+)
+
+type Controller struct {
+        service category.Service
+}
+
+func NewController(service category.Service) *Controller <span class="cov0" title="0">{
+        return &amp;Controller{service}
+}</span>
+
+func (c *Controller) GetAllCategory(ctx echo.Context) error <span class="cov0" title="0">{
+        categories, err := c.service.GetAllCategory()
+        if err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.NewBusinessErrorResponse(err))
+        }</span>
+
+        <span class="cov0" title="0">return ctx.JSON(
+                common.SuccessResponseWithData(
+                        response.GetAllCategory(categories).Categories,
+                ),
+        )</span>
+}
+
+func (c *Controller) FindCategoryById(ctx echo.Context) error <span class="cov0" title="0">{
+        id := ctx.Param("id")
+
+        if _, err := uuid.Parse(id); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.BadRequestResponse())
+        }</span>
+
+        <span class="cov0" title="0">category, err := c.service.FindCategoryById(id)
+        if err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.NewBusinessErrorResponse(err))
+        }</span>
+
+        <span class="cov0" title="0">response := response.GetOneCategory(*category)
+
+        return ctx.JSON(common.SuccessResponseWithData(response))</span>
+}
+
+func (c *Controller) InsertCategory(ctx echo.Context) error <span class="cov0" title="0">{
+        var err error
+
+        insertCategory := new(request.InsertCategoryRequest)
+        adminId, err := middleware.ExtractTokenUser(ctx)
+        if err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+        <span class="cov0" title="0">isAdmin, err := middleware.ExtractTokenRule(ctx)
+        if err != nil || !isAdmin </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+        <span class="cov0" title="0">if err = ctx.Bind(insertCategory); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.BadRequestResponse())
+        }</span>
+
+        <span class="cov0" title="0">if err = c.service.InsertCategory(insertCategory.ToCategorySpec(), adminId); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.NewBusinessErrorResponse(err))
+        }</span>
+
+        <span class="cov0" title="0">return ctx.JSON(common.SuccessResponseWithoutData())</span>
+}
+
+func (c *Controller) UpdateCategory(ctx echo.Context) error <span class="cov0" title="0">{
+        var err error
+
+        id := ctx.Param("id")
+        if _, err = uuid.Parse(id); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.BadRequestResponse())
+        }</span>
+
+        <span class="cov0" title="0">adminId, err := middleware.ExtractTokenUser(ctx)
+        if err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+        <span class="cov0" title="0">if _, err = uuid.Parse(adminId); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+
+        <span class="cov0" title="0">isAdmin, err := middleware.ExtractTokenRule(ctx)
+        if err != nil || !isAdmin </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+
+        <span class="cov0" title="0">updateCategory := new(request.UpdateCategoryRequest)
+        if err = ctx.Bind(updateCategory); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.BadRequestResponse())
+        }</span>
+
+        <span class="cov0" title="0">if err = c.service.UpdateCategory(id, updateCategory.ToCategory(), adminId); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.NewBusinessErrorResponse(err))
+        }</span>
+
+        <span class="cov0" title="0">return ctx.JSON(common.SuccessResponseWithoutData())</span>
+}
+
+func (c *Controller) DeleteCategory(ctx echo.Context) error <span class="cov0" title="0">{
+        var err error
+
+        id := ctx.Param("id")
+        if _, err = uuid.Parse(id); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.BadRequestResponse())
+        }</span>
+
+        <span class="cov0" title="0">isAdmin, err := middleware.ExtractTokenRule(ctx)
+        if err != nil || !isAdmin </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+
+        <span class="cov0" title="0">adminId, _ := middleware.ExtractTokenUser(ctx)
+        if _, err = uuid.Parse(adminId); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+
+        <span class="cov0" title="0">if err = c.service.DeleteCategory(id, adminId); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.NewBusinessErrorResponse(err))
+        }</span>
+
+        <span class="cov0" title="0">return ctx.JSON(common.SuccessResponseWithoutData())</span>
+}
+</pre>
+		
+		<pre class="file" id="file7" style="display: none">package request
+
+import (
+        "AltaStore/business/category"
+)
+
+type InsertCategoryRequest struct {
+        Code string `json:"code"`
+        Name string `json:"name"`
+}
+
+func (i *InsertCategoryRequest) ToCategorySpec() *category.CategorySpec <span class="cov0" title="0">{
+        var spec category.CategorySpec
+
+        spec.Code = i.Code
+        spec.Name = i.Name
+
+        return &amp;spec
+}</span>
+</pre>
+		
+		<pre class="file" id="file8" style="display: none">package request
+
+import "AltaStore/business/category"
+
+type UpdateCategoryRequest struct {
+        Code string `json:"code"`
+        Name string `json:"name"`
+}
+
+func (u *UpdateCategoryRequest) ToCategory() *category.CategorySpec <span class="cov0" title="0">{
+        var spec category.CategorySpec
+
+        spec.Code = u.Code
+        spec.Name = u.Name
+
+        return &amp;spec
+}</span>
+</pre>
+		
+		<pre class="file" id="file9" style="display: none">package response
+
+import (
+        "AltaStore/business/category"
+)
+
+type AllCategory struct {
+        Categories []OneCategory
+}
+
+func GetAllCategory(categories *[]category.Category) *AllCategory <span class="cov0" title="0">{
+        var allCategory AllCategory
+        var oneCategory OneCategory // temporery format
+
+        for _, value := range *categories </span><span class="cov0" title="0">{
+                oneCategory.ID = value.ID
+                oneCategory.Code = value.Code
+                oneCategory.Name = value.Name
+                oneCategory.UpdatedAt = value.UpdatedAt
+
+                allCategory.Categories = append(allCategory.Categories, oneCategory)
+        }</span>
+
+        <span class="cov0" title="0">if allCategory.Categories == nil </span><span class="cov0" title="0">{
+                allCategory.Categories = []OneCategory{}
+        }</span>
+
+        <span class="cov0" title="0">return &amp;allCategory</span>
+}
+</pre>
+		
+		<pre class="file" id="file10" style="display: none">package response
+
+import (
+        "AltaStore/business/category"
+        "time"
+)
+
+type OneCategory struct {
+        ID        string    `json:"id"`
+        Code      string    `json:"code"`
+        Name      string    `json:"name"`
+        UpdatedAt time.Time `json:"updated_at"`
+}
+
+func GetOneCategory(category category.Category) *OneCategory <span class="cov0" title="0">{
+        var res OneCategory
+
+        res.ID = category.ID
+        res.Code = category.Code
+        res.Name = category.Name
+        res.UpdatedAt = category.UpdatedAt
+
+        return &amp;res
+}</span>
+</pre>
+		
+		<pre class="file" id="file11" style="display: none">package product
+
+import (
+        "AltaStore/api/common"
+        "AltaStore/api/middleware"
+        "AltaStore/api/v1/product/request"
+        "AltaStore/api/v1/product/response"
+        "AltaStore/business/product"
+
+        "github.com/google/uuid"
+        "github.com/labstack/echo/v4"
+)
+
+type Controller struct {
+        service product.Service
+}
+
+func NewController(service product.Service) *Controller <span class="cov0" title="0">{
+        return &amp;Controller{service}
+}</span>
+
+func (c *Controller) GetAllProduct(ctx echo.Context) error <span class="cov0" title="0">{
+        id := ctx.QueryParam("id")
+        if id != "" </span><span class="cov0" title="0">{
+                // if _, err := uuid.Parse(id); err != nil {
+                //         return ctx.JSON(common.BadRequestResponse())
+                // }
+                return ctx.JSON(common.BadRequestResponse()) // Pemindahan pencarian id, khusus id menggunakan path
+        }</span>
+
+        <span class="cov0" title="0">isActive := ctx.QueryParam("isactive")
+        categoryName := ctx.QueryParam("categoryname")
+        code := ctx.QueryParam("code")
+        name := ctx.QueryParam("name")
+        product, err := c.service.GetAllProductByParameter(id, isActive, categoryName, code, name)
+        if err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.NewBusinessErrorResponse(err))
+        }</span>
+
+        <span class="cov0" title="0">return ctx.JSON(
+                common.SuccessResponseWithData(
+                        response.GetAll(product).Products,
+                ),
+        )</span>
+}
+
+func (c *Controller) FindProductById(ctx echo.Context) error <span class="cov0" title="0">{
+        id := ctx.Param("id")
+
+        if _, err := uuid.Parse(id); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.BadRequestResponse())
+        }</span>
+
+        <span class="cov0" title="0">product, err := c.service.FindProductById(id)
+        if err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.NewBusinessErrorResponse(err))
+        }</span>
+
+        <span class="cov0" title="0">response := response.GetById(*product)
+
+        return ctx.JSON(common.SuccessResponseWithData(response))</span>
+}
+
+func (c *Controller) InsertProduct(ctx echo.Context) error <span class="cov0" title="0">{
+        var err error
+
+        adminId, err := middleware.ExtractTokenUser(ctx)
+        if err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+
+        <span class="cov0" title="0">isAdmin, err := middleware.ExtractTokenRule(ctx)
+        if err != nil || !isAdmin </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+
+        <span class="cov0" title="0">insertProduct := new(request.InsertProductRequest)
+
+        if err = ctx.Bind(insertProduct); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.BadRequestResponse())
+        }</span>
+
+        <span class="cov0" title="0">if err = c.service.InsertProduct(insertProduct.ToProductSpec(), adminId); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.NewBusinessErrorResponse(err))
+        }</span>
+
+        <span class="cov0" title="0">return ctx.JSON(common.SuccessResponseWithoutData())</span>
+}
+
+func (c *Controller) UpdateProduct(ctx echo.Context) error <span class="cov0" title="0">{
+        var err error
+
+        id := ctx.Param("id")
+        if _, err = uuid.Parse(id); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.BadRequestResponse())
+        }</span>
+
+        <span class="cov0" title="0">adminId, err := middleware.ExtractTokenUser(ctx)
+        if err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+
+        <span class="cov0" title="0">isAdmin, err := middleware.ExtractTokenRule(ctx)
+        if err != nil || !isAdmin </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+
+        <span class="cov0" title="0">updateProduct := new(request.UpdateProductRequest)
+        if err = ctx.Bind(updateProduct); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.BadRequestResponse())
+        }</span>
+
+        <span class="cov0" title="0">if err = c.service.UpdateProduct(id, updateProduct.ToProductSpec(), adminId); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.NewBusinessErrorResponse(err))
+        }</span>
+
+        <span class="cov0" title="0">return ctx.JSON(common.SuccessResponseWithoutData())</span>
+}
+
+func (c *Controller) DeleteProduct(ctx echo.Context) error <span class="cov0" title="0">{
+        var err error
+
+        id := ctx.Param("id")
+        if _, err = uuid.Parse(id); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.BadRequestResponse())
+        }</span>
+
+        <span class="cov0" title="0">adminId, _ := middleware.ExtractTokenUser(ctx)
+        if _, err = uuid.Parse(adminId); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.BadRequestResponse())
+        }</span>
+
+        <span class="cov0" title="0">isAdmin, err := middleware.ExtractTokenRule(ctx)
+        if err != nil || !isAdmin </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+
+        <span class="cov0" title="0">if err = c.service.DeleteProduct(id, adminId); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.NewBusinessErrorResponse(err))
+        }</span>
+
+        <span class="cov0" title="0">return ctx.JSON(common.SuccessResponseWithoutData())</span>
+}
+</pre>
+		
+		<pre class="file" id="file12" style="display: none">package request
+
+import (
+        "AltaStore/business/product"
+)
+
+type InsertProductRequest struct {
+        Code              string `json:"code"`
+        Name              string `json:"name"`
+        Price             int64  `json:"price"`
+        IsActive          bool   `json:"isactive"`
+        ProductCategoryId string `json:"productcategoryid"`
+        UnitName          string `json:"unitname"`
+        Description       string `json:"description"`
+}
+
+func (i *InsertProductRequest) ToProductSpec() *product.InsertProductSpec <span class="cov0" title="0">{
+        var spec product.InsertProductSpec
+
+        spec.Code = i.Code
+        spec.Name = i.Name
+        spec.Price = i.Price
+        spec.IsActive = i.IsActive
+        spec.ProductCategoryId = i.ProductCategoryId
+        spec.UnitName = i.UnitName
+        spec.Description = i.Description
+
+        return &amp;spec
+}</span>
+</pre>
+		
+		<pre class="file" id="file13" style="display: none">package request
+
+import "AltaStore/business/product"
+
+type UpdateProductRequest struct {
+        Name              string `json:"name"`
+        Price             int64  `json:"price"`
+        IsActive          bool   `json:"isactive"`
+        ProductCategoryId string `json:"productcategoryid"`
+        UnitName          string `json:"unitname"`
+        Description       string `json:"description"`
+}
+
+func (u *UpdateProductRequest) ToProductSpec() *product.UpdateProductSpec <span class="cov0" title="0">{
+        var spec product.UpdateProductSpec
+
+        spec.Name = u.Name
+        spec.Price = u.Price
+        spec.IsActive = u.IsActive
+        spec.ProductCategoryId = u.ProductCategoryId
+        spec.UnitName = u.UnitName
+        spec.Description = u.Description
+
+        return &amp;spec
+}</span>
+</pre>
+		
+		<pre class="file" id="file14" style="display: none">package response
+
+import "AltaStore/business/product"
+
+type Product struct {
+        ID                  string `json:"id"`
+        Code                string `json:"code"`
+        Name                string `json:"name"`
+        Price               int64  `json:"price"`
+        Qty                 int32  `json:"qty"`
+        QtyCart             int32  `json:"qtycart"`
+        IsActive            bool   `json:"isactive"`
+        ProductCategoryName string `json:"productcategoryname"`
+        UnitName            string `json:"unitname"`
+        Description         string `json:"description"`
+}
+
+type Products struct {
+        Products []Product
+}
+
+func GetAll(products *[]product.Product) *Products <span class="cov0" title="0">{
+        var allProduct Products
+        var prod Product
+        for _, val := range *products </span><span class="cov0" title="0">{
+
+                prod.ID = val.ID
+                prod.Code = val.Code
+                prod.Name = val.Name
+                prod.Price = val.Price
+                prod.Qty = val.Qty
+                prod.QtyCart = val.QtyCart
+                prod.IsActive = val.IsActive
+                prod.ProductCategoryName = val.ProductCategoryName
+                prod.UnitName = val.UnitName
+                prod.Description = val.Description
+
+                allProduct.Products = append(allProduct.Products, prod)
+        }</span>
+
+        <span class="cov0" title="0">if allProduct.Products == nil </span><span class="cov0" title="0">{
+                allProduct.Products = []Product{}
+        }</span>
+
+        <span class="cov0" title="0">return &amp;allProduct</span>
+}
+</pre>
+		
+		<pre class="file" id="file15" style="display: none">package response
+
+import (
+        "AltaStore/business/product"
+)
+
+type ProductById struct {
+        ID                  string `json:"id"`
+        Code                string `json:"code"`
+        Name                string `json:"name"`
+        Price               int64  `json:"price"`
+        Qty                 int32  `json:"qty"`
+        QtyCart             int32  `json:"qtycart"`
+        IsActive            bool   `json:"isactive"`
+        ProductCategoryName string `json:"ProductCategoryname"`
+        UnitName            string `json:"unitname"`
+        Description         string `json:"description"`
+}
+
+func GetById(product product.Product) *ProductById <span class="cov0" title="0">{
+        var prod ProductById
+
+        prod.ID = product.ID
+        prod.Code = product.Code
+        prod.Name = product.Name
+        prod.Price = product.Price
+        prod.Qty = product.Qty
+        prod.QtyCart = product.QtyCart
+        prod.IsActive = product.IsActive
+        prod.ProductCategoryName = product.ProductCategoryName
+        prod.UnitName = product.UnitName
+        prod.Description = product.Description
+
+        return &amp;prod
+}</span>
+</pre>
+		
+		<pre class="file" id="file16" style="display: none">package purchasereceiving
+
+import (
+        "AltaStore/api/common"
+        "AltaStore/api/middleware"
+        "AltaStore/api/v1/purchasereceiving/request"
+        "AltaStore/api/v1/purchasereceiving/response"
+        "AltaStore/business/purchasereceiving"
+
+        "github.com/google/uuid"
+        echo "github.com/labstack/echo/v4"
+)
+
+type Controller struct {
+        service purchasereceiving.Service
+}
+
+func NewController(service purchasereceiving.Service) *Controller <span class="cov0" title="0">{
+        return &amp;Controller{service}
+}</span>
+
+func (c *Controller) InsertPurchaseReceiving(ctx echo.Context) error <span class="cov0" title="0">{
+        var err error
+        adminId, err := middleware.ExtractTokenUser(ctx)
+        if err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+        <span class="cov0" title="0">isAdmin, err := middleware.ExtractTokenRule(ctx)
+        if err != nil || !isAdmin </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+        <span class="cov0" title="0">if _, err := uuid.Parse(adminId); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.BadRequestResponse())
+        }</span>
+
+        <span class="cov0" title="0">insertData := new(request.InsertPurchaseReceivingRequest)
+
+        if err = ctx.Bind(insertData); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.BadRequestResponse())
+        }</span>
+
+        <span class="cov0" title="0">if err = c.service.InsertPurchaseReceiving(insertData.ToPurchaseReceivingSpec(), adminId); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.NewBusinessErrorResponse(err))
+        }</span>
+
+        <span class="cov0" title="0">return ctx.JSON(common.SuccessResponseWithoutData())</span>
+}
+
+func (c *Controller) UpdatePurchaseReceiving(ctx echo.Context) error <span class="cov0" title="0">{
+        var err error
+        id := ctx.Param("id")
+
+        if _, err := uuid.Parse(id); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.BadRequestResponse())
+        }</span>
+
+        <span class="cov0" title="0">adminId, err := middleware.ExtractTokenUser(ctx)
+        if err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+
+        <span class="cov0" title="0">if _, err := uuid.Parse(adminId); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.BadRequestResponse())
+        }</span>
+
+        <span class="cov0" title="0">isAdmin, err := middleware.ExtractTokenRule(ctx)
+        if err != nil || !isAdmin </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+
+        <span class="cov0" title="0">updateData := new(request.UpdatePurchaseReceivingRequest)
+        if err = ctx.Bind(updateData); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.BadRequestResponse())
+        }</span>
+
+        <span class="cov0" title="0">if err = c.service.UpdatePurchaseReceiving(id, updateData.ToPurchaseReceivingSpec(), adminId); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.NewBusinessErrorResponse(err))
+        }</span>
+
+        <span class="cov0" title="0">return ctx.JSON(common.SuccessResponseWithoutData())</span>
+}
+
+func (c *Controller) DeletePurchaseReceiving(ctx echo.Context) error <span class="cov0" title="0">{
+        var err error
+
+        id := ctx.Param("id")
+        adminId, err := middleware.ExtractTokenUser(ctx)
+        if err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+        <span class="cov0" title="0">isAdmin, err := middleware.ExtractTokenRule(ctx)
+        if err != nil || !isAdmin </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+        <span class="cov0" title="0">if _, err = uuid.Parse(id); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.BadRequestResponse())
+        }</span>
+        <span class="cov0" title="0">if _, err = uuid.Parse(adminId); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.BadRequestResponse())
+        }</span>
+
+        <span class="cov0" title="0">if err = c.service.DeletePurchaseReceiving(id, adminId); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.NewBusinessErrorResponse(err))
+        }</span>
+
+        <span class="cov0" title="0">return ctx.JSON(common.SuccessResponseWithoutData())</span>
+}
+
+func (c *Controller) GetAllPurchaseReceiving(ctx echo.Context) error <span class="cov0" title="0">{
+        id := ctx.QueryParam("id")
+        if id != "" </span><span class="cov0" title="0">{
+                if _, err := uuid.Parse(id); err != nil </span><span class="cov0" title="0">{
+                        return ctx.JSON(common.BadRequestResponse())
+                }</span>
+        }
+        <span class="cov0" title="0">code := ctx.QueryParam("code")
+
+        adminId, err := middleware.ExtractTokenUser(ctx)
+        if err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+        <span class="cov0" title="0">isAdmin, err := middleware.ExtractTokenRule(ctx)
+        if err != nil || !isAdmin </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+        <span class="cov0" title="0">if _, err := uuid.Parse(adminId); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.BadRequestResponse())
+        }</span>
+
+        <span class="cov0" title="0">data, err := c.service.GetAllPurchaseReceivingByParameter(code, adminId)
+        if err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.NewBusinessErrorResponse(err))
+        }</span>
+
+        <span class="cov0" title="0">return ctx.JSON(
+                common.SuccessResponseWithData(
+                        response.GetAll(data).PurchaseReceivings,
+                ),
+        )</span>
+}
+
+func (c *Controller) FindPurchaseReceivingById(ctx echo.Context) error <span class="cov0" title="0">{
+        id := ctx.Param("id")
+
+        if _, err := uuid.Parse(id); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.BadRequestResponse())
+        }</span>
+        <span class="cov0" title="0">adminId, err := middleware.ExtractTokenUser(ctx)
+        if err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+        <span class="cov0" title="0">isAdmin, err := middleware.ExtractTokenRule(ctx)
+        if err != nil || !isAdmin </span><span class="cov0" title="0">{
+                return ctx.JSON(common.UnAuthorizedResponse())
+        }</span>
+        <span class="cov0" title="0">if _, err := uuid.Parse(adminId); err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.BadRequestResponse())
+        }</span>
+        <span class="cov0" title="0">data, err := c.service.GetPurchaseReceivingById(id, adminId)
+        if err != nil </span><span class="cov0" title="0">{
+                return ctx.JSON(common.NewBusinessErrorResponse(err))
+        }</span>
+
+        <span class="cov0" title="0">response := response.GetById(*data)
+
+        return ctx.JSON(common.SuccessResponseWithData(response))</span>
+}
+</pre>
+		
+		<pre class="file" id="file17" style="display: none">package request
+
+import (
+        "AltaStore/business/purchasereceiving"
+        "time"
+)
+
+type InsertPurchaseReceivingRequest struct {
+        Code         string                                 `json:"code"`
+        DateReceived time.Time                              `json:"datereceived"`
+        ReceivedBy   string                                 `json:"receivedby"`
+        Description  string                                 `json:"description"`
+        Details      []InsertPurchaseReceivingDetailRequest `json:"details"`
+}
+
+func (i *InsertPurchaseReceivingRequest) ToPurchaseReceivingSpec() *purchasereceiving.InsertPurchaseReceivingSpec <span class="cov0" title="0">{
+        var spec purchasereceiving.InsertPurchaseReceivingSpec
+
+        spec.Code = i.Code
+        spec.DateReceived = i.DateReceived
+        spec.ReceivedBy = i.ReceivedBy
+        spec.Description = i.Description
+
+        var detail purchasereceiving.InsertPurchaseReceivingDetailSpec
+        for _, val := range i.Details </span><span class="cov0" title="0">{
+                detail.ProductId = val.ProductId
+                detail.Price = val.Price
+                detail.Qty = val.Qty
+
+                spec.Details = append(spec.Details, detail)
+        }</span>
+
+        <span class="cov0" title="0">return &amp;spec</span>
+}
+</pre>
+		
+		<pre class="file" id="file18" style="display: none">package request
+
+import (
+        "AltaStore/business/purchasereceiving"
+)
+
+type DetailPurchaseReceiving struct {
+        ProductId string `json:"productid"`
+        Price     int    `json:"price"`
+        Qty       int    `json:"qty"`
+        Status    int    `json:"status"`
+}
+
+type UpdatePurchaseReceivingRequest struct {
+        Code        string                    `json:"code"`
+        Description string                    `json:"description"`
+        Details     []DetailPurchaseReceiving `json:"details"`
+}
+
+func (i *UpdatePurchaseReceivingRequest) ToPurchaseReceivingSpec() *purchasereceiving.UpdatePurchaseReceivingSpec <span class="cov0" title="0">{
+        var spec purchasereceiving.UpdatePurchaseReceivingSpec
+
+        // spec.DateReceived = i.DateReceived
+        // spec.ReceivedBy = i.ReceivedBy
+        spec.Code = i.Code
+        spec.Description = i.Description
+
+        // var detail purchasereceiving.UpdatePurchaseReceivingDetailSpec
+        for _, val := range i.Details </span><span class="cov0" title="0">{
+                // detail.ID = val.ID
+                // detail.ProductId = val.ProductId
+                // detail.Price = val.Price
+                // detail.Qty = val.Qty
+                // detail.IsDelete = val.IsDelete
+
+                spec.Details = append(spec.Details, purchasereceiving.UpdatePurchaseReceivingDetailSpec{
+                        ProductId: val.ProductId,
+                        Qty:       val.Qty,
+                        Price:     val.Price,
+                        Status:    val.Status,
+                })
+        }</span>
+
+        <span class="cov0" title="0">return &amp;spec</span>
+}
+</pre>
+		
+		<pre class="file" id="file19" style="display: none">package response
+
+import (
+        "AltaStore/business/purchasereceiving"
+        "time"
+)
+
+type PurchaseReceiving struct {
+        ID           string    `json:"id"`
+        Code         string    `json:"code"`
+        DateReceived time.Time `json:"datereceived"`
+        ReceivedBy   string    `json:"receivedby"`
+        Description  string    `json:"description"`
+}
+
+type PurchaseReceivings struct {
+        PurchaseReceivings []PurchaseReceiving
+}
+
+func GetAll(purchasereceivings *[]purchasereceiving.PurchaseReceiving) *PurchaseReceivings <span class="cov0" title="0">{
+        var allPurchases PurchaseReceivings
+        var purchase PurchaseReceiving
+        for _, val := range *purchasereceivings </span><span class="cov0" title="0">{
+
+                purchase.ID = val.ID
+                purchase.Code = val.Code
+                purchase.DateReceived = val.DateReceived
+                purchase.ReceivedBy = val.ReceivedBy
+                purchase.Description = val.Description
+
+                allPurchases.PurchaseReceivings = append(allPurchases.PurchaseReceivings, purchase)
+        }</span>
+
+        <span class="cov0" title="0">if allPurchases.PurchaseReceivings == nil </span><span class="cov0" title="0">{
+                allPurchases.PurchaseReceivings = []PurchaseReceiving{}
+        }</span>
+
+        <span class="cov0" title="0">return &amp;allPurchases</span>
+}
+</pre>
+		
+		<pre class="file" id="file20" style="display: none">package response
+
+import (
+        "AltaStore/business/purchasereceiving"
+        "time"
+)
+
+type PurchaseReceivingById struct {
+        ID           string    `json:"id"`
+        Code         string    `json:"code"`
+        DateReceived time.Time `json:"datereceived"`
+        ReceivedBy   string    `json:"receivedby"`
+        Description  string    `json:"description"`
+        Details      []Detail  `json:"details"`
+}
+
+type Detail struct {
+        // ID        string `json:"id"`
+        ProductId   string `json:"productid"`
+        ProductCode string `json:"productcode"`
+        ProductName string `json:"productname"`
+        Price       int64  `json:"price"`
+        Qty         int32  `json:"qty"`
+}
+
+func GetById(purchaseReceiving purchasereceiving.PurchaseReceiving) *PurchaseReceivingById <span class="cov0" title="0">{
+        var purchase PurchaseReceivingById
+
+        purchase.ID = purchaseReceiving.ID
+        purchase.Code = purchaseReceiving.Code
+        purchase.DateReceived = purchaseReceiving.DateReceived
+        purchase.ReceivedBy = purchaseReceiving.ReceivedBy
+        purchase.Description = purchaseReceiving.Description
+
+        // var det Detail
+        for _, val := range purchaseReceiving.Details </span><span class="cov0" title="0">{
+
+                // det.ProductId = val.ProductId
+                // det.ID = val.ID
+                // det.Qty = val.Qty
+                // det.Price = val.Price
+
+                purchase.Details = append(purchase.Details, Detail{
+                        ProductId:   val.ProductId,
+                        ProductCode: val.ProductCode,
+                        ProductName: val.ProductName,
+                        Price:       val.Price,
+                        Qty:         val.Qty,
+                })
+        }</span>
+
+        <span class="cov0" title="0">if purchase.Details == nil </span><span class="cov0" title="0">{
+                purchase.Details = []Detail{}
+        }</span>
+
+        <span class="cov0" title="0">return &amp;purchase</span>
+}
+</pre>
+		
+		<pre class="file" id="file21" style="display: none">package category
+
+import (
+        "time"
+
+        "github.com/google/uuid"
+)
+
+// Membuat core data pada domain bisnis
+type Category struct {
+        ID        string
+        Code      string
+        Name      string
+        CreatedAt time.Time
+        CreatedBy string
+        UpdatedAt time.Time
+        UpdatedBy string
+}
+
+// fungsi menambahkan data kategory
+func NewProductCategory(code string, name string,
+        creator string, createdAt time.Time,
+) Category <span class="cov8" title="1">{
+        return Category{
+                ID:        uuid.NewString(),
+                Code:      code,
+                Name:      name,
+                CreatedAt: createdAt,
+                CreatedBy: creator,
+                UpdatedAt: createdAt,
+                UpdatedBy: creator,
+        }
+}</span>
+
+func ModifyProductCategory(name string, modifier string, updatedAt time.Time) Category <span class="cov8" title="1">{
+        return Category{
+                Name:      name,
+                UpdatedAt: updatedAt,
+                UpdatedBy: modifier,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file22" style="display: none">// Code generated by mockery v2.9.4. DO NOT EDIT.
+
+package mocks
+
+import (
+        category "AltaStore/business/category"
+
+        mock "github.com/stretchr/testify/mock"
+)
+
+// Repository is an autogenerated mock type for the Repository type
+type Repository struct {
+        mock.Mock
+}
+
+// DeleteCategory provides a mock function with given fields: id, adminId
+func (_m *Repository) DeleteCategory(id string, adminId string) error <span class="cov8" title="1">{
+        ret := _m.Called(id, adminId)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(string, string) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(id, adminId)
+        }</span> else<span class="cov8" title="1"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov8" title="1">return r0</span>
+}
+
+// FindCategoryByCode provides a mock function with given fields: code
+func (_m *Repository) FindCategoryByCode(code string) (*category.Category, error) <span class="cov8" title="1">{
+        ret := _m.Called(code)
+
+        var r0 *category.Category
+        if rf, ok := ret.Get(0).(func(string) *category.Category); ok </span><span class="cov0" title="0">{
+                r0 = rf(code)
+        }</span> else<span class="cov8" title="1"> {
+                if ret.Get(0) != nil </span><span class="cov8" title="1">{
+                        r0 = ret.Get(0).(*category.Category)
+                }</span>
+        }
+
+        <span class="cov8" title="1">var r1 error
+        if rf, ok := ret.Get(1).(func(string) error); ok </span><span class="cov0" title="0">{
+                r1 = rf(code)
+        }</span> else<span class="cov8" title="1"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov8" title="1">return r0, r1</span>
+}
+
+// FindCategoryById provides a mock function with given fields: id
+func (_m *Repository) FindCategoryById(id string) (*category.Category, error) <span class="cov8" title="1">{
+        ret := _m.Called(id)
+
+        var r0 *category.Category
+        if rf, ok := ret.Get(0).(func(string) *category.Category); ok </span><span class="cov0" title="0">{
+                r0 = rf(id)
+        }</span> else<span class="cov8" title="1"> {
+                if ret.Get(0) != nil </span><span class="cov8" title="1">{
+                        r0 = ret.Get(0).(*category.Category)
+                }</span>
+        }
+
+        <span class="cov8" title="1">var r1 error
+        if rf, ok := ret.Get(1).(func(string) error); ok </span><span class="cov0" title="0">{
+                r1 = rf(id)
+        }</span> else<span class="cov8" title="1"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov8" title="1">return r0, r1</span>
+}
+
+// GetAllCategory provides a mock function with given fields:
+func (_m *Repository) GetAllCategory() (*[]category.Category, error) <span class="cov8" title="1">{
+        ret := _m.Called()
+
+        var r0 *[]category.Category
+        if rf, ok := ret.Get(0).(func() *[]category.Category); ok </span><span class="cov0" title="0">{
+                r0 = rf()
+        }</span> else<span class="cov8" title="1"> {
+                if ret.Get(0) != nil </span><span class="cov8" title="1">{
+                        r0 = ret.Get(0).(*[]category.Category)
+                }</span>
+        }
+
+        <span class="cov8" title="1">var r1 error
+        if rf, ok := ret.Get(1).(func() error); ok </span><span class="cov0" title="0">{
+                r1 = rf()
+        }</span> else<span class="cov8" title="1"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov8" title="1">return r0, r1</span>
+}
+
+// InsertCategory provides a mock function with given fields: _a0
+func (_m *Repository) InsertCategory(_a0 category.Category) error <span class="cov8" title="1">{
+        ret := _m.Called(_a0)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(category.Category) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(_a0)
+        }</span> else<span class="cov8" title="1"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov8" title="1">return r0</span>
+}
+
+// UpdateCategory provides a mock function with given fields: id, _a1
+func (_m *Repository) UpdateCategory(id string, _a1 category.Category) error <span class="cov8" title="1">{
+        ret := _m.Called(id, _a1)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(string, category.Category) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(id, _a1)
+        }</span> else<span class="cov8" title="1"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov8" title="1">return r0</span>
+}
+</pre>
+		
+		<pre class="file" id="file23" style="display: none">// Code generated by mockery v2.9.4. DO NOT EDIT.
+
+package mocks
+
+import (
+        category "AltaStore/business/category"
+
+        mock "github.com/stretchr/testify/mock"
+)
+
+// Service is an autogenerated mock type for the Service type
+type Service struct {
+        mock.Mock
+}
+
+// DeleteCategory provides a mock function with given fields: id, deleter
+func (_m *Service) DeleteCategory(id string, deleter string) error <span class="cov0" title="0">{
+        ret := _m.Called(id, deleter)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(string, string) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(id, deleter)
+        }</span> else<span class="cov0" title="0"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov0" title="0">return r0</span>
+}
+
+// FindCategoryByCode provides a mock function with given fields: code
+func (_m *Service) FindCategoryByCode(code string) (*category.Category, error) <span class="cov0" title="0">{
+        ret := _m.Called(code)
+
+        var r0 *category.Category
+        if rf, ok := ret.Get(0).(func(string) *category.Category); ok </span><span class="cov0" title="0">{
+                r0 = rf(code)
+        }</span> else<span class="cov0" title="0"> {
+                if ret.Get(0) != nil </span><span class="cov0" title="0">{
+                        r0 = ret.Get(0).(*category.Category)
+                }</span>
+        }
+
+        <span class="cov0" title="0">var r1 error
+        if rf, ok := ret.Get(1).(func(string) error); ok </span><span class="cov0" title="0">{
+                r1 = rf(code)
+        }</span> else<span class="cov0" title="0"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov0" title="0">return r0, r1</span>
+}
+
+// FindCategoryById provides a mock function with given fields: id
+func (_m *Service) FindCategoryById(id string) (*category.Category, error) <span class="cov8" title="1">{
+        ret := _m.Called(id)
+
+        var r0 *category.Category
+        if rf, ok := ret.Get(0).(func(string) *category.Category); ok </span><span class="cov0" title="0">{
+                r0 = rf(id)
+        }</span> else<span class="cov8" title="1"> {
+                if ret.Get(0) != nil </span><span class="cov8" title="1">{
+                        r0 = ret.Get(0).(*category.Category)
+                }</span>
+        }
+
+        <span class="cov8" title="1">var r1 error
+        if rf, ok := ret.Get(1).(func(string) error); ok </span><span class="cov0" title="0">{
+                r1 = rf(id)
+        }</span> else<span class="cov8" title="1"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov8" title="1">return r0, r1</span>
+}
+
+// GetAllCategory provides a mock function with given fields:
+func (_m *Service) GetAllCategory() (*[]category.Category, error) <span class="cov0" title="0">{
+        ret := _m.Called()
+
+        var r0 *[]category.Category
+        if rf, ok := ret.Get(0).(func() *[]category.Category); ok </span><span class="cov0" title="0">{
+                r0 = rf()
+        }</span> else<span class="cov0" title="0"> {
+                if ret.Get(0) != nil </span><span class="cov0" title="0">{
+                        r0 = ret.Get(0).(*[]category.Category)
+                }</span>
+        }
+
+        <span class="cov0" title="0">var r1 error
+        if rf, ok := ret.Get(1).(func() error); ok </span><span class="cov0" title="0">{
+                r1 = rf()
+        }</span> else<span class="cov0" title="0"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov0" title="0">return r0, r1</span>
+}
+
+// InsertCategory provides a mock function with given fields: _a0, creator
+func (_m *Service) InsertCategory(_a0 *category.CategorySpec, creator string) error <span class="cov0" title="0">{
+        ret := _m.Called(_a0, creator)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(*category.CategorySpec, string) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(_a0, creator)
+        }</span> else<span class="cov0" title="0"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov0" title="0">return r0</span>
+}
+
+// UpdateCategory provides a mock function with given fields: id, _a1, modifier
+func (_m *Service) UpdateCategory(id string, _a1 *category.CategorySpec, modifier string) error <span class="cov0" title="0">{
+        ret := _m.Called(id, _a1, modifier)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(string, *category.CategorySpec, string) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(id, _a1, modifier)
+        }</span> else<span class="cov0" title="0"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov0" title="0">return r0</span>
+}
+</pre>
+		
+		<pre class="file" id="file24" style="display: none">package category
+
+import (
+        "AltaStore/business"
+        "AltaStore/util/validator"
+        "time"
+)
+
+type CategorySpec struct {
+        // AdminId string
+        Code string `validate:"required,max=50"`
+        Name string `validate:"required,max=100"`
+}
+
+type service struct {
+        // adminService admin.Service
+        repository Repository
+}
+
+// func NewService(adminService admin.Service, repository Repository) Service {
+func NewService(repository Repository) Service <span class="cov8" title="1">{
+        // return &amp;service{adminService, repository}
+        return &amp;service{repository}
+}</span>
+
+func (s *service) GetAllCategory() (*[]Category, error) <span class="cov8" title="1">{
+        return s.repository.GetAllCategory()
+}</span>
+
+func (s *service) FindCategoryById(id string) (*Category, error) <span class="cov8" title="1">{
+        return s.repository.FindCategoryById(id)
+}</span>
+
+func (s *service) FindCategoryByCode(code string) (*Category, error) <span class="cov8" title="1">{
+        return s.repository.FindCategoryByCode(code)
+}</span>
+
+func (s *service) InsertCategory(category *CategorySpec, creator string) error <span class="cov8" title="1">{
+        // admin, err := s.adminService.FindAdminByID(creator)
+        // if err != nil {
+        //         return business.ErrNotHavePermission
+        // }
+
+        err := validator.GetValidator().Struct(category)
+        if err != nil </span><span class="cov0" title="0">{
+                return business.ErrInvalidSpec
+        }</span>
+
+        <span class="cov8" title="1">data, _ := s.repository.FindCategoryByCode(category.Code)
+        if data != nil </span><span class="cov8" title="1">{
+                return business.ErrDataExists
+        }</span>
+
+        <span class="cov8" title="1">dataCategory := NewProductCategory(
+                category.Code, category.Name, creator, time.Now(),
+        )
+        return s.repository.InsertCategory(dataCategory)</span>
+}
+
+func (s *service) UpdateCategory(id string, category *CategorySpec, modifier string) error <span class="cov8" title="1">{
+        // admin, err := s.adminService.FindAdminByID(modifier)
+        // if err != nil {
+        //         return business.ErrNotHavePermission
+        // }
+
+        err := validator.GetValidator().Struct(category)
+        if err != nil </span><span class="cov0" title="0">{
+                return business.ErrInvalidSpec
+        }</span>
+
+        <span class="cov8" title="1">dataCategory := ModifyProductCategory(category.Name, modifier, time.Now())
+
+        return s.repository.UpdateCategory(id, dataCategory)</span>
+}
+
+func (s *service) DeleteCategory(id string, deleter string) error <span class="cov8" title="1">{
+        // admin, err := s.adminService.FindAdminByID(deleter)
+        // if err != nil {
+        //         return business.ErrNotHavePermission
+        // }
+        return s.repository.DeleteCategory(id, deleter)
+}</span>
+</pre>
+		
+		<pre class="file" id="file25" style="display: none">package logger
+
+import "encoding/json"
+
+type service struct {
+        repository Repository
+}
+
+func NewService(repository Repository) Service <span class="cov0" title="0">{
+        return &amp;service{repository}
+}</span>
+
+func (s *service) Write(p []byte) (n int, err error) <span class="cov0" title="0">{
+        var data LoggerData
+
+        json.Unmarshal(p, &amp;data)
+
+        return len(p), s.repository.AddLoggerActivity(&amp;data)
+}</span>
+</pre>
+		
+		<pre class="file" id="file26" style="display: none">// Code generated by mockery v2.9.4. DO NOT EDIT.
+
+package mocks
+
+import (
+        product "AltaStore/business/product"
+
+        mock "github.com/stretchr/testify/mock"
+)
+
+// Repository is an autogenerated mock type for the Repository type
+type Repository struct {
+        mock.Mock
+}
+
+// DeleteProduct provides a mock function with given fields: Product
+func (_m *Repository) DeleteProduct(Product product.Product) error <span class="cov8" title="1">{
+        ret := _m.Called(Product)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(product.Product) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(Product)
+        }</span> else<span class="cov8" title="1"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov8" title="1">return r0</span>
+}
+
+// FindProductByCode provides a mock function with given fields: code
+func (_m *Repository) FindProductByCode(code string) (*product.Product, error) <span class="cov8" title="1">{
+        ret := _m.Called(code)
+
+        var r0 *product.Product
+        if rf, ok := ret.Get(0).(func(string) *product.Product); ok </span><span class="cov0" title="0">{
+                r0 = rf(code)
+        }</span> else<span class="cov8" title="1"> {
+                if ret.Get(0) != nil </span><span class="cov8" title="1">{
+                        r0 = ret.Get(0).(*product.Product)
+                }</span>
+        }
+
+        <span class="cov8" title="1">var r1 error
+        if rf, ok := ret.Get(1).(func(string) error); ok </span><span class="cov0" title="0">{
+                r1 = rf(code)
+        }</span> else<span class="cov8" title="1"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov8" title="1">return r0, r1</span>
+}
+
+// FindProductById provides a mock function with given fields: id
+func (_m *Repository) FindProductById(id string) (*product.Product, error) <span class="cov8" title="1">{
+        ret := _m.Called(id)
+
+        var r0 *product.Product
+        if rf, ok := ret.Get(0).(func(string) *product.Product); ok </span><span class="cov0" title="0">{
+                r0 = rf(id)
+        }</span> else<span class="cov8" title="1"> {
+                if ret.Get(0) != nil </span><span class="cov8" title="1">{
+                        r0 = ret.Get(0).(*product.Product)
+                }</span>
+        }
+
+        <span class="cov8" title="1">var r1 error
+        if rf, ok := ret.Get(1).(func(string) error); ok </span><span class="cov0" title="0">{
+                r1 = rf(id)
+        }</span> else<span class="cov8" title="1"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov8" title="1">return r0, r1</span>
+}
+
+// GetAllProduct provides a mock function with given fields:
+func (_m *Repository) GetAllProduct() (*[]product.Product, error) <span class="cov8" title="1">{
+        ret := _m.Called()
+
+        var r0 *[]product.Product
+        if rf, ok := ret.Get(0).(func() *[]product.Product); ok </span><span class="cov0" title="0">{
+                r0 = rf()
+        }</span> else<span class="cov8" title="1"> {
+                if ret.Get(0) != nil </span><span class="cov8" title="1">{
+                        r0 = ret.Get(0).(*[]product.Product)
+                }</span>
+        }
+
+        <span class="cov8" title="1">var r1 error
+        if rf, ok := ret.Get(1).(func() error); ok </span><span class="cov0" title="0">{
+                r1 = rf()
+        }</span> else<span class="cov8" title="1"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov8" title="1">return r0, r1</span>
+}
+
+// GetAllProductByParameter provides a mock function with given fields: id, isActive, categoryName, code, name
+func (_m *Repository) GetAllProductByParameter(id string, isActive string, categoryName string, code string, name string) (*[]product.Product, error) <span class="cov8" title="1">{
+        ret := _m.Called(id, isActive, categoryName, code, name)
+
+        var r0 *[]product.Product
+        if rf, ok := ret.Get(0).(func(string, string, string, string, string) *[]product.Product); ok </span><span class="cov0" title="0">{
+                r0 = rf(id, isActive, categoryName, code, name)
+        }</span> else<span class="cov8" title="1"> {
+                if ret.Get(0) != nil </span><span class="cov8" title="1">{
+                        r0 = ret.Get(0).(*[]product.Product)
+                }</span>
+        }
+
+        <span class="cov8" title="1">var r1 error
+        if rf, ok := ret.Get(1).(func(string, string, string, string, string) error); ok </span><span class="cov0" title="0">{
+                r1 = rf(id, isActive, categoryName, code, name)
+        }</span> else<span class="cov8" title="1"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov8" title="1">return r0, r1</span>
+}
+
+// InsertProduct provides a mock function with given fields: Product
+func (_m *Repository) InsertProduct(Product product.Product) error <span class="cov8" title="1">{
+        ret := _m.Called(Product)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(product.Product) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(Product)
+        }</span> else<span class="cov8" title="1"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov8" title="1">return r0</span>
+}
+
+// UpdateProduct provides a mock function with given fields: Product
+func (_m *Repository) UpdateProduct(Product product.Product) error <span class="cov8" title="1">{
+        ret := _m.Called(Product)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(product.Product) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(Product)
+        }</span> else<span class="cov8" title="1"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov8" title="1">return r0</span>
+}
+</pre>
+		
+		<pre class="file" id="file27" style="display: none">// Code generated by mockery v2.9.4. DO NOT EDIT.
+
+package mocks
+
+import (
+        product "AltaStore/business/product"
+
+        mock "github.com/stretchr/testify/mock"
+)
+
+// Service is an autogenerated mock type for the Service type
+type Service struct {
+        mock.Mock
+}
+
+// DeleteProduct provides a mock function with given fields: id, deleter
+func (_m *Service) DeleteProduct(id string, deleter string) error <span class="cov0" title="0">{
+        ret := _m.Called(id, deleter)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(string, string) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(id, deleter)
+        }</span> else<span class="cov0" title="0"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov0" title="0">return r0</span>
+}
+
+// FindProductByCode provides a mock function with given fields: code
+func (_m *Service) FindProductByCode(code string) (*product.Product, error) <span class="cov0" title="0">{
+        ret := _m.Called(code)
+
+        var r0 *product.Product
+        if rf, ok := ret.Get(0).(func(string) *product.Product); ok </span><span class="cov0" title="0">{
+                r0 = rf(code)
+        }</span> else<span class="cov0" title="0"> {
+                if ret.Get(0) != nil </span><span class="cov0" title="0">{
+                        r0 = ret.Get(0).(*product.Product)
+                }</span>
+        }
+
+        <span class="cov0" title="0">var r1 error
+        if rf, ok := ret.Get(1).(func(string) error); ok </span><span class="cov0" title="0">{
+                r1 = rf(code)
+        }</span> else<span class="cov0" title="0"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov0" title="0">return r0, r1</span>
+}
+
+// FindProductById provides a mock function with given fields: id
+func (_m *Service) FindProductById(id string) (*product.Product, error) <span class="cov0" title="0">{
+        ret := _m.Called(id)
+
+        var r0 *product.Product
+        if rf, ok := ret.Get(0).(func(string) *product.Product); ok </span><span class="cov0" title="0">{
+                r0 = rf(id)
+        }</span> else<span class="cov0" title="0"> {
+                if ret.Get(0) != nil </span><span class="cov0" title="0">{
+                        r0 = ret.Get(0).(*product.Product)
+                }</span>
+        }
+
+        <span class="cov0" title="0">var r1 error
+        if rf, ok := ret.Get(1).(func(string) error); ok </span><span class="cov0" title="0">{
+                r1 = rf(id)
+        }</span> else<span class="cov0" title="0"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov0" title="0">return r0, r1</span>
+}
+
+// GetAllProduct provides a mock function with given fields:
+func (_m *Service) GetAllProduct() (*[]product.Product, error) <span class="cov0" title="0">{
+        ret := _m.Called()
+
+        var r0 *[]product.Product
+        if rf, ok := ret.Get(0).(func() *[]product.Product); ok </span><span class="cov0" title="0">{
+                r0 = rf()
+        }</span> else<span class="cov0" title="0"> {
+                if ret.Get(0) != nil </span><span class="cov0" title="0">{
+                        r0 = ret.Get(0).(*[]product.Product)
+                }</span>
+        }
+
+        <span class="cov0" title="0">var r1 error
+        if rf, ok := ret.Get(1).(func() error); ok </span><span class="cov0" title="0">{
+                r1 = rf()
+        }</span> else<span class="cov0" title="0"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov0" title="0">return r0, r1</span>
+}
+
+// GetAllProductByParameter provides a mock function with given fields: id, isActive, categoryName, code, name
+func (_m *Service) GetAllProductByParameter(id string, isActive string, categoryName string, code string, name string) (*[]product.Product, error) <span class="cov0" title="0">{
+        ret := _m.Called(id, isActive, categoryName, code, name)
+
+        var r0 *[]product.Product
+        if rf, ok := ret.Get(0).(func(string, string, string, string, string) *[]product.Product); ok </span><span class="cov0" title="0">{
+                r0 = rf(id, isActive, categoryName, code, name)
+        }</span> else<span class="cov0" title="0"> {
+                if ret.Get(0) != nil </span><span class="cov0" title="0">{
+                        r0 = ret.Get(0).(*[]product.Product)
+                }</span>
+        }
+
+        <span class="cov0" title="0">var r1 error
+        if rf, ok := ret.Get(1).(func(string, string, string, string, string) error); ok </span><span class="cov0" title="0">{
+                r1 = rf(id, isActive, categoryName, code, name)
+        }</span> else<span class="cov0" title="0"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov0" title="0">return r0, r1</span>
+}
+
+// InsertProduct provides a mock function with given fields: Product, creator
+func (_m *Service) InsertProduct(Product *product.InsertProductSpec, creator string) error <span class="cov0" title="0">{
+        ret := _m.Called(Product, creator)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(*product.InsertProductSpec, string) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(Product, creator)
+        }</span> else<span class="cov0" title="0"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov0" title="0">return r0</span>
+}
+
+// UpdateProduct provides a mock function with given fields: id, Product, modifier
+func (_m *Service) UpdateProduct(id string, Product *product.UpdateProductSpec, modifier string) error <span class="cov0" title="0">{
+        ret := _m.Called(id, Product, modifier)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(string, *product.UpdateProductSpec, string) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(id, Product, modifier)
+        }</span> else<span class="cov0" title="0"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov0" title="0">return r0</span>
+}
+</pre>
+		
+		<pre class="file" id="file28" style="display: none">package product
+
+import (
+        "time"
+
+        "github.com/google/uuid"
+)
+
+// Membuat core data pada domain bisnis
+type Product struct {
+        ID                  string
+        Code                string
+        Name                string
+        Price               int64
+        Qty                 int32
+        QtyCart             int32
+        IsActive            bool
+        ProductCategoryId   string
+        ProductCategoryName string
+        UnitName            string
+        Description         string
+        CreatedAt           time.Time
+        CreatedBy           string
+        UpdatedAt           time.Time
+        UpdatedBy           string
+        DeletedAt           time.Time
+        DeletedBy           string
+}
+
+func NewProduct(
+        code string,
+        name string,
+        price int64,
+        isActive bool,
+        productCategoryId string,
+        unitName string,
+        description string,
+        creator string,
+        createdAt time.Time,
+) Product <span class="cov8" title="1">{
+        return Product{
+                ID:                uuid.NewString(),
+                Code:              code,
+                Name:              name,
+                Price:             price,
+                IsActive:          isActive,
+                ProductCategoryId: productCategoryId,
+                UnitName:          unitName,
+                Description:       description,
+                CreatedAt:         createdAt,
+                CreatedBy:         creator,
+                UpdatedAt:         createdAt,
+                UpdatedBy:         creator,
+        }
+}</span>
+
+func (oldData *Product) ModifyProduct(
+        name string,
+        price int64,
+        isActive bool,
+        productCategoryId string,
+        unitName string,
+        description string,
+        modifier string,
+        updatedAt time.Time,
+) Product <span class="cov8" title="1">{
+        return Product{
+                ID:                oldData.ID,
+                Code:              oldData.Code,
+                Name:              name,
+                Price:             price,
+                IsActive:          isActive,
+                ProductCategoryId: productCategoryId,
+                UnitName:          unitName,
+                Description:       description,
+                CreatedAt:         oldData.CreatedAt,
+                CreatedBy:         oldData.CreatedBy,
+                UpdatedAt:         updatedAt,
+                UpdatedBy:         modifier,
+        }
+}</span>
+
+func (oldData *Product) DeleteProduct(
+        deleteAt time.Time,
+        deleter string) Product <span class="cov8" title="1">{
+
+        return Product{
+                ID:                oldData.ID,
+                Code:              oldData.Code,
+                Name:              oldData.Name,
+                Price:             oldData.Price,
+                IsActive:          oldData.IsActive,
+                ProductCategoryId: oldData.ProductCategoryId,
+                UnitName:          oldData.UnitName,
+                Description:       oldData.Description,
+                CreatedAt:         oldData.CreatedAt,
+                CreatedBy:         oldData.CreatedBy,
+                UpdatedAt:         oldData.UpdatedAt,
+                UpdatedBy:         oldData.UpdatedBy,
+                DeletedAt:         deleteAt,
+                DeletedBy:         deleter,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file29" style="display: none">package product
+
+import (
+        "AltaStore/business"
+        "AltaStore/business/category"
+
+        // "AltaStore/business/admin"
+        "AltaStore/util/validator"
+        "time"
+)
+
+type InsertProductSpec struct {
+        Code              string `validate:"required"`
+        Name              string `validate:"required"`
+        Price             int64  `validate:"required"`
+        IsActive          bool
+        ProductCategoryId string `validate:"required"`
+        UnitName          string `validate:"required"`
+        Description       string
+}
+
+type UpdateProductSpec struct {
+        Name              string `validate:"required"`
+        Price             int64  `validate:"required"`
+        IsActive          bool   `validate:"required"`
+        ProductCategoryId string `validate:"required"`
+        UnitName          string `validate:"required"`
+        Description       string
+}
+
+type service struct {
+        // adminService    admin.Service
+        categoryService category.Service
+        repository      Repository
+}
+
+// func NewService(adminService admin.Service, categoryService category.Service, repository Repository) Service {
+//         return &amp;service{adminService, categoryService, repository}
+// }
+
+func NewService(categoryService category.Service, repository Repository) Service <span class="cov8" title="1">{
+        return &amp;service{categoryService, repository}
+}</span>
+
+func (s *service) GetAllProduct() (*[]Product, error) <span class="cov8" title="1">{
+        return s.repository.GetAllProduct()
+}</span>
+
+func (s *service) GetAllProductByParameter(id, isActive, categoryName, code, name string) (*[]Product, error) <span class="cov8" title="1">{
+        return s.repository.GetAllProductByParameter(id, isActive, categoryName, code, name)
+}</span>
+
+func (s *service) FindProductById(id string) (*Product, error) <span class="cov8" title="1">{
+        return s.repository.FindProductById(id)
+}</span>
+
+func (s *service) FindProductByCode(code string) (*Product, error) <span class="cov8" title="1">{
+        return s.repository.FindProductByCode(code)
+}</span>
+
+func (s *service) InsertProduct(product *InsertProductSpec, creator string) error <span class="cov8" title="1">{
+        err := validator.GetValidator().Struct(product)
+        if err != nil </span><span class="cov0" title="0">{
+                return business.ErrInvalidSpec
+        }</span>
+        // admin, err := s.adminService.FindAdminByID(creator)
+        // if err != nil {
+        //         return business.ErrNotHavePermission
+        // }
+        <span class="cov8" title="1">dataproduct, _ := s.repository.FindProductByCode(product.Code)
+        if dataproduct != nil </span><span class="cov8" title="1">{
+                return business.ErrDataExists
+        }</span>
+        <span class="cov8" title="1">category, err := s.categoryService.FindCategoryById(product.ProductCategoryId)
+        if err != nil </span><span class="cov8" title="1">{
+                return business.ErrInvalidData
+        }</span>
+        <span class="cov8" title="1">data := NewProduct(
+                product.Code,
+                product.Name,
+                product.Price,
+                product.IsActive,
+                category.ID,
+                product.UnitName,
+                product.Description,
+                //admin.ID,
+                creator,
+                time.Now(),
+        )
+        return s.repository.InsertProduct(data)</span>
+}
+
+func (s *service) UpdateProduct(id string, updateProduct *UpdateProductSpec, modifier string) error <span class="cov8" title="1">{
+        err := validator.GetValidator().Struct(updateProduct)
+        if err != nil </span><span class="cov0" title="0">{
+                return business.ErrInvalidSpec
+        }</span>
+        // admin, err := s.adminService.FindAdminByID(modifier)
+        // if err != nil {
+        //         return business.ErrNotHavePermission
+        // }
+        <span class="cov8" title="1">product, err := s.repository.FindProductById(id)
+        if err != nil </span><span class="cov8" title="1">{
+                return err
+        }</span> else<span class="cov8" title="1"> if product == nil </span><span class="cov0" title="0">{
+                return business.ErrNotFound
+        }</span> else<span class="cov8" title="1"> if product.DeletedBy != "" </span><span class="cov0" title="0">{
+                return business.ErrNotFound
+        }</span>
+        <span class="cov8" title="1">category, err := s.categoryService.FindCategoryById(updateProduct.ProductCategoryId)
+        if err != nil </span><span class="cov8" title="1">{
+                return business.ErrInvalidData
+        }</span>
+        <span class="cov8" title="1">modifiedproduct := product.ModifyProduct(
+                updateProduct.Name,
+                updateProduct.Price,
+                updateProduct.IsActive,
+                category.ID,
+                updateProduct.UnitName,
+                updateProduct.Description,
+                //admin.ID,
+                modifier,
+                time.Now())
+
+        return s.repository.UpdateProduct(modifiedproduct)</span>
+}
+
+func (s *service) DeleteProduct(id string, deleter string) error <span class="cov8" title="1">{
+        // admin, err := s.adminService.FindAdminByID(deleter)
+        // if err != nil {
+        //         return business.ErrNotHavePermission
+        // }
+        product, err := s.repository.FindProductById(id)
+        if err != nil </span><span class="cov8" title="1">{
+                return err
+        }</span> else<span class="cov8" title="1"> if product == nil </span><span class="cov0" title="0">{
+                return business.ErrNotFound
+        }</span> else<span class="cov8" title="1"> if product.DeletedBy != "" </span><span class="cov0" title="0">{
+                return business.ErrNotFound
+        }</span>
+        <span class="cov8" title="1">deleteProduct := product.DeleteProduct(
+                time.Now(),
+                //admin.ID,
+                deleter,
+        )
+        return s.repository.DeleteProduct(deleteProduct)</span>
+}
+</pre>
+		
+		<pre class="file" id="file30" style="display: none">// Code generated by mockery v2.9.4. DO NOT EDIT.
+
+package mocks
+
+import (
+        purchasereceiving "AltaStore/business/purchasereceiving"
+
+        mock "github.com/stretchr/testify/mock"
+
+        time "time"
+)
+
+// Repository is an autogenerated mock type for the Repository type
+type Repository struct {
+        mock.Mock
+}
+
+// DeletePurchaseReceiving provides a mock function with given fields: item
+func (_m *Repository) DeletePurchaseReceiving(item *purchasereceiving.PurchaseReceiving) error <span class="cov8" title="1">{
+        ret := _m.Called(item)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(*purchasereceiving.PurchaseReceiving) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(item)
+        }</span> else<span class="cov8" title="1"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov8" title="1">return r0</span>
+}
+
+// GetAllPurchaseReceiving provides a mock function with given fields:
+func (_m *Repository) GetAllPurchaseReceiving() (*[]purchasereceiving.PurchaseReceiving, error) <span class="cov8" title="1">{
+        ret := _m.Called()
+
+        var r0 *[]purchasereceiving.PurchaseReceiving
+        if rf, ok := ret.Get(0).(func() *[]purchasereceiving.PurchaseReceiving); ok </span><span class="cov0" title="0">{
+                r0 = rf()
+        }</span> else<span class="cov8" title="1"> {
+                if ret.Get(0) != nil </span><span class="cov8" title="1">{
+                        r0 = ret.Get(0).(*[]purchasereceiving.PurchaseReceiving)
+                }</span>
+        }
+
+        <span class="cov8" title="1">var r1 error
+        if rf, ok := ret.Get(1).(func() error); ok </span><span class="cov0" title="0">{
+                r1 = rf()
+        }</span> else<span class="cov8" title="1"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov8" title="1">return r0, r1</span>
+}
+
+// GetAllPurchaseReceivingByParameter provides a mock function with given fields: code
+func (_m *Repository) GetAllPurchaseReceivingByParameter(code string) (*[]purchasereceiving.PurchaseReceiving, error) <span class="cov8" title="1">{
+        ret := _m.Called(code)
+
+        var r0 *[]purchasereceiving.PurchaseReceiving
+        if rf, ok := ret.Get(0).(func(string) *[]purchasereceiving.PurchaseReceiving); ok </span><span class="cov0" title="0">{
+                r0 = rf(code)
+        }</span> else<span class="cov8" title="1"> {
+                if ret.Get(0) != nil </span><span class="cov8" title="1">{
+                        r0 = ret.Get(0).(*[]purchasereceiving.PurchaseReceiving)
+                }</span>
+        }
+
+        <span class="cov8" title="1">var r1 error
+        if rf, ok := ret.Get(1).(func(string) error); ok </span><span class="cov0" title="0">{
+                r1 = rf(code)
+        }</span> else<span class="cov8" title="1"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov8" title="1">return r0, r1</span>
+}
+
+// GetPurchaseReceivingByCode provides a mock function with given fields: code
+func (_m *Repository) GetPurchaseReceivingByCode(code string) (*purchasereceiving.PurchaseReceiving, error) <span class="cov8" title="1">{
+        ret := _m.Called(code)
+
+        var r0 *purchasereceiving.PurchaseReceiving
+        if rf, ok := ret.Get(0).(func(string) *purchasereceiving.PurchaseReceiving); ok </span><span class="cov0" title="0">{
+                r0 = rf(code)
+        }</span> else<span class="cov8" title="1"> {
+                if ret.Get(0) != nil </span><span class="cov8" title="1">{
+                        r0 = ret.Get(0).(*purchasereceiving.PurchaseReceiving)
+                }</span>
+        }
+
+        <span class="cov8" title="1">var r1 error
+        if rf, ok := ret.Get(1).(func(string) error); ok </span><span class="cov0" title="0">{
+                r1 = rf(code)
+        }</span> else<span class="cov8" title="1"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov8" title="1">return r0, r1</span>
+}
+
+// GetPurchaseReceivingById provides a mock function with given fields: id
+func (_m *Repository) GetPurchaseReceivingById(id string) (*purchasereceiving.PurchaseReceiving, error) <span class="cov8" title="1">{
+        ret := _m.Called(id)
+
+        var r0 *purchasereceiving.PurchaseReceiving
+        if rf, ok := ret.Get(0).(func(string) *purchasereceiving.PurchaseReceiving); ok </span><span class="cov0" title="0">{
+                r0 = rf(id)
+        }</span> else<span class="cov8" title="1"> {
+                if ret.Get(0) != nil </span><span class="cov8" title="1">{
+                        r0 = ret.Get(0).(*purchasereceiving.PurchaseReceiving)
+                }</span>
+        }
+
+        <span class="cov8" title="1">var r1 error
+        if rf, ok := ret.Get(1).(func(string) error); ok </span><span class="cov0" title="0">{
+                r1 = rf(id)
+        }</span> else<span class="cov8" title="1"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov8" title="1">return r0, r1</span>
+}
+
+// InsertPurchaseReceiving provides a mock function with given fields: item
+func (_m *Repository) InsertPurchaseReceiving(item *purchasereceiving.PurchaseReceiving) error <span class="cov8" title="1">{
+        ret := _m.Called(item)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(*purchasereceiving.PurchaseReceiving) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(item)
+        }</span> else<span class="cov8" title="1"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov8" title="1">return r0</span>
+}
+
+// UpdatePurchaseReceiving2 provides a mock function with given fields: id, code, description, modifier, updater
+func (_m *Repository) UpdatePurchaseReceiving2(id *string, code *string, description *string, modifier *string, updater time.Time) error <span class="cov8" title="1">{
+        ret := _m.Called(id, code, description, modifier, updater)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(*string, *string, *string, *string, time.Time) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(id, code, description, modifier, updater)
+        }</span> else<span class="cov8" title="1"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov8" title="1">return r0</span>
+}
+</pre>
+		
+		<pre class="file" id="file31" style="display: none">// Code generated by mockery v2.9.4. DO NOT EDIT.
+
+package mocks
+
+import (
+        purchasereceiving "AltaStore/business/purchasereceiving"
+
+        mock "github.com/stretchr/testify/mock"
+
+        time "time"
+)
+
+// RepositoryDetail is an autogenerated mock type for the RepositoryDetail type
+type RepositoryDetail struct {
+        mock.Mock
+}
+
+// DeletePurchaseReceivingDetail provides a mock function with given fields: purchaseId, productId, remover, deleter
+func (_m *RepositoryDetail) DeletePurchaseReceivingDetail(purchaseId *string, productId *string, remover *string, deleter time.Time) error <span class="cov0" title="0">{
+        ret := _m.Called(purchaseId, productId, remover, deleter)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(*string, *string, *string, time.Time) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(purchaseId, productId, remover, deleter)
+        }</span> else<span class="cov0" title="0"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov0" title="0">return r0</span>
+}
+
+// DeletePurchaseReceivingDetail2 provides a mock function with given fields: id, deleter
+func (_m *RepositoryDetail) DeletePurchaseReceivingDetail2(id string, deleter string) error <span class="cov8" title="1">{
+        ret := _m.Called(id, deleter)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(string, string) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(id, deleter)
+        }</span> else<span class="cov8" title="1"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov8" title="1">return r0</span>
+}
+
+// GetPurchaseReceivingDetailById provides a mock function with given fields: id
+func (_m *RepositoryDetail) GetPurchaseReceivingDetailById(id string) (*purchasereceiving.PurchaseReceivingDetail, error) <span class="cov0" title="0">{
+        ret := _m.Called(id)
+
+        var r0 *purchasereceiving.PurchaseReceivingDetail
+        if rf, ok := ret.Get(0).(func(string) *purchasereceiving.PurchaseReceivingDetail); ok </span><span class="cov0" title="0">{
+                r0 = rf(id)
+        }</span> else<span class="cov0" title="0"> {
+                if ret.Get(0) != nil </span><span class="cov0" title="0">{
+                        r0 = ret.Get(0).(*purchasereceiving.PurchaseReceivingDetail)
+                }</span>
+        }
+
+        <span class="cov0" title="0">var r1 error
+        if rf, ok := ret.Get(1).(func(string) error); ok </span><span class="cov0" title="0">{
+                r1 = rf(id)
+        }</span> else<span class="cov0" title="0"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov0" title="0">return r0, r1</span>
+}
+
+// GetPurchaseReceivingDetailByPurchaseReceivingId provides a mock function with given fields: id
+func (_m *RepositoryDetail) GetPurchaseReceivingDetailByPurchaseReceivingId(id string) (*[]purchasereceiving.PurchaseReceivingDetail, error) <span class="cov8" title="1">{
+        ret := _m.Called(id)
+
+        var r0 *[]purchasereceiving.PurchaseReceivingDetail
+        if rf, ok := ret.Get(0).(func(string) *[]purchasereceiving.PurchaseReceivingDetail); ok </span><span class="cov0" title="0">{
+                r0 = rf(id)
+        }</span> else<span class="cov8" title="1"> {
+                if ret.Get(0) != nil </span><span class="cov8" title="1">{
+                        r0 = ret.Get(0).(*[]purchasereceiving.PurchaseReceivingDetail)
+                }</span>
+        }
+
+        <span class="cov8" title="1">var r1 error
+        if rf, ok := ret.Get(1).(func(string) error); ok </span><span class="cov0" title="0">{
+                r1 = rf(id)
+        }</span> else<span class="cov8" title="1"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov8" title="1">return r0, r1</span>
+}
+
+// InsertPurchaseReceivingDetail provides a mock function with given fields: item
+func (_m *RepositoryDetail) InsertPurchaseReceivingDetail(item *purchasereceiving.PurchaseReceivingDetail) error <span class="cov8" title="1">{
+        ret := _m.Called(item)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(*purchasereceiving.PurchaseReceivingDetail) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(item)
+        }</span> else<span class="cov8" title="1"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov8" title="1">return r0</span>
+}
+
+// UpdatePurchaseReceivingDetail provides a mock function with given fields: purchaseId, productId, price, qty, modifier, updater
+func (_m *RepositoryDetail) UpdatePurchaseReceivingDetail(purchaseId *string, productId *string, price *int, qty *int, modifier *string, updater time.Time) error <span class="cov8" title="1">{
+        ret := _m.Called(purchaseId, productId, price, qty, modifier, updater)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(*string, *string, *int, *int, *string, time.Time) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(purchaseId, productId, price, qty, modifier, updater)
+        }</span> else<span class="cov8" title="1"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov8" title="1">return r0</span>
+}
+</pre>
+		
+		<pre class="file" id="file32" style="display: none">// Code generated by mockery v2.9.4. DO NOT EDIT.
+
+package mocks
+
+import (
+        purchasereceiving "AltaStore/business/purchasereceiving"
+
+        mock "github.com/stretchr/testify/mock"
+)
+
+// Service is an autogenerated mock type for the Service type
+type Service struct {
+        mock.Mock
+}
+
+// DeletePurchaseReceiving provides a mock function with given fields: id, deleter
+func (_m *Service) DeletePurchaseReceiving(id string, deleter string) error <span class="cov0" title="0">{
+        ret := _m.Called(id, deleter)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(string, string) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(id, deleter)
+        }</span> else<span class="cov0" title="0"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov0" title="0">return r0</span>
+}
+
+// GetAllPurchaseReceiving provides a mock function with given fields: finder
+func (_m *Service) GetAllPurchaseReceiving(finder string) (*[]purchasereceiving.PurchaseReceiving, error) <span class="cov0" title="0">{
+        ret := _m.Called(finder)
+
+        var r0 *[]purchasereceiving.PurchaseReceiving
+        if rf, ok := ret.Get(0).(func(string) *[]purchasereceiving.PurchaseReceiving); ok </span><span class="cov0" title="0">{
+                r0 = rf(finder)
+        }</span> else<span class="cov0" title="0"> {
+                if ret.Get(0) != nil </span><span class="cov0" title="0">{
+                        r0 = ret.Get(0).(*[]purchasereceiving.PurchaseReceiving)
+                }</span>
+        }
+
+        <span class="cov0" title="0">var r1 error
+        if rf, ok := ret.Get(1).(func(string) error); ok </span><span class="cov0" title="0">{
+                r1 = rf(finder)
+        }</span> else<span class="cov0" title="0"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov0" title="0">return r0, r1</span>
+}
+
+// GetAllPurchaseReceivingByParameter provides a mock function with given fields: code, finder
+func (_m *Service) GetAllPurchaseReceivingByParameter(code string, finder string) (*[]purchasereceiving.PurchaseReceiving, error) <span class="cov0" title="0">{
+        ret := _m.Called(code, finder)
+
+        var r0 *[]purchasereceiving.PurchaseReceiving
+        if rf, ok := ret.Get(0).(func(string, string) *[]purchasereceiving.PurchaseReceiving); ok </span><span class="cov0" title="0">{
+                r0 = rf(code, finder)
+        }</span> else<span class="cov0" title="0"> {
+                if ret.Get(0) != nil </span><span class="cov0" title="0">{
+                        r0 = ret.Get(0).(*[]purchasereceiving.PurchaseReceiving)
+                }</span>
+        }
+
+        <span class="cov0" title="0">var r1 error
+        if rf, ok := ret.Get(1).(func(string, string) error); ok </span><span class="cov0" title="0">{
+                r1 = rf(code, finder)
+        }</span> else<span class="cov0" title="0"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov0" title="0">return r0, r1</span>
+}
+
+// GetPurchaseReceivingByCode provides a mock function with given fields: code, finder
+func (_m *Service) GetPurchaseReceivingByCode(code string, finder string) (*purchasereceiving.PurchaseReceiving, error) <span class="cov0" title="0">{
+        ret := _m.Called(code, finder)
+
+        var r0 *purchasereceiving.PurchaseReceiving
+        if rf, ok := ret.Get(0).(func(string, string) *purchasereceiving.PurchaseReceiving); ok </span><span class="cov0" title="0">{
+                r0 = rf(code, finder)
+        }</span> else<span class="cov0" title="0"> {
+                if ret.Get(0) != nil </span><span class="cov0" title="0">{
+                        r0 = ret.Get(0).(*purchasereceiving.PurchaseReceiving)
+                }</span>
+        }
+
+        <span class="cov0" title="0">var r1 error
+        if rf, ok := ret.Get(1).(func(string, string) error); ok </span><span class="cov0" title="0">{
+                r1 = rf(code, finder)
+        }</span> else<span class="cov0" title="0"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov0" title="0">return r0, r1</span>
+}
+
+// GetPurchaseReceivingById provides a mock function with given fields: id, finder
+func (_m *Service) GetPurchaseReceivingById(id string, finder string) (*purchasereceiving.PurchaseReceiving, error) <span class="cov0" title="0">{
+        ret := _m.Called(id, finder)
+
+        var r0 *purchasereceiving.PurchaseReceiving
+        if rf, ok := ret.Get(0).(func(string, string) *purchasereceiving.PurchaseReceiving); ok </span><span class="cov0" title="0">{
+                r0 = rf(id, finder)
+        }</span> else<span class="cov0" title="0"> {
+                if ret.Get(0) != nil </span><span class="cov0" title="0">{
+                        r0 = ret.Get(0).(*purchasereceiving.PurchaseReceiving)
+                }</span>
+        }
+
+        <span class="cov0" title="0">var r1 error
+        if rf, ok := ret.Get(1).(func(string, string) error); ok </span><span class="cov0" title="0">{
+                r1 = rf(id, finder)
+        }</span> else<span class="cov0" title="0"> {
+                r1 = ret.Error(1)
+        }</span>
+
+        <span class="cov0" title="0">return r0, r1</span>
+}
+
+// InsertPurchaseReceiving provides a mock function with given fields: item, creator
+func (_m *Service) InsertPurchaseReceiving(item *purchasereceiving.InsertPurchaseReceivingSpec, creator string) error <span class="cov0" title="0">{
+        ret := _m.Called(item, creator)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(*purchasereceiving.InsertPurchaseReceivingSpec, string) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(item, creator)
+        }</span> else<span class="cov0" title="0"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov0" title="0">return r0</span>
+}
+
+// UpdatePurchaseReceiving provides a mock function with given fields: id, item, modifier
+func (_m *Service) UpdatePurchaseReceiving(id string, item *purchasereceiving.UpdatePurchaseReceivingSpec, modifier string) error <span class="cov0" title="0">{
+        ret := _m.Called(id, item, modifier)
+
+        var r0 error
+        if rf, ok := ret.Get(0).(func(string, *purchasereceiving.UpdatePurchaseReceivingSpec, string) error); ok </span><span class="cov0" title="0">{
+                r0 = rf(id, item, modifier)
+        }</span> else<span class="cov0" title="0"> {
+                r0 = ret.Error(0)
+        }</span>
+
+        <span class="cov0" title="0">return r0</span>
+}
+</pre>
+		
+		<pre class="file" id="file33" style="display: none">package purchasereceiving
+
+import (
+        "time"
+
+        "github.com/google/uuid"
+)
+
+type PurchaseReceiving struct {
+        ID           string
+        Code         string
+        DateReceived time.Time
+        ReceivedBy   string
+        Description  string
+        Details      []PurchaseReceivingDetail
+        CreatedBy    string
+        CreatedAt    time.Time
+        UpdatedBy    string
+        UpdatedAt    time.Time
+        DeletedBy    string
+        DeletedAt    time.Time
+}
+
+type PurchaseReceivingDetail struct {
+        ID                  string
+        PurchaseReceivingId string
+        ProductId           string
+        ProductCode         string
+        ProductName         string
+        Qty                 int32
+        Price               int64
+        CreatedBy           string
+        CreatedAt           time.Time
+        UpdatedBy           string
+        UpdatedAt           time.Time
+        DeletedBy           string
+        DeletedAt           time.Time
+}
+
+func NewPurchaseReceiving(
+        newCode string,
+        newDateReceived time.Time,
+        newReceivedBy string,
+        newDescription string,
+        creator string,
+        createdAt time.Time,
+) PurchaseReceiving <span class="cov8" title="1">{
+        return PurchaseReceiving{
+                ID:           uuid.NewString(),
+                Code:         newCode,
+                DateReceived: newDateReceived,
+                ReceivedBy:   newReceivedBy,
+                Description:  newDescription,
+                CreatedAt:    createdAt,
+                CreatedBy:    creator,
+        }
+}</span>
+
+func NewPurchaseReceivingDetail(
+        purchaseReceivingId string,
+        newProductId string,
+        newQty int32,
+        newPrice int64,
+        creator string,
+        createdAt time.Time,
+) PurchaseReceivingDetail <span class="cov8" title="1">{
+        return PurchaseReceivingDetail{
+                ID:                  uuid.NewString(),
+                PurchaseReceivingId: purchaseReceivingId,
+                ProductId:           newProductId,
+                Qty:                 newQty,
+                Price:               newPrice,
+                CreatedBy:           creator,
+                CreatedAt:           createdAt,
+        }
+}</span>
+
+func (oldData *PurchaseReceiving) ModifyPurchaseReceiving(
+        newDateReceived time.Time,
+        newReceivedBy string,
+        newDescription string,
+        modifier string,
+        modifierAt time.Time,
+) PurchaseReceiving <span class="cov0" title="0">{
+        return PurchaseReceiving{
+                ID:           oldData.ID,
+                Code:         oldData.Code,
+                DateReceived: newDateReceived,
+                ReceivedBy:   newReceivedBy,
+                Description:  newDescription,
+                CreatedAt:    oldData.CreatedAt,
+                CreatedBy:    oldData.CreatedBy,
+                UpdatedAt:    modifierAt,
+                UpdatedBy:    modifier,
+        }
+}</span>
+
+func (oldData *PurchaseReceivingDetail) ModifyPurchaseReceivingDetail(
+        newProductId string,
+        newQty int32,
+        newPrice int64,
+        modifier string,
+        modifierAt time.Time,
+) PurchaseReceivingDetail <span class="cov0" title="0">{
+        return PurchaseReceivingDetail{
+                ID:        oldData.ID,
+                ProductId: newProductId,
+                Qty:       newQty,
+                Price:     newPrice,
+                CreatedAt: oldData.CreatedAt,
+                CreatedBy: oldData.CreatedBy,
+                UpdatedAt: modifierAt,
+                UpdatedBy: modifier,
+        }
+}</span>
+
+func (oldData *PurchaseReceiving) DeletePurchaseReceiving(
+        deleter string,
+        deletedAt time.Time,
+) PurchaseReceiving <span class="cov8" title="1">{
+        return PurchaseReceiving{
+                ID:           oldData.ID,
+                Code:         oldData.Code,
+                DateReceived: oldData.DateReceived,
+                ReceivedBy:   oldData.ReceivedBy,
+                Description:  oldData.Description,
+                CreatedAt:    oldData.CreatedAt,
+                CreatedBy:    oldData.CreatedBy,
+                UpdatedAt:    oldData.UpdatedAt,
+                UpdatedBy:    oldData.UpdatedBy,
+                DeletedAt:    deletedAt,
+                DeletedBy:    deleter,
+        }
+}</span>
+
+func (oldData *PurchaseReceivingDetail) DeletePurchaseReceivingDetail(
+        deleter string,
+        deletedAt time.Time,
+) PurchaseReceivingDetail <span class="cov0" title="0">{
+        return PurchaseReceivingDetail{
+                ID:        oldData.ID,
+                ProductId: oldData.ProductId,
+                Qty:       oldData.Qty,
+                Price:     oldData.Price,
+                CreatedAt: oldData.CreatedAt,
+                CreatedBy: oldData.CreatedBy,
+                UpdatedAt: oldData.UpdatedAt,
+                UpdatedBy: oldData.UpdatedBy,
+                DeletedAt: deletedAt,
+                DeletedBy: deleter,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file34" style="display: none">package purchasereceiving
+
+import (
+        "AltaStore/business"
+        // "AltaStore/business/admin"
+        "AltaStore/util/validator"
+        "time"
+
+        "github.com/google/uuid"
+)
+
+type InsertPurchaseReceivingSpec struct {
+        Code         string    `validate:"required"`
+        DateReceived time.Time `validate:"required"`
+        ReceivedBy   string    `validate:"required"`
+        Description  string
+        Details      []InsertPurchaseReceivingDetailSpec `validate:"required"`
+}
+
+type InsertPurchaseReceivingDetailSpec struct {
+        ProductId string `validate:"required"`
+        Qty       int32  `validate:"required"`
+        Price     int64  `validate:"required"`
+}
+
+type UpdatePurchaseReceivingSpec struct {
+        Code string `validate:"required"`
+        // DateReceived time.Time `validate:"required"`
+        // ReceivedBy   string    `validate:"required"`
+        Description string
+        Details     []UpdatePurchaseReceivingDetailSpec `validate:"required"`
+}
+type UpdatePurchaseReceivingDetailSpec struct {
+        // ID        string
+        ProductId string `validate:"required"`
+        Qty       int    `validate:"required"`
+        Price     int    `validate:"required"`
+        Status    int    `validate:"required,min=0,max=2"`
+}
+
+type service struct {
+        // adminService     admin.Service
+        repository       Repository
+        repositoryDetail RepositoryDetail
+}
+
+// func NewService(
+//         adminService admin.Service,
+//         repository Repository,
+//         repositoryDetail RepositoryDetail,
+// ) Service {
+//         return &amp;service{
+//                 adminService, repository, repositoryDetail,
+//         }
+// }
+
+func NewService(
+        repository Repository,
+        repositoryDetail RepositoryDetail,
+) Service <span class="cov8" title="1">{
+        return &amp;service{repository, repositoryDetail}
+}</span>
+
+// GetAllPurchaseReceiving(finder string) (*PurchaseReceiving, error)
+// GetAllPurchaseReceivingById(id, finder string) (*PurchaseReceiving, error)
+
+func (s *service) GetAllPurchaseReceivingByParameter(code string, finder string) (*[]PurchaseReceiving, error) <span class="cov8" title="1">{
+        // _, err := s.adminService.FindAdminByID(finder)
+        // if err != nil {
+        //         empty := []PurchaseReceiving{}
+        //         return &amp;empty, business.ErrNotHavePermission
+        // }
+        return s.repository.GetAllPurchaseReceivingByParameter(code)
+}</span>
+
+func (s *service) GetAllPurchaseReceiving(finder string) (*[]PurchaseReceiving, error) <span class="cov8" title="1">{
+        // _, err := s.adminService.FindAdminByID(finder)
+        // if err != nil {
+        //         empty := []PurchaseReceiving{}
+        //         return &amp;empty, business.ErrNotHavePermission
+        // }
+        return s.repository.GetAllPurchaseReceiving()
+}</span>
+
+func (s *service) GetPurchaseReceivingById(id, finder string) (*PurchaseReceiving, error) <span class="cov8" title="1">{
+        // _, err := s.adminService.FindAdminByID(finder)
+        // if err != nil {
+        //         return nil, business.ErrNotHavePermission
+        // }
+        purchase, err := s.repository.GetPurchaseReceivingById(id)
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">details, err := s.repositoryDetail.GetPurchaseReceivingDetailByPurchaseReceivingId(purchase.ID)
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+        <span class="cov8" title="1">purchase.Details = append(purchase.Details, *details...)
+        return purchase, nil</span>
+}
+
+func (s *service) GetPurchaseReceivingByCode(code, finder string) (*PurchaseReceiving, error) <span class="cov8" title="1">{
+        // _, err := s.adminService.FindAdminByID(finder)
+        // if err != nil {
+        //         return nil, business.ErrNotHavePermission
+        // }
+        return s.repository.GetPurchaseReceivingByCode(code)
+}</span>
+
+func (s *service) InsertPurchaseReceiving(item *InsertPurchaseReceivingSpec, creator string) error <span class="cov8" title="1">{
+        err := validator.GetValidator().Struct(item)
+        if err != nil </span><span class="cov0" title="0">{
+                return business.ErrInvalidSpec
+        }</span>
+
+        // admin, err := s.adminService.FindAdminByID(creator)
+        // if err != nil {
+        //         return business.ErrNotHavePermission
+        // }
+
+        <span class="cov8" title="1">data, _ := s.repository.GetPurchaseReceivingByCode(item.Code)
+        if data != nil </span><span class="cov8" title="1">{
+                return business.ErrDataExists
+        }</span>
+
+        <span class="cov8" title="1">newItem := NewPurchaseReceiving(
+                item.Code,
+                item.DateReceived,
+                item.ReceivedBy,
+                item.Description,
+                //admin.ID,
+                creator,
+                time.Now(),
+        )
+        err = s.repository.InsertPurchaseReceiving(&amp;newItem)
+        if err != nil </span><span class="cov8" title="1">{
+                return err
+        }</span>
+
+        <span class="cov8" title="1">for _, val := range item.Details </span><span class="cov8" title="1">{
+                newDetail := NewPurchaseReceivingDetail(
+                        newItem.ID,
+                        val.ProductId,
+                        val.Qty,
+                        val.Price,
+                        newItem.CreatedBy,
+                        newItem.CreatedAt,
+                )
+                err = s.repositoryDetail.InsertPurchaseReceivingDetail(&amp;newDetail)
+                if err != nil </span><span class="cov0" title="0">{
+                        return err
+                }</span>
+        }
+        <span class="cov8" title="1">return nil</span>
+}
+
+func (s *service) UpdatePurchaseReceiving(id string, item *UpdatePurchaseReceivingSpec, modifier string) error <span class="cov8" title="1">{
+        err := validator.GetValidator().Struct(item)
+        if err != nil </span><span class="cov0" title="0">{
+                return business.ErrInvalidSpec
+        }</span>
+
+        // admin, err := s.adminService.FindAdminByID(modifier)
+        // if err != nil {
+        //         return business.ErrNotHavePermission
+        // }
+
+        <span class="cov8" title="1">if _, err := s.repository.GetPurchaseReceivingById(id); err != nil </span><span class="cov8" title="1">{
+                return business.ErrNotFound
+        }</span>
+
+        <span class="cov8" title="1">if err := s.repository.UpdatePurchaseReceiving2(&amp;id, &amp;item.Code, &amp;item.Description, &amp;modifier, time.Now()); err != nil </span><span class="cov8" title="1">{
+                return err
+        }</span>
+
+        <span class="cov8" title="1">for _, val := range item.Details </span><span class="cov8" title="1">{
+                if val.Status == 0 </span><span class="cov0" title="0">{
+                        // Insert
+                        err = s.repositoryDetail.InsertPurchaseReceivingDetail(&amp;PurchaseReceivingDetail{
+                                ID:                  uuid.NewString(),
+                                PurchaseReceivingId: id,
+                                ProductId:           val.ProductId,
+                                Qty:                 int32(val.Qty),
+                                Price:               int64(val.Price),
+                                CreatedBy:           modifier,
+                                CreatedAt:           time.Now(),
+                                UpdatedBy:           modifier,
+                                UpdatedAt:           time.Now(),
+                        })
+                }</span> else<span class="cov8" title="1"> if val.Status == 1 </span><span class="cov8" title="1">{
+                        // Update
+                        err = s.repositoryDetail.UpdatePurchaseReceivingDetail(
+                                &amp;id, &amp;val.ProductId, &amp;val.Price, &amp;val.Qty, &amp;modifier, time.Now(),
+                        )
+                }</span> else<span class="cov0" title="0"> {
+                        // Deleted
+                        err = s.repositoryDetail.DeletePurchaseReceivingDetail(&amp;id, &amp;val.ProductId, &amp;modifier, time.Now())
+                }</span>
+
+                <span class="cov8" title="1">if err != nil </span><span class="cov8" title="1">{
+                        return err
+                }</span>
+        }
+
+        <span class="cov8" title="1">return nil</span>
+}
+
+func (s *service) DeletePurchaseReceiving(id string, deleter string) error <span class="cov8" title="1">{
+        // admin, err := s.adminService.FindAdminByID(deleter)
+        // if err != nil {
+        //         return business.ErrNotHavePermission
+        // }
+
+        purchase, err := s.repository.GetPurchaseReceivingById(id)
+        if err != nil </span><span class="cov8" title="1">{
+                return business.ErrNotFound
+        }</span>
+        <span class="cov8" title="1">deleteData := purchase.DeletePurchaseReceiving(
+                //admin.ID,
+                deleter,
+                time.Now(),
+        )
+
+        // return s.repository.DeletePurchaseReceiving(&amp;deleteData)
+
+        err = s.repositoryDetail.DeletePurchaseReceivingDetail2(id, deleter)
+        if err != nil </span><span class="cov8" title="1">{
+                return err
+        }</span>
+
+        <span class="cov8" title="1">return s.repository.DeletePurchaseReceiving(&amp;deleteData)</span>
+}
+</pre>
+		
+		<pre class="file" id="file35" style="display: none">package config
+
+import (
+        "github.com/labstack/gommon/log"
+        "github.com/spf13/viper"
+)
+
+type ConfigApp struct {
+        AppHost       string `mapstructure:"app_host"`
+        AppPort       int    `mapstructure:"app_port"`
+        DbDriver      string `mapstructure:"db_driver"`
+        DbHost        string `mapstructure:"db_host"`
+        DbPort        int    `mapstructure:"db_port"`
+        DbUsername    string `mapstructure:"db_username"`
+        DbPassword    string `mapstructure:"db_password"`
+        DbName        string `mapstructure:"db_name"`
+        JwtSecretKey  string `mapstructure:"jwtsecretkey"`
+        MongoHost     string `mapstructure:"mongo_host"`
+        MongoPort     int    `mapstructure:"mongo_port"`
+        MongoUsername string `mapstructure:"mongo_username"`
+        MongoPassword string `mapstructure:"mongo_password"`
+        MongoDbName   string `mapstructure:"mongo_dbname"`
+}
+
+func GetConfig() *ConfigApp <span class="cov0" title="0">{
+        // Set default config if error parsing file
+        var defaConfig ConfigApp
+
+        defaConfig.AppHost = "localhost"
+        defaConfig.AppPort = 9000
+        defaConfig.DbDriver = "pgsql"
+        defaConfig.DbHost = "localhost"
+        defaConfig.DbPort = 5432
+        defaConfig.DbUsername = "postgres"
+        defaConfig.DbPassword = "postgres"
+        defaConfig.DbName = "altastoredb"
+        defaConfig.JwtSecretKey = "AltaStore"
+        defaConfig.MongoHost = "localhost"
+        defaConfig.MongoPort = 27017
+        defaConfig.MongoUsername = "mongo"
+        defaConfig.MongoPassword = "mongo"
+        defaConfig.MongoDbName = "altastoredb"
+
+        var (
+                err error
+        )
+
+        // Production
+        // cwd, _ := os.Getwd()
+        // viper.SetConfigFile(cwd + "/../config/.env")
+
+        //Development
+        viper.SetConfigFile("./.env")
+        err = viper.ReadInConfig()
+        if err != nil </span><span class="cov0" title="0">{
+                log.Info("Failed read config, config set to default step 1.")
+                return &amp;defaConfig
+        }</span>
+
+        <span class="cov0" title="0">var finalConfig ConfigApp
+        err = viper.Unmarshal(&amp;finalConfig)
+        if err != nil </span><span class="cov0" title="0">{
+                log.Info("Failed bind config, config set to default step 2.")
+                return &amp;defaConfig
+        }</span>
+
+        <span class="cov0" title="0">return &amp;finalConfig</span>
+}
+</pre>
+		
+		<pre class="file" id="file36" style="display: none">package main
+
+import (
+        "AltaStore/api"
+        "AltaStore/api/middleware"
+
+        // Controller
+        cateController "AltaStore/api/v1/category"
+        productController "AltaStore/api/v1/product"
+        purchaseController "AltaStore/api/v1/purchasereceiving"
+
+        // Service
+        cateService "AltaStore/business/category"
+        loggerService "AltaStore/business/logger"
+        productService "AltaStore/business/product"
+        purchaseService "AltaStore/business/purchasereceiving"
+
+        // Repository
+        cateRepository "AltaStore/modules/category"
+        loggerRepo "AltaStore/modules/logger"
+        productRepository "AltaStore/modules/product"
+        purchaseRepository "AltaStore/modules/purchasereceiving"
+        purchaseDetailRepository "AltaStore/modules/purchasereceivingdetail"
+
+        "context"
+        "fmt"
+        "time"
+
+        echo "github.com/labstack/echo/v4"
+        log "github.com/sirupsen/logrus"
+
+        "AltaStore/config"
+        "AltaStore/modules/migration"
+
+        "go.mongodb.org/mongo-driver/mongo"
+        "go.mongodb.org/mongo-driver/mongo/options"
+        "gorm.io/driver/postgres"
+        "gorm.io/gorm"
+)
+
+func newDatabaseConnection(cfg *config.ConfigApp) *gorm.DB <span class="cov0" title="0">{
+        stringConnection := fmt.Sprintf(
+                "host=%s port=%d user=%s password=%s dbname=%s",
+                cfg.DbHost, cfg.DbPort, cfg.DbUsername, cfg.DbPassword, cfg.DbName,
+        )
+        db, err := gorm.Open(postgres.Open(stringConnection), &amp;gorm.Config{})
+
+        if err != nil </span><span class="cov0" title="0">{
+                panic(err)</span>
+        }
+
+        <span class="cov0" title="0">migration.TableMigration(db)
+
+        return db</span>
+}
+
+func newMongoDBConnection(cfg *config.ConfigApp) *mongo.Database <span class="cov0" title="0">{
+        clientOptions := options.Client().ApplyURI(
+                fmt.Sprintf("mongodb://%s:%s@%s:%d", cfg.MongoUsername, cfg.MongoPassword, cfg.MongoHost, cfg.MongoPort),
+        )
+
+        client, err := mongo.NewClient(clientOptions)
+        if err != nil </span><span class="cov0" title="0">{
+                panic(err)</span>
+        }
+
+        <span class="cov0" title="0">err = client.Connect(context.Background())
+        if err != nil </span><span class="cov0" title="0">{
+                panic(err)</span>
+        }
+
+        <span class="cov0" title="0">return client.Database(cfg.MongoDbName)</span>
+}
+
+func main() <span class="cov0" title="0">{
+        // retrieves application configuration and returns common values when there is a problem
+        config := config.GetConfig()
+
+        // Open mongodb logger
+        mongoConnection := newMongoDBConnection(config)
+
+        // Register repository
+        logrRepo := loggerRepo.NewRepository(mongoConnection)
+
+        // Register service
+        logeService := loggerService.NewService(logrRepo)
+
+        // Register logs
+        log.SetFormatter(&amp;log.JSONFormatter{})
+        log.SetOutput(logeService)
+
+        // open database server base session
+        dbConnection := newDatabaseConnection(config)
+
+        // Initiate Respository Category
+        categoryRepo := cateRepository.NewRepository(dbConnection)
+
+        // Initiate Service Category
+        // categoryService := cateService.NewService(adminService, categoryRepo)
+        categoryServc := cateService.NewService(categoryRepo)
+
+        // Initiate Controller Category
+        cateControl := cateController.NewController(categoryServc)
+
+        // Initiate Respository Product
+        productRepo := productRepository.NewRepository(dbConnection)
+
+        // Initiate Service Product
+        // ProductService := productService.NewService(adminService, categoryService, product)
+        ProductServc := productService.NewService(categoryServc, productRepo)
+
+        // Initiate Controller Product
+        productControl := productController.NewController(ProductServc)
+
+        // initiate Purchase Receiving repository
+        purchase := purchaseRepository.NewRepository(dbConnection)
+        purchaseDetail := purchaseDetailRepository.NewRepository(dbConnection)
+
+        // initiate Purchase Receiving service
+        // purchaseService := purchaseService.NewService(adminService, purchase, purchaseDetail)
+        purchaseService := purchaseService.NewService(purchase, purchaseDetail)
+
+        // initiate Purchase Receiving controller
+        purchaseControl := purchaseController.NewController(purchaseService)
+
+        // create echo http
+        e := echo.New()
+
+        // Register API Path and Controller
+        api.RegisterPath(e,
+                cateControl,
+                productControl,
+                purchaseControl,
+        )
+
+        lock := make(chan error)
+
+        go func(lock chan error) </span><span class="cov0" title="0">{
+                address := fmt.Sprintf(":%d", config.AppPort)
+                lock &lt;- e.Start(address)
+        }</span>(lock)
+
+        <span class="cov0" title="0">time.Sleep(1 * time.Millisecond)
+        middleware.MakeLogEntry(nil).Info(fmt.Sprintf("Application Start In Port =&gt; ::%d", config.AppPort))
+
+        err := &lt;-lock
+        if err != nil </span><span class="cov0" title="0">{
+                middleware.MakeLogEntry(nil).Panic("Shutdown Echo Service")
+        }</span>
+}
+</pre>
+		
+		<pre class="file" id="file37" style="display: none">package category
+
+import (
+        "AltaStore/business"
+        "AltaStore/business/category"
+        "errors"
+        "time"
+
+        "gorm.io/gorm"
+)
+
+type Repository struct {
+        DB *gorm.DB
+}
+
+type ProductCategory struct {
+        ID        string    `gorm:"id;type:uuid;primaryKey"`
+        Code      string    `gorm:"code;type:varchar(50);unique"`
+        Name      string    `gorm:"name;type:varchar(100)"`
+        CreatedAt time.Time `gorm:"created_at"`
+        CreatedBy string    `gorm:"created_by;type:varchar(50)"`
+        UpdatedAt time.Time `gorm:"updated_at"`
+        UpdatedBy string    `gorm:"updated_by;type:varchar(50)"`
+        DeletedAt time.Time `gorm:"deleted_at"`
+        DeletedBy string    `gorm:"deleted_by;type:varchar(50)"`
+}
+
+func (p *ProductCategory) toCategory() category.Category <span class="cov0" title="0">{
+        return category.Category{
+                ID:        p.ID,
+                Code:      p.Code,
+                Name:      p.Name,
+                CreatedAt: p.CreatedAt,
+                CreatedBy: p.CreatedBy,
+                UpdatedAt: p.UpdatedAt,
+                UpdatedBy: p.UpdatedBy,
+        }
+}</span>
+
+func newDataCategory(cat category.Category) *ProductCategory <span class="cov0" title="0">{
+        return &amp;ProductCategory{
+                ID:        cat.ID,
+                Code:      cat.Code,
+                Name:      cat.Name,
+                CreatedAt: cat.CreatedAt,
+                CreatedBy: cat.CreatedBy,
+                UpdatedAt: cat.CreatedAt,
+                UpdatedBy: cat.CreatedBy,
+        }
+}</span>
+
+func NewRepository(db *gorm.DB) *Repository <span class="cov0" title="0">{
+        return &amp;Repository{db}
+}</span>
+
+func (r *Repository) GetAllCategory() (*[]category.Category, error) <span class="cov0" title="0">{
+        var categories []ProductCategory
+
+        err := r.DB.Where(" deleted_by = '' ").Find(&amp;categories).Error
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">var result []category.Category
+        for _, value := range categories </span><span class="cov0" title="0">{
+                result = append(result, value.toCategory())
+        }</span>
+
+        <span class="cov0" title="0">return &amp;result, nil</span>
+}
+
+func (r *Repository) FindCategoryById(id string) (*category.Category, error) <span class="cov0" title="0">{
+        var category ProductCategory
+
+        err := r.DB.First(&amp;category, "id = ? and deleted_by = ''", id).Error
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">response := category.toCategory()
+        return &amp;response, nil</span>
+}
+
+func (r *Repository) FindCategoryByCode(code string) (*category.Category, error) <span class="cov0" title="0">{
+        var category ProductCategory
+
+        err := r.DB.First(&amp;category, "code = ? and deleted_by = ''", code).Error
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">response := category.toCategory()
+        return &amp;response, nil</span>
+}
+
+func (r *Repository) InsertCategory(cat category.Category) error <span class="cov0" title="0">{
+        // Check category code already exists
+        err := r.DB.First(&amp;ProductCategory{}, "code = ?", cat.Code).Error
+        if !errors.Is(err, gorm.ErrRecordNotFound) </span><span class="cov0" title="0">{
+                if err != nil </span><span class="cov0" title="0">{
+                        return err
+                }</span>
+                <span class="cov0" title="0">return business.ErrDataExists</span>
+        }
+
+        <span class="cov0" title="0">dataCategory := newDataCategory(cat)
+
+        return r.DB.Create(dataCategory).Error</span>
+}
+
+func (r *Repository) UpdateCategory(id string, cat category.Category) error <span class="cov0" title="0">{
+        var category ProductCategory
+        var err error
+
+        err = r.DB.First(&amp;category, "id = ?", id).Error
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">err = r.DB.Model(&amp;category).Updates(
+                ProductCategory{Name: cat.Name, UpdatedAt: cat.UpdatedAt, UpdatedBy: cat.UpdatedBy},
+        ).Error
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">return nil</span>
+}
+
+func (r *Repository) DeleteCategory(id string, userid string) error <span class="cov0" title="0">{
+        var category ProductCategory
+        var err error
+
+        if err = r.DB.First(&amp;category, "id = ? and deleted_by = ''", id).Error; err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">return r.DB.Model(&amp;category).Updates(map[string]interface{}{
+                "deleted_by": userid,
+                "deleted_at": time.Now(),
+        }).Error</span>
+}
+</pre>
+		
+		<pre class="file" id="file38" style="display: none">package logger
+
+import (
+        "context"
+
+        "AltaStore/business/logger"
+
+        "go.mongodb.org/mongo-driver/mongo"
+)
+
+type Repository struct {
+        DB *mongo.Database
+}
+
+func NewRepository(db *mongo.Database) *Repository <span class="cov0" title="0">{
+        return &amp;Repository{db}
+}</span>
+
+func (r *Repository) AddLoggerActivity(data *logger.LoggerData) error <span class="cov0" title="0">{
+
+        _, err := r.DB.Collection("logs").InsertOne(context.Background(), data)
+
+        return err
+}</span>
+</pre>
+		
+		<pre class="file" id="file39" style="display: none">package migration
+
+import (
+        "gorm.io/gorm"
+
+        "AltaStore/modules/category"
+        "AltaStore/modules/product"
+        "AltaStore/modules/purchasereceiving"
+        "AltaStore/modules/purchasereceivingdetail"
+)
+
+func TableMigration(db *gorm.DB) <span class="cov0" title="0">{
+        db.AutoMigrate(&amp;category.ProductCategory{},
+                &amp;product.Product{},
+                &amp;purchasereceiving.PurchaseReceiving{},
+                &amp;purchasereceivingdetail.PurchaseReceivingDetail{},
+        )
+}</span>
+</pre>
+		
+		<pre class="file" id="file40" style="display: none">package product
+
+import (
+        "AltaStore/business/product"
+        category "AltaStore/modules/category"
+        "fmt"
+        "strconv"
+        "time"
+
+        "gorm.io/gorm"
+)
+
+type Repository struct {
+        DB *gorm.DB
+}
+
+type Product struct {
+        ID                string `gorm:"id;type:uuid;primaryKey"`
+        Code              string `gorm:"code;type:varchar(50);unique"`
+        Name              string `gorm:"name;type:varchar(100)"`
+        Price             int64  `gorm:"price"`
+        ProductCategoryId string `gorm:"productcategoryid;type:uuid"`
+        ProductCategory   category.ProductCategory
+        IsActive          bool      `gorm:"isactive;type:boolean"`
+        UnitName          string    `gorm:"unitname;type:varchar(50)"`
+        Description       string    `gorm:"description;type:varchar(255)"`
+        CreatedAt         time.Time `gorm:"created_at"`
+        CreatedBy         string    `gorm:"created_by;type:varchar(50)"`
+        UpdatedAt         time.Time `gorm:"updated_at"`
+        UpdatedBy         string    `gorm:"updated_by;type:varchar(50)"`
+        DeletedAt         time.Time `gorm:"deleted_at"`
+        DeletedBy         string    `gorm:"deleted_by;type:varchar(50)"`
+}
+
+type ProductQuery struct {
+        ID                  string    `gorm:"id"`
+        Code                string    `gorm:"code"`
+        Name                string    `gorm:"name"`
+        Price               int64     `gorm:"price"`
+        ProductCategoryName string    `gorm:"product_category_name"`
+        IsActive            bool      `gorm:"isactive"`
+        UnitName            string    `gorm:"unitname"`
+        Description         string    `gorm:"description"`
+        Qty                 int       `gorm:"qty"`
+        QtyCart             int       `gorm:"qty_cart"`
+        CreatedAt           time.Time `gorm:"created_at"`
+        CreatedBy           string    `gorm:"created_by"`
+        UpdatedAt           time.Time `gorm:"updated_at"`
+        UpdatedBy           string    `gorm:"updated_by"`
+}
+
+func (p *ProductQuery) ToProduct() product.Product <span class="cov0" title="0">{
+        return product.Product{
+                ID:                  p.ID,
+                Code:                p.Code,
+                Name:                p.Name,
+                Price:               p.Price,
+                IsActive:            p.IsActive,
+                UnitName:            p.UnitName,
+                Description:         p.Description,
+                ProductCategoryName: p.ProductCategoryName,
+                Qty:                 int32(p.Qty),
+                QtyCart:             int32(p.QtyCart),
+                CreatedAt:           p.CreatedAt,
+                CreatedBy:           p.CreatedBy,
+                UpdatedAt:           p.UpdatedAt,
+                UpdatedBy:           p.UpdatedBy,
+        }
+}</span>
+
+func (p *Product) ToProduct() product.Product <span class="cov0" title="0">{
+        return product.Product{
+                ID:                p.ID,
+                Code:              p.Code,
+                Name:              p.Name,
+                Price:             p.Price,
+                IsActive:          p.IsActive,
+                ProductCategoryId: p.ProductCategoryId,
+                UnitName:          p.UnitName,
+                Description:       p.Description,
+                CreatedAt:         p.CreatedAt,
+                CreatedBy:         p.CreatedBy,
+                UpdatedAt:         p.UpdatedAt,
+                UpdatedBy:         p.UpdatedBy,
+                DeletedAt:         p.DeletedAt,
+                DeletedBy:         p.DeletedBy,
+        }
+}</span>
+
+func newDataProduct(p product.Product) *Product <span class="cov0" title="0">{
+        return &amp;Product{
+                ID:                p.ID,
+                Code:              p.Code,
+                Name:              p.Name,
+                Price:             p.Price,
+                IsActive:          p.IsActive,
+                ProductCategoryId: p.ProductCategoryId,
+                UnitName:          p.UnitName,
+                Description:       p.Description,
+                CreatedAt:         p.CreatedAt,
+                CreatedBy:         p.CreatedBy,
+                UpdatedAt:         p.CreatedAt,
+                UpdatedBy:         p.CreatedBy,
+                DeletedAt:         p.DeletedAt,
+                DeletedBy:         p.DeletedBy,
+        }
+}</span>
+
+func NewRepository(db *gorm.DB) *Repository <span class="cov0" title="0">{
+        return &amp;Repository{db}
+}</span>
+
+func (r *Repository) GetAllProduct() (*[]product.Product, error) <span class="cov0" title="0">{
+        var products []ProductQuery
+        // var tempProduct product.Product
+
+        // err := r.DB.Preload("ProductCategory").Where("deleted_by = ''").Find(&amp;products).Error
+        var query = "select t1.*, stock_akhir qty, stock_cart qty_cart, t2.product_category_name from products t1" +
+                " inner join product_stock(t1.id) on productid = t1.id " +
+                " inner join product_categories t2 on t2.id = product_category_id " +
+                " where deleted_by = ''"
+        err := r.DB.Raw(query).Scan(&amp;products).Error
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">var productOuts []product.Product
+        for _, value := range products </span><span class="cov0" title="0">{
+                productOuts = append(productOuts, value.ToProduct()) //tempProduct)
+        }</span>
+
+        <span class="cov0" title="0">return &amp;productOuts, nil</span>
+}
+
+func (r *Repository) GetAllProductByParameter(id, isActive, categoryName,
+        code, name string) (*[]product.Product, error) <span class="cov0" title="0">{
+        // var products []Product
+        var products []ProductQuery
+        // var tempProduct product.Product
+        var productOuts []product.Product
+
+        var query = "select t1.*, stock_akhir qty, stock_cart qty_cart, t2.name product_category_name from products t1" +
+                " inner join product_stock(t1.id) on productid = t1.id " +
+                " inner join product_categories t2 on t2.id = product_category_id " +
+                " where t1.deleted_by = ''"
+
+        if categoryName != "" </span><span class="cov0" title="0">{
+                query += " and t2.name like '%" + categoryName + "%'"
+        }</span>
+
+        <span class="cov0" title="0">if id != "" </span><span class="cov0" title="0">{
+                query += fmt.Sprintf(" and t1.id = '%s'", id)
+        }</span>
+
+        <span class="cov0" title="0">if isActive != "" </span><span class="cov0" title="0">{
+                res, err := strconv.ParseBool(isActive)
+                if err != nil </span><span class="cov0" title="0">{
+                        return &amp;productOuts, nil
+                }</span>
+                <span class="cov0" title="0">query += fmt.Sprintf(" and t1.is_active = %t", res)</span>
+        }
+
+        <span class="cov0" title="0">if code != "" </span><span class="cov0" title="0">{
+                query += fmt.Sprintf(" and t1.code = '%s'", code)
+        }</span>
+
+        <span class="cov0" title="0">if name != "" </span><span class="cov0" title="0">{
+                query += " and (t1.name like '%" + name + "%') "
+        }</span>
+
+        <span class="cov0" title="0">err := r.DB.Raw(query).Scan(&amp;products).Error
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">for _, value := range products </span><span class="cov0" title="0">{
+                productOuts = append(productOuts, value.ToProduct())
+        }</span>
+
+        <span class="cov0" title="0">return &amp;productOuts, nil</span>
+}
+
+func (r *Repository) FindProductById(id string) (*product.Product, error) <span class="cov0" title="0">{
+        var product = new(ProductQuery)
+
+        // err := r.DB.Where("id = ?", id).Where("deleted_by = ''").First(&amp;product).Error
+        var query = "select t1.*, stock_akhir qty, stock_cart qty_cart, t2.name product_category_name from products t1" +
+                " inner join product_stock(t1.id) on productid = t1.id " +
+                " inner join product_categories t2 on t2.id = product_category_id " +
+                " where t1.deleted_by = '' and t1.id = '" + id + "'"
+
+        if err := r.DB.Raw(query).Scan(product).Error; err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">response := product.ToProduct()
+        return &amp;response, nil</span>
+}
+
+func (r *Repository) FindProductByCode(code string) (*product.Product, error) <span class="cov0" title="0">{
+        var product *Product
+
+        err := r.DB.Where("code = ?", code).Where("deleted_by = ''").First(&amp;product).Error
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">response := product.ToProduct()
+        return &amp;response, nil</span>
+}
+
+func (r *Repository) InsertProduct(p product.Product) error <span class="cov0" title="0">{
+        product := newDataProduct(p)
+        if err := r.DB.Create(product).Error; err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">return nil</span>
+}
+
+func (r *Repository) UpdateProduct(p product.Product) error <span class="cov0" title="0">{
+        product := newDataProduct(p)
+        err := r.DB.Model(&amp;product).Updates(Product{
+                Name:              product.Name,
+                Price:             product.Price,
+                IsActive:          product.IsActive,
+                ProductCategoryId: product.ProductCategoryId,
+                UnitName:          product.UnitName,
+                Description:       product.Description,
+                UpdatedAt:         product.UpdatedAt,
+                UpdatedBy:         product.UpdatedBy,
+        }).Error
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+        <span class="cov0" title="0">return nil</span>
+}
+
+func (r *Repository) DeleteProduct(p product.Product) error <span class="cov0" title="0">{
+        product := newDataProduct(p)
+
+        err := r.DB.Model(&amp;product).Updates(Product{
+                DeletedBy: product.DeletedBy,
+                DeletedAt: product.DeletedAt,
+        }).Error
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+        <span class="cov0" title="0">return nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file41" style="display: none">package purchasereceiving
+
+import (
+        "AltaStore/business"
+        "AltaStore/business/purchasereceiving"
+        "errors"
+        "time"
+
+        "gorm.io/gorm"
+)
+
+type Repository struct {
+        DB *gorm.DB
+}
+
+type PurchaseReceiving struct {
+        ID           string    `gorm:"id;type:uuid;primaryKey"`
+        Code         string    `gorm:"code;type:varchar(50);unique"`
+        DateReceived time.Time `gorm:"datereceived;type:timestamp"`
+        ReceivedBy   string    `gorm:"receivedby;type:varchar(50)"`
+        Description  string    `gorm:"description;type:varchar(100)"`
+        CreatedAt    time.Time `gorm:"created_at"`
+        CreatedBy    string    `gorm:"created_by;type:varchar(50)"`
+        UpdatedAt    time.Time `gorm:"updated_at"`
+        UpdatedBy    string    `gorm:"updated_by;type:varchar(50)"`
+        DeletedAt    time.Time `gorm:"deleted_at"`
+        DeletedBy    string    `gorm:"deleted_by;type:varchar(50)"`
+}
+
+func (p *PurchaseReceiving) toPurchaseReceiving() *purchasereceiving.PurchaseReceiving <span class="cov0" title="0">{
+        return &amp;purchasereceiving.PurchaseReceiving{
+                ID:           p.ID,
+                Code:         p.Code,
+                DateReceived: p.DateReceived,
+                ReceivedBy:   p.ReceivedBy,
+                Description:  p.Description,
+                CreatedAt:    p.CreatedAt,
+                CreatedBy:    p.CreatedBy,
+                UpdatedBy:    p.UpdatedBy,
+                UpdatedAt:    p.UpdatedAt,
+                DeletedBy:    p.DeletedBy,
+                DeletedAt:    p.DeletedAt,
+        }
+}</span>
+
+func newPurchaseReceiving(
+        p *purchasereceiving.PurchaseReceiving,
+) *PurchaseReceiving <span class="cov0" title="0">{
+        return &amp;PurchaseReceiving{
+                ID:           p.ID,
+                Code:         p.Code,
+                DateReceived: p.DateReceived,
+                ReceivedBy:   p.ReceivedBy,
+                Description:  p.Description,
+                CreatedAt:    p.CreatedAt,
+                CreatedBy:    p.CreatedBy,
+                UpdatedAt:    p.UpdatedAt,
+                UpdatedBy:    p.UpdatedBy,
+                DeletedAt:    p.DeletedAt,
+                DeletedBy:    p.DeletedBy,
+        }
+}</span>
+
+func NewRepository(db *gorm.DB) *Repository <span class="cov0" title="0">{
+        return &amp;Repository{db}
+}</span>
+
+func (r *Repository) InsertPurchaseReceiving(p *purchasereceiving.PurchaseReceiving) error <span class="cov0" title="0">{
+        purchase := newPurchaseReceiving(p)
+        if err := r.DB.Create(purchase).Error; err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">return nil</span>
+}
+
+// func (r *Repository) UpdatePurchaseReceiving(p *purchasereceiving.PurchaseReceiving) error {
+func (r *Repository) UpdatePurchaseReceiving2(id *string, code *string, description *string, modifier *string, updater time.Time) error <span class="cov0" title="0">{
+        var checkUnique = new(PurchaseReceiving)
+
+        err := r.DB.First(checkUnique, "code = ?", code).Error
+
+        if !errors.Is(err, gorm.ErrRecordNotFound) </span><span class="cov0" title="0">{
+                if err != nil </span><span class="cov0" title="0">{
+                        return err
+                }</span>
+
+                <span class="cov0" title="0">if checkUnique.ID != *id </span><span class="cov0" title="0">{
+                        return business.ErrDataExists
+                }</span>
+        }
+
+        <span class="cov0" title="0">var purchaseReceiving = new(PurchaseReceiving)
+
+        if err := r.DB.First(purchaseReceiving, " id = ? ", id).Error; err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">return r.DB.Model(purchaseReceiving).Updates(map[string]interface{}{
+                "code":        code,
+                "description": description,
+                "updated_by":  modifier,
+                "updated_at":  updater,
+        }).Error</span>
+}
+
+func (r *Repository) DeletePurchaseReceiving(p *purchasereceiving.PurchaseReceiving) error <span class="cov0" title="0">{
+        purchase := newPurchaseReceiving(p)
+
+        err := r.DB.Model(&amp;purchase).Updates(PurchaseReceiving{
+                DeletedBy: purchase.DeletedBy,
+                DeletedAt: purchase.DeletedAt,
+        }).Error
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+        <span class="cov0" title="0">return nil</span>
+}
+
+func (r *Repository) GetAllPurchaseReceivingByParameter(code string) (*[]purchasereceiving.PurchaseReceiving, error) <span class="cov0" title="0">{
+        var purchases []PurchaseReceiving
+        var tempPurchase purchasereceiving.PurchaseReceiving
+        purchasetOuts := []purchasereceiving.PurchaseReceiving{}
+
+        temp := r.DB
+
+        if code != "" </span><span class="cov0" title="0">{
+                temp = temp.Where("code = ?", code)
+        }</span>
+        <span class="cov0" title="0">err := temp.Where("deleted_by = ''").Find(&amp;purchases).Error
+        if err != nil </span><span class="cov0" title="0">{
+                return &amp;purchasetOuts, nil
+        }</span>
+
+        <span class="cov0" title="0">for _, value := range purchases </span><span class="cov0" title="0">{
+                tempPurchase = *value.toPurchaseReceiving()
+                purchasetOuts = append(purchasetOuts, tempPurchase)
+        }</span>
+
+        <span class="cov0" title="0">return &amp;purchasetOuts, nil</span>
+}
+func (r *Repository) GetAllPurchaseReceiving() (*[]purchasereceiving.PurchaseReceiving, error) <span class="cov0" title="0">{
+        var purchases []PurchaseReceiving
+        var tempPurchase purchasereceiving.PurchaseReceiving
+        purchasetOuts := []purchasereceiving.PurchaseReceiving{}
+
+        temp := r.DB
+        err := temp.Where("deleted_by = ''").Find(&amp;purchases).Error
+        if err != nil </span><span class="cov0" title="0">{
+                return &amp;purchasetOuts, nil
+        }</span>
+
+        <span class="cov0" title="0">for _, value := range purchases </span><span class="cov0" title="0">{
+                tempPurchase = *value.toPurchaseReceiving()
+                purchasetOuts = append(purchasetOuts, tempPurchase)
+        }</span>
+
+        <span class="cov0" title="0">return &amp;purchasetOuts, nil</span>
+}
+
+func (r *Repository) GetPurchaseReceivingById(id string) (*purchasereceiving.PurchaseReceiving, error) <span class="cov0" title="0">{
+        var purchase PurchaseReceiving
+
+        err := r.DB.Where("id = ?", id).Where("deleted_by = ''").First(&amp;purchase).Error
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">return purchase.toPurchaseReceiving(), nil</span>
+}
+
+func (r *Repository) GetPurchaseReceivingByCode(code string) (*purchasereceiving.PurchaseReceiving, error) <span class="cov0" title="0">{
+        var purchase PurchaseReceiving
+
+        err := r.DB.Where("code = ?", code).Where("deleted_by = ''").First(&amp;purchase).Error
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">return purchase.toPurchaseReceiving(), nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file42" style="display: none">package purchasereceivingdetail
+
+import (
+        "AltaStore/business"
+        "AltaStore/business/purchasereceiving"
+        "errors"
+        "time"
+
+        "gorm.io/gorm"
+)
+
+type Repository struct {
+        DB *gorm.DB
+}
+
+type PurchaseReceivingDetail struct {
+        ID                  string    `gorm:"id;type:uuid;primaryKey"`
+        PurchaseReceivingId string    `gorm:"purchase_receiving_id;type:uuid"`
+        ProductId           string    `gorm:"product_id;type:uuid"`
+        Price               int64     `gorm:"price;"`
+        Qty                 int32     `gorm:"qty;"`
+        CreatedAt           time.Time `gorm:"created_at"`
+        CreatedBy           string    `gorm:"created_by;type:uuid"`
+        UpdatedAt           time.Time `gorm:"updated_at"`
+        UpdatedBy           string    `gorm:"updated_by;type:varchar(50)"`
+        DeletedAt           time.Time `gorm:"deleted_at"`
+        DeletedBy           string    `gorm:"deleted_by;type:varchar(50)"`
+}
+
+type PurchaseReceivingDetailQuery struct {
+        ID                  string    `gorm:"id"`
+        PurchaseReceivingId string    `gorm:"purchase_receiving_id"`
+        ProductId           string    `gorm:"product_id"`
+        ProductCode         string    `gorm:"product_code"`
+        ProductName         string    `gorm:"product_name"`
+        Price               int64     `gorm:"price;"`
+        Qty                 int32     `gorm:"qty;"`
+        CreatedAt           time.Time `gorm:"created_at"`
+        CreatedBy           string    `gorm:"created_by"`
+        UpdatedAt           time.Time `gorm:"updated_at"`
+        UpdatedBy           string    `gorm:"updated_by"`
+}
+
+// func (p *PurchaseReceivingDetail) toPurchaseReceivingDetail() *purchasereceiving.PurchaseReceivingDetail {
+//         return &amp;purchasereceiving.PurchaseReceivingDetail{
+//                 ID:        p.ID,
+//                 ProductId: p.ProductId,
+//                 Price:     p.Price,
+//                 Qty:       p.Qty,
+//                 CreatedBy: p.CreatedBy,
+//                 CreatedAt: p.CreatedAt,
+//                 UpdatedBy: p.UpdatedBy,
+//                 UpdatedAt: p.UpdatedAt,
+//                 DeletedBy: p.DeletedBy,
+//                 DeletedAt: p.DeletedAt,
+//         }
+// }
+
+func (p *PurchaseReceivingDetailQuery) toPurchaseReceivingDetail() *purchasereceiving.PurchaseReceivingDetail <span class="cov0" title="0">{
+        return &amp;purchasereceiving.PurchaseReceivingDetail{
+                ID:                  p.ID,
+                PurchaseReceivingId: p.PurchaseReceivingId,
+                ProductId:           p.ProductId,
+                ProductCode:         p.ProductCode,
+                ProductName:         p.ProductName,
+                Qty:                 p.Qty,
+                Price:               p.Price,
+                CreatedBy:           p.CreatedBy,
+                CreatedAt:           p.CreatedAt,
+                UpdatedBy:           p.UpdatedBy,
+                UpdatedAt:           p.UpdatedAt,
+        }
+}</span>
+
+func newDataPurchaseReceivingDetail(
+        p *purchasereceiving.PurchaseReceivingDetail,
+) *PurchaseReceivingDetail <span class="cov0" title="0">{
+        return &amp;PurchaseReceivingDetail{
+                ID:                  p.ID,
+                PurchaseReceivingId: p.PurchaseReceivingId,
+                ProductId:           p.ProductId,
+                Price:               p.Price,
+                Qty:                 p.Qty,
+                CreatedBy:           p.CreatedBy,
+                CreatedAt:           p.CreatedAt,
+                UpdatedBy:           p.UpdatedBy,
+                UpdatedAt:           p.UpdatedAt,
+                DeletedBy:           p.DeletedBy,
+                DeletedAt:           p.DeletedAt,
+        }
+}</span>
+
+func NewRepository(db *gorm.DB) *Repository <span class="cov0" title="0">{
+        return &amp;Repository{db}
+}</span>
+
+func (r *Repository) InsertPurchaseReceivingDetail(p *purchasereceiving.PurchaseReceivingDetail) error <span class="cov0" title="0">{
+        err := r.DB.First(&amp;PurchaseReceivingDetail{}, "purchase_receiving_id = ? and product_id = ?", p.PurchaseReceivingId, p.ProductId).Error
+        if !errors.Is(err, gorm.ErrRecordNotFound) </span><span class="cov0" title="0">{
+                if err != nil </span><span class="cov0" title="0">{
+                        return err
+                }</span>
+                <span class="cov0" title="0">return business.ErrDataExists</span>
+        }
+
+        <span class="cov0" title="0">detail := newDataPurchaseReceivingDetail(p)
+        if err := r.DB.Create(detail).Error; err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">return nil</span>
+}
+
+func (r *Repository) UpdatePurchaseReceivingDetail(purchaseId, productId *string, price, qty *int, modifier *string, updater time.Time) error <span class="cov0" title="0">{
+        var purchase = new(PurchaseReceivingDetail)
+
+        if err := r.DB.First(purchase, "purchase_receiving_id = ? and product_id = ?", purchaseId, productId).Error; err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">return r.DB.Model(purchase).Updates(map[string]interface{}{
+                "price":      price,
+                "qty":        qty,
+                "updated_by": modifier,
+                "updated_at": updater,
+        }).Error</span>
+}
+
+func (r *Repository) DeletePurchaseReceivingDetail(purchaseId, productId, remover *string, deleter time.Time) error <span class="cov0" title="0">{
+        var purchase = new(PurchaseReceivingDetail)
+
+        if err := r.DB.First(purchase, "purchase_receiving_id = ? and product_id = ?", purchaseId, productId).Error; err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">return r.DB.Model(purchase).Updates(map[string]interface{}{
+                "deleted_by": remover,
+                "deleted_at": deleter,
+        }).Error</span>
+}
+
+// Aksi akan dijalankan ketika menghapus ringkasan pembelian
+func (r *Repository) DeletePurchaseReceivingDetail2(purchaseid string, deleter string) error <span class="cov0" title="0">{
+        purchaseReceivingDetail := new([]PurchaseReceivingDetail)
+
+        err := r.DB.Where("purchase_receiving_id = ?", purchaseid).Find(purchaseReceivingDetail).Error
+        if err != nil </span><span class="cov0" title="0">{
+                if errors.Is(err, gorm.ErrRecordNotFound) </span><span class="cov0" title="0">{
+                        return business.ErrNotFound
+                }</span>
+                <span class="cov0" title="0">return err</span>
+        }
+
+        <span class="cov0" title="0">return r.DB.Model(purchaseReceivingDetail).Updates(map[string]interface{}{
+                "deleted_at": time.Now(),
+                "deleted_by": deleter,
+        }).Error</span>
+}
+
+func (r *Repository) GetPurchaseReceivingDetailByPurchaseReceivingId(id string) (*[]purchasereceiving.PurchaseReceivingDetail, error) <span class="cov0" title="0">{
+        var details []PurchaseReceivingDetailQuery
+
+        var query = "select t2.code product_code, t2.name product_name, t1.* " +
+                "from purchase_receiving_details t1 " +
+                "inner join products t2 on t2.id = t1.product_id " +
+                "where t1.purchase_receiving_id = '" + id + "' and t1.deleted_by = ''" +
+                "order by t1.id;"
+        if err := r.DB.Raw(query).Scan(&amp;details).Error; err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">var detailsOuts []purchasereceiving.PurchaseReceivingDetail
+
+        for _, value := range details </span><span class="cov0" title="0">{
+                detailsOuts = append(detailsOuts, *value.toPurchaseReceivingDetail())
+        }</span>
+
+        <span class="cov0" title="0">return &amp;detailsOuts, nil</span>
+}
+
+func (r *Repository) GetPurchaseReceivingDetailById(id string) (*purchasereceiving.PurchaseReceivingDetail, error) <span class="cov0" title="0">{
+        var detail purchasereceiving.PurchaseReceivingDetail
+
+        err := r.DB.Where("deleted_by = ''").Where("id = ?", id).First(&amp;detail).Error
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">return &amp;detail, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file43" style="display: none">package validator
+
+import (
+        "sync"
+
+        "github.com/go-playground/validator/v10"
+)
+
+var lock = &amp;sync.Mutex{}
+var validate *validator.Validate
+
+//GetValidator Initiatilize validator in singleton way
+func GetValidator() *validator.Validate <span class="cov8" title="1">{
+        lock.Lock()
+        defer lock.Unlock()
+
+        if validate == nil </span><span class="cov8" title="1">{
+                validate = validator.New()
+        }</span>
+
+        <span class="cov8" title="1">return validate</span>
+}
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>

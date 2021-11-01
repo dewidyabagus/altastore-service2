@@ -1,15 +1,15 @@
 # Alta Store Back-End Microservices Service 2
 
-Alta Store Back-End (AS BE) adalah layanan web service (RESTful API) untuk kebutuhan pemrosesan data layanan Toko Online dimana fitur yang diberikan mulai dari registrasi, login pelanggan dan admin, master produk dan kategori produk, keranjang belanja dan metode pembayaran yang menggunakan payment gateway. Dengan sistem autentikasi JWT.
+Alta Store Back-End (AS BE) adalah layanan web service (RESTful API) untuk kebutuhan pemrosesan data layanan Toko Online dimana fitur yang diberikan mulai dari registrasi, login pelanggan dan admin, master produk dan kategori produk, keranjang belanja, metode pembayaran yang menggunakan payment gateway Midtrans dan menggunakan sistem autentikasi JWT.
 
 ## Fitur Pada Service 2
 
 - Penambahan produk kategori dan master produk barang
-- Pembelian barang untuk kebutuhan stok tok
+- Pembelian barang untuk kebutuhan stok toko online
 
 ## Teknologi dan Arsitektur
 
-`Teknologi` dan `Arsitektur` pengembangan sistem back-end mulai dari bahasa pemrograma, database server hingga infrastruktur yang digunakan.
+`Teknologi` dan `Arsitektur` pengembangan sistem back-end mulai dari bahasa pemrograman, database server hingga infrastruktur yang digunakan.
 
 - **_Development Tools_**
 
@@ -50,13 +50,13 @@ Alta Store Back-End (AS BE) adalah layanan web service (RESTful API) untuk kebut
   [install `docker`](https://docs.docker.com/engine/install/) dan jalankan perintah dibawah ini. Docker akan menyiapkan
   semua keperluan yang dibutuhkan.
 
-  - Menggunaan Sistem Operasi Windows
+  - Menggunakan Sistem Operasi Windows
 
     ```console
     windows-docker-compose.bat
     ```
 
-  - Menggunaan Sistem Operasi Linux <br>
+  - Menggunakan Sistem Operasi Linux <br>
     Pastikan Anda sudah [menginstall docker compose](https://docs.docker.com/compose/install/)
 
     ```console
@@ -74,7 +74,7 @@ Alta Store Back-End (AS BE) adalah layanan web service (RESTful API) untuk kebut
 
 Kami menyiapkan yang terbaik untuk Anda. Untuk melihat dokumentasi **_Web Service API_** sudah kami siapkan di file `AltaStore.yaml`.
 Kami juga menyiapkan collection **_Postman_** untuk pengujian dan permintaan ke **_Web Service API_** di file `BE Alta Store Service 2.json`
-jika belum memiliki **_Posman_** Anda dapat [download dan install](https://www.postman.com/downloads/) Postman terlebih dahulu.
+jika belum memiliki **_Postman_** Anda dapat [download dan install](https://www.postman.com/downloads/) Postman terlebih dahulu.
 
 ## Hasil Unit Testing
 
