@@ -14,6 +14,7 @@ config/mitranskey.yaml
 *.test
 
 # Output of the go coverage tool, specifically when used with LiteIDE
-*.out
+.out
+cover.html
 
 local.env
