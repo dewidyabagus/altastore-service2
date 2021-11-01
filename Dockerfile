@@ -1,8 +1,8 @@
 FROM sonarsource/sonar-scanner-cli:4.6
 
 LABEL version="0.0.1" \
-      repository="https://github.com/Yap0894/altastore-service1" \
-      homepage="https://github.com/Yap0894/altastore-service1" \
+      repository="https://github.com/dewidyabagus/altastore-service2" \
+      homepage="https://github.com/dewidyabagus/altastore-service2" \
       maintainer="SonarSource" \
       com.github.actions.name="SonarCloud Scan" \
       com.github.actions.description="Scan your code with SonarCloud to detect bugs, vulnerabilities and code smells in more than 25 programming languages." \
